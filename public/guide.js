@@ -88,19 +88,32 @@
   function buildUI(){
     ensureStyles();
     const fab = el('button',{className:'guide-fab',type:'button',ariaLabel:'Ouvrir le guide',innerText:'❓'});
-    const overlay = el('div',{className:'guide-overlay',hidden:true});
-    const panel = el('div',{className:'guide-panel',hidden:true});
+    const overlay = el('div',{className:'guide-overlay',hidden:true,role:'presentation','aria-hidden':'true'});
+    const panel = el('div',{className:'guide-panel',hidden:true,role:'dialog','aria-modal':'true','aria-labelledby':'guide-title'});
     const header = el('div',{className:'guide-head'},[
-      el('div',{className:'guide-title',innerText:'Guide NPI'}),
-      el('button',{className:'guide-close',type:'button',innerText:'×','aria-label':'Fermer',role:'button',tabIndex:0})
+      el('div',{className:'guide-title',id:'guide-title',innerText:'Guide NPI'}),
+      el('button',{className:'guide-close',type:'button',innerText:'×','aria-label':'Fermer le guide',role:'button',tabIndex:0})
     ]);
     const body = el('div',{className:'guide-body'});
     const footer = el('div',{className:'guide-actions'});
     panel.append(header,body,footer);
     document.body.append(fab,overlay,panel);
     let current = 'intro';
-    function open(){ panel.hidden=false; overlay.hidden=false; panel.style.display='flex'; overlay.style.display='block'; render(current); }
-    function close(){ panel.hidden=true; overlay.hidden=true; panel.style.display='none'; overlay.style.display='none'; }
+    function open(){ 
+      panel.hidden=false; overlay.hidden=false; 
+      panel.style.display='flex'; overlay.style.display='block'; 
+      panel.setAttribute('aria-hidden', 'false'); overlay.setAttribute('aria-hidden', 'false');
+      render(current); 
+      // Focus first interactive element (close button)
+      setTimeout(()=> header.querySelector('.guide-close')?.focus(), 50);
+    }
+    function close(){ 
+      panel.hidden=true; overlay.hidden=true; 
+      panel.style.display='none'; overlay.style.display='none'; 
+      panel.setAttribute('aria-hidden', 'true'); overlay.setAttribute('aria-hidden', 'true');
+      // Return focus to FAB
+      fab.focus();
+    }
     function render(k){
       const s = steps.find(x=>x.k===k)||steps[0];
       current = s.k;

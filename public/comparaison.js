@@ -27,6 +27,10 @@
       });
       box.appendChild(pill);
     });
+    // Show/hide export and share buttons
+    const hasSelection = selected.length > 0;
+    $('#exportBtn').style.display = hasSelection ? 'inline-block' : 'none';
+    $('#shareBtn').style.display = hasSelection ? 'inline-block' : 'none';
   }
 
   function renderSelect(){
@@ -110,12 +114,47 @@
         updateChart();
       });
 
-      // Preselect from query ?country=id
+      // Export PNG handler
+      $('#exportBtn').addEventListener('click', ()=>{
+        if(!chart) return;
+        const url = chart.toBase64Image();
+        const link = document.createElement('a');
+        link.download = `comparaison-npi-${Date.now()}.png`;
+        link.href = url;
+        link.click();
+      });
+
+      // Share URL handler
+      $('#shareBtn').addEventListener('click', async ()=>{
+        if(selected.length === 0) return;
+        const params = new URLSearchParams();
+        selected.forEach(id => params.append('country', id));
+        const shareUrl = `${location.origin}${location.pathname}?${params.toString()}`;
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          try{
+            await navigator.clipboard.writeText(shareUrl);
+            const btn = $('#shareBtn');
+            const orig = btn.textContent;
+            btn.textContent = '✓ Copié !';
+            setTimeout(()=> btn.textContent = orig, 2000);
+          } catch(e){
+            prompt('Copiez cette URL:', shareUrl);
+          }
+        } else {
+          prompt('Copiez cette URL:', shareUrl);
+        }
+      });
+
+      // Preselect from query ?country=id1&country=id2...
       const params = new URLSearchParams(location.search);
-      const q = params.get('country');
-      if(q){
-        const exists = data.find(c=> c.id===q);
-        if(exists){ selected = [q]; renderSelected(); renderSelect(); }
+      const qList = params.getAll('country');
+      if(qList.length > 0){
+        qList.forEach(q=>{
+          const exists = data.find(c=> c.id===q);
+          if(exists && !selected.includes(q) && selected.length < 4){ selected.push(q); }
+        });
+        renderSelected();
+        renderSelect();
       }
       updateChart();
     } catch(e){ console.error('Failed to load npi-data.json', e); }

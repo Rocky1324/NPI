@@ -129,7 +129,9 @@ Astuce: pour servir le dossier `public/` rapidement, vous pouvez utiliser un ser
 ## 🧭 Mini‑guide interactif (sans API)
 
 - Widget pédagogique léger, accessible via une bulle « ❓ » en bas à droite sur toutes les pages statiques.
-- Contenu 100% local (pas d’API) avec un petit parcours: définition, caractéristiques, vagues, études de cas, quiz express.
+- Contenu 100% local (pas d'API) avec un petit parcours: définition, caractéristiques, vagues, études de cas, quiz express.
+- **Contenu contextuel** : conseils adaptés selon la page visitée et exemples aléatoires.
+- **Accessibilité complète** : ARIA, focus trap, Escape pour fermer, navigation clavier.
 
 Fichiers
 - Script: `public/guide.js`
@@ -144,6 +146,69 @@ Désactiver sur une page
 
 ---
 
+## 📥 Export & Partage (Comparaison)
+
+Sur la page **Comparaison**, deux nouveaux boutons apparaissent dès qu'un pays est sélectionné:
+
+**📥 Télécharger PNG**
+- Exporte le graphique Chart.js en image PNG haute qualité.
+- Nom de fichier horodaté: `comparaison-npi-{timestamp}.png`.
+
+**🔗 Partager**
+- Génère une URL avec les pays pré-sélectionnés (`?country=id1&country=id2...`).
+- Copie automatiquement l'URL dans le presse-papiers (fallback prompt si non supporté).
+- Permet de partager une comparaison exacte avec collègues/étudiants.
+
+---
+
+## 📱 PWA (Progressive Web App)
+
+Le Dashboard NPI est désormais installable et fonctionne hors-ligne.
+
+**Fonctionnalités**
+- **Manifest** (`public/manifest.json`) : métadonnées, icônes, thème dark.
+- **Service Worker** (`public/sw.js`) : cache intelligent des assets statiques et dynamiques.
+- **Offline-first** : toutes les pages HTML, CSS, JS et données JSON mises en cache.
+- **Mise à jour automatique** : notification quand une nouvelle version est disponible.
+
+**Installation**
+- Sur mobile : "Ajouter à l'écran d'accueil" depuis le navigateur.
+- Sur desktop : icône d'installation dans la barre d'adresse (Chrome, Edge).
+
+**Vérification**
+- Ouvrez DevTools > Application > Service Workers pour voir l'état.
+- Mode avion : l'app reste fonctionnelle une fois visitée.
+
+---
+
+## ♿ Accessibilité (WCAG AA)
+
+Le Dashboard respecte les standards d'accessibilité WCAG 2.1 niveau AA.
+
+**Améliorations implémentées**
+
+**Navigation clavier**
+- Skip links ("Aller au contenu principal") sur toutes les pages.
+- Focus visible clair (outline cyan de 3px).
+- Navigation complète sans souris (Tab, Shift+Tab, Enter, Escape).
+
+**ARIA & Sémantique**
+- Rôles landmarks: `role="main"`, `role="dialog"`, `role="img"`.
+- Labels descriptifs: `aria-label`, `aria-labelledby`, `aria-modal`.
+- États dynamiques: `aria-hidden` mis à jour lors des interactions.
+
+**Réduction de mouvement**
+- Respect de `prefers-reduced-motion`: animations désactivées pour utilisateurs sensibles.
+
+**Contraste élevé**
+- Support de `prefers-contrast: high`: bordures renforcées, couleurs ajustées.
+
+**Lecteurs d'écran**
+- Classe `.sr-only` pour contenus accessibles aux lecteurs d'écran uniquement.
+- Focus trap dans le mini-guide (dialogue modal).
+- Retour de focus automatique après fermeture de modales.
+
+---
 
 ## 📚 Références
 

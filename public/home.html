@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#060c1c" />
+  <meta name="description" content="Projet éducatif et interactif sur les Nouveaux Pays Industrialisés (NPI)" />
+  <link rel="manifest" href="/manifest.json" />
   <title>NPI – Accueil (statique)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +40,8 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  <div class="container" id="main-content" role="main">
     <header class="hero">
       <div class="emoji">🌏</div>
       <h1>NPI : La Révolution Économique du XXe Siècle</h1>
@@ -66,6 +70,7 @@
     </section>
   </div>
 
+  <script src="/pwa.js"></script>
   <script src="/ux.js"></script>
   <script src="/guide.js"></script>
   <script src="/home.js"></script>
