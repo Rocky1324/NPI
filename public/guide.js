@@ -40,6 +40,11 @@
       const s = document.createElement('style'); s.id='guide-inline-css'; s.textContent = css; document.head.appendChild(s);
     }
   }
+  // i18n helper
+  function t(key){
+    return window.i18n ? window.i18n.t(key) : key;
+  }
+
   function pageContext(){
     const path = (location.pathname || '').toLowerCase();
     const isCours = !!document.querySelector('.slides');
@@ -47,31 +52,35 @@
     const isCompare = /comparaison\.html$/.test(path) || !!document.getElementById('chart');
     const isTimeline = /timeline\.html$/.test(path) || !!document.getElementById('decades');
     const tips = [];
-    if(isCours){ tips.push("Astuce présentation: naviguez avec ← →, Home/End, et ‘T’ pour la table des matières."); }
-    if(isCarte){ tips.push("Carte: utilisez les boutons de vagues pour filtrer et cliquez sur un pays pour voir sa fiche."); }
-    if(isCompare){ tips.push("Comparaison: ajoutez jusqu’à 4 pays puis interprétez le graphique Chart.js."); }
-    if(isTimeline){ tips.push("Chronologie: utilisez ▶️, ‘Décennie suivante’ et les pastilles pour naviguer rapidement."); }
-    if(!tips.length){ tips.push("Parcourez les pages via le menu et explorez les sections interactives."); }
+    if(isCours){ tips.push(t('guide.tip_cours')); }
+    if(isCarte){ tips.push(t('guide.tip_carte')); }
+    if(isCompare){ tips.push(t('guide.tip_compare')); }
+    if(isTimeline){ tips.push(t('guide.tip_timeline')); }
+    if(!tips.length){ tips.push(t('guide.tip_default')); }
     return tips;
   }
 
-  const randomExamples = [
-    "Corée: État développeur, R&D > 4% PIB, champions industriels.",
-    "Chine: ZES, IDE massifs, montée en gamme, rôle des GVC.",
-    "Vietnam: Đổi Mới, accords (CPTPP/EVFTA), électronique.",
-    "Mexique: intégration nord-américaine, maquiladoras, nearshoring.",
-  ];
+  function getRandomExamples(){
+    return [
+      t('guide.example_korea'),
+      t('guide.example_china'),
+      t('guide.example_vietnam'),
+      t('guide.example_mexico')
+    ];
+  }
 
-  const steps = [
-    { k:"intro", t:"Bienvenue !", m:["Je suis le mini‑guide des NPI.", "Souhaitez‑vous une définition rapide ou un aperçu des vagues ?"], q:[{l:"Définition", n:"definition"},{l:"Vagues", n:"vagues"},{l:"Exemples", n:"exemples"}] },
-    { k:"definition", t:"Définition", m:["Un NPI est un pays qui connaît une industrialisation rapide et une montée en gamme productive, souvent tirée par les exportations."], q:[{l:"Caractéristiques", n:"caracs"},{l:"Revenir", n:"intro"}] },
-    { k:"caracs", t:"Caractéristiques", m:["• Orientation export","• Investissements et montée en compétences","• Intégration aux chaînes de valeur (GVC)","• Transition sectorielle (industrie, puis services)"] , q:[{l:"Vagues historiques", n:"vagues"},{l:"Études de cas", n:"exemples"},{l:"Revenir", n:"intro"}]},
-    { k:"vagues", t:"Vagues historiques", m:["V1: Tigres asiatiques (Corée, Taïwan, Singapour, Hong Kong)","V2: Pays émergents industriels (ex: Malaisie, Thaïlande)","V3: Chine, Mexique, etc.","V4: Nouveaux entrants (Vietnam, Bangladesh, etc.)"], q:[{l:"Études de cas", n:"exemples"},{l:"Quiz", n:"quiz"},{l:"Revenir", n:"intro"}] },
-    { k:"exemples", t:"Études de cas", m:["Corée: État développeur, champions industriels, forte R&D","Chine: ZES, IDE, montée en gamme","Vietnam: intégration rapide aux GVC"], q:[{l:"Quiz", n:"quiz"},{l:"Revenir", n:"intro"}] },
-    { k:"quiz", t:"Quiz express", m:["Question: Combien de vagues présentées ici ? (Indice: ≥ 3)","Choisissez la réponse correcte."], q:[{l:"3", n:"quiz_res_3"},{l:"4", n:"quiz_res_4"},{l:"Revenir", n:"intro"}] },
-    { k:"quiz_res_3", t:"Réponse", m:["Presque ! Ici, on présente généralement 4 vagues."], q:[{l:"Voir vagues", n:"vagues"},{l:"Revenir", n:"intro"}] },
-    { k:"quiz_res_4", t:"Réponse", m:["Bravo ! 4 vagues sont couramment présentées dans ce cours."], q:[{l:"Voir vagues", n:"vagues"},{l:"Revenir", n:"intro"}] }
-  ];
+  function getSteps(){
+    return [
+      { k:"intro", t:t('guide.intro_title'), m:[t('guide.intro_msg')[0], t('guide.intro_msg')[1]], q:[{l:t('guide.definition'), n:"definition"},{l:t('guide.waves'), n:"vagues"},{l:t('guide.examples'), n:"exemples"}] },
+      { k:"definition", t:t('guide.definition'), m:[t('guide.definition_text')], q:[{l:t('guide.characteristics'), n:"caracs"},{l:t('guide.back'), n:"intro"}] },
+      { k:"caracs", t:t('guide.characteristics'), m:[t('guide.char_export'),t('guide.char_invest'),t('guide.char_gvc'),t('guide.char_transition')] , q:[{l:t('guide.waves_title'), n:"vagues"},{l:t('guide.examples_title'), n:"exemples"},{l:t('guide.back'), n:"intro"}]},
+      { k:"vagues", t:t('guide.waves_title'), m:[t('guide.waves_v1'),t('guide.waves_v2'),t('guide.waves_v3'),t('guide.waves_v4')], q:[{l:t('guide.examples_title'), n:"exemples"},{l:t('guide.quiz'), n:"quiz"},{l:t('guide.back'), n:"intro"}] },
+      { k:"exemples", t:t('guide.examples_title'), m:[t('guide.examples_korea'),t('guide.examples_china'),t('guide.examples_vietnam')], q:[{l:t('guide.quiz'), n:"quiz"},{l:t('guide.back'), n:"intro"}] },
+      { k:"quiz", t:t('guide.quiz_title'), m:[t('guide.quiz_question'),t('guide.quiz_choose')], q:[{l:"3", n:"quiz_res_3"},{l:"4", n:"quiz_res_4"},{l:t('guide.back'), n:"intro"}] },
+      { k:"quiz_res_3", t:t('guide.quiz_answer'), m:[t('guide.quiz_almost')], q:[{l:t('guide.see_waves'), n:"vagues"},{l:t('guide.back'), n:"intro"}] },
+      { k:"quiz_res_4", t:t('guide.quiz_answer'), m:[t('guide.quiz_correct')], q:[{l:t('guide.see_waves'), n:"vagues"},{l:t('guide.back'), n:"intro"}] }
+    ];
+  }
   function adjustPosition(fabEl, panelEl){
     const mobile = window.matchMedia('(max-width: 640px)').matches;
     const safe = 'calc(env(safe-area-inset-bottom, 0px) + 18px)';
@@ -87,23 +96,32 @@
 
   function buildUI(){
     ensureStyles();
-    const fab = el('button',{className:'guide-fab',type:'button',ariaLabel:'Ouvrir le guide',innerText:'❓'});
+    const fab = el('button',{className:'guide-fab',type:'button',innerText:'❓'});
     const overlay = el('div',{className:'guide-overlay',hidden:true,role:'presentation','aria-hidden':'true'});
     const panel = el('div',{className:'guide-panel',hidden:true,role:'dialog','aria-modal':'true','aria-labelledby':'guide-title'});
-    const header = el('div',{className:'guide-head'},[
-      el('div',{className:'guide-title',id:'guide-title',innerText:'Guide NPI'}),
-      el('button',{className:'guide-close',type:'button',innerText:'×','aria-label':'Fermer le guide',role:'button',tabIndex:0})
-    ]);
+    const titleEl = el('div',{className:'guide-title',id:'guide-title'});
+    const closeBtn = el('button',{className:'guide-close',type:'button',innerText:'×',role:'button',tabIndex:0});
+    const header = el('div',{className:'guide-head'},[titleEl, closeBtn]);
     const body = el('div',{className:'guide-body'});
     const footer = el('div',{className:'guide-actions'});
     panel.append(header,body,footer);
     document.body.append(fab,overlay,panel);
     let current = 'intro';
+    
+    // Update labels with translations
+    function updateLabels(){
+      fab.setAttribute('aria-label', t('guide.open'));
+      closeBtn.setAttribute('aria-label', t('guide.close'));
+      titleEl.innerText = t('guide.title');
+    }
+    updateLabels();
     function open(){ 
       panel.hidden=false; overlay.hidden=false; 
       panel.style.display='flex'; overlay.style.display='block'; 
       panel.setAttribute('aria-hidden', 'false'); overlay.setAttribute('aria-hidden', 'false');
       render(current); 
+      // Track guide open
+      if(window.analytics) window.analytics.trackGuideOpen();
       // Focus first interactive element (close button)
       setTimeout(()=> header.querySelector('.guide-close')?.focus(), 50);
     }
@@ -115,6 +133,7 @@
       fab.focus();
     }
     function render(k){
+      const steps = getSteps();
       const s = steps.find(x=>x.k===k)||steps[0];
       current = s.k;
       body.replaceChildren();
@@ -127,18 +146,22 @@
       if(s.k === 'intro'){
         pageContext().forEach(line=> body.append(el('div',{className:'guide-msg'},[el('span',{className:'dot',innerText:'•'}),el('span',{innerText:line})])));
         // Random example snippet
-        const rand = randomExamples[Math.floor(Math.random()*randomExamples.length)];
-        body.append(el('div',{className:'guide-msg'},[el('span',{className:'dot',innerText:'•'}),el('span',{innerText:`Exemple: ${rand}`})]));
+        const examples = getRandomExamples();
+        const rand = examples[Math.floor(Math.random()*examples.length)];
+        const exampleLabel = t('guide.examples') || 'Exemple';
+        body.append(el('div',{className:'guide-msg'},[el('span',{className:'dot',innerText:'•'}),el('span',{innerText:`${exampleLabel}: ${rand}`})]));
       }
       const wrap = el('div',{className:'guide-choices'});
-      s.q.forEach(q=>{ const b = el('button',{className:'btn secondary small',type:'button',innerText:q.l}); b.addEventListener('click',()=>render(q.n)); wrap.append(b); });
+      s.q.forEach(q=>{ const b = el('button',{className:'btn secondary small',type:'button',innerText:q.l}); b.addEventListener('click',()=>{ 
+        if(window.analytics) window.analytics.trackGuideStep(q.n); 
+        render(q.n); 
+      }); wrap.append(b); });
       footer.append(wrap);
     }
     fab.addEventListener('click', open);
     // Robust close handlers
     overlay.addEventListener('click', close);
     // Direct listener on the close button (most reliable)
-    const closeBtn = header.querySelector('.guide-close');
     if(closeBtn){
       const act = (e)=>{ e.preventDefault(); e.stopPropagation(); close(); };
       closeBtn.addEventListener('click', act);
@@ -169,6 +192,15 @@
     }, true);
     adjustPosition(fab,panel);
     window.addEventListener('resize',()=>adjustPosition(fab,panel));
+    
+    // Listen for language changes
+    window.addEventListener('languagechange', ()=>{
+      updateLabels();
+      if(!panel.hidden){
+        render(current); // Re-render current step with new language
+      }
+    });
+    
     return {fab,panel,overlay,render}
   }
   function safeInit(){ try{ buildUI(); } catch(e){ console && console.error && console.error('guide init error', e); } }
