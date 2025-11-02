@@ -32,14 +32,13 @@
 <div align="center">
 
 <!-- Placeholders (mettez vos captures réelles) -->
-<img src="public/assets/screenshots/home.png" alt="Aperçu Accueil" width="31%" />
-<img src="public/assets/screenshots/cours.png" alt="Aperçu Cours" width="31%" />
-<img src="public/assets/screenshots/carte.png" alt="Aperçu Carte" width="31%" />
+<img width="31%" alt="acceuil" src="https://github.com/user-attachments/assets/9750320e-3ede-461a-8991-db50d3505f93" />
+<img width="31%" alt="image" src="https://github.com/user-attachments/assets/83fcd60a-3855-4ded-bb8b-95b29ddffcdb" />
+<img  width="31%" alt="carte" src="https://github.com/user-attachments/assets/79c57cc3-2043-48a6-8f41-d5abc22261a9" />
 
 <br/>
-<img src="public/assets/screenshots/timeline.png" alt="Aperçu Chronologie" width="31%" />
-<img src="public/assets/screenshots/comparaison.png" alt="Aperçu Comparaison" width="31%" />
-<img src="public/assets/screenshots/quiz.gif" alt="Animation Quiz" width="31%" />
+<img width="31%" alt="image" src="https://github.com/user-attachments/assets/eb806fc1-072e-4a53-935d-05b96b33ca16" />
+<img width="31%" alt="image" src="https://github.com/user-attachments/assets/f8242dde-fe6f-4a12-8e63-d798bcb95816" />
 
 </div>
 
