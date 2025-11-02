@@ -127,18 +127,6 @@ Astuce: pour servir le dossier `public/` rapidement, vous pouvez utiliser un ser
 
 ---
 
-## ☁️ Déploiement en ligne
-
-Le projet peut être déployé comme site statique sur:
-
-- GitHub Pages
-- Vercel
-- Netlify
-
-Attention: si déployé sous un sous‑chemin (GitHub Pages projet), privilégiez des liens relatifs (`./...`) au lieu de chemins absolus (`/...`).
-
----
-
 ## 📚 Références
 
 - Banque mondiale
@@ -159,7 +147,3 @@ Projet open‑source, libre de diffusion pour usage éducatif.
 - Les NPI sont présentés en 4 vagues d’industrialisation.
 - Études de cas interactives et comparaisons rapides.
 - Prévu pour présentation/cours avec design moderne et réactif.
-
----
-
-Souhaitez‑vous une version du README enrichie avec captures d’écran, GIF et badges ? Je peux l’ajouter.
