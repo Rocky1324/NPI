@@ -41,11 +41,18 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  
+  <!-- Language Switcher (Fixed Top Right) -->
+  <div class="lang-switcher">
+    <button class="btn secondary" data-lang-switch="fr">🇫🇷 FR</button>
+    <button class="btn secondary" data-lang-switch="en">🇬🇧 EN</button>
+  </div>
+  
   <div class="container" id="main-content" role="main">
     <header class="hero">
       <div class="emoji">🌏</div>
-      <h1>NPI : La Révolution Économique du XXe Siècle</h1>
-      <p>Explorez l'essor des Nouveaux Pays Industrialisés à travers des données interactives et des analyses accessibles.</p>
+      <h1 data-i18n="home.title">NPI : La Révolution Économique du XXe Siècle</h1>
+      <p data-i18n="home.subtitle">Explorez l'essor des Nouveaux Pays Industrialisés à travers des données interactives et des analyses accessibles.</p>
       <div class="btns" style="justify-content:center;margin-top:16px">
         <a class="btn" href="/carte.html">Commencer l'exploration</a>
         <a class="btn secondary" href="/react-home">Basculer vers la version React</a>
@@ -70,6 +77,8 @@
     </section>
   </div>
 
+  <script src="/i18n.js"></script>
+  <script src="/analytics.js"></script>
   <script src="/pwa.js"></script>
   <script src="/ux.js"></script>
   <script src="/guide.js"></script>

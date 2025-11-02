@@ -20,11 +20,17 @@
   </style>
 </head>
 <body>
+  <!-- Language Switcher (Fixed Top Right) -->
+  <div class="lang-switcher">
+    <button class="btn secondary" data-lang-switch="fr">🇫🇷 FR</button>
+    <button class="btn secondary" data-lang-switch="en">🇬🇧 EN</button>
+  </div>
+  
   <div class="container">
     <header class="hero reveal-on-scroll" style="padding-bottom:0">
       <div class="emoji">🗺️</div>
-      <h1>Carte des NPI</h1>
-      <p class="muted">Visualisez la distribution géographique des NPI et filtrez par vague.</p>
+      <h1 data-i18n="map.title">Carte des NPI</h1>
+      <p class="muted" data-i18n="map.subtitle">Visualisez la distribution géographique des NPI et filtrez par vague.</p>
       <div class="btns" style="justify-content:center;margin-top:10px">
         <a class="btn" href="/">🏠 Accueil</a>
         <a class="btn secondary" href="/cours.html">📚 Cours NPI</a>
@@ -94,6 +100,8 @@
     </footer>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/i18n.js"></script>
+  <script src="/analytics.js"></script>
   <script src="/pwa.js"></script>
   <script src="/ux.js"></script>
   <script src="/guide.js"></script>

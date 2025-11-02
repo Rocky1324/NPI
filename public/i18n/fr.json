@@ -1,0 +1,83 @@
+{
+  "common": {
+    "home": "Accueil",
+    "course": "Cours NPI",
+    "map": "Carte",
+    "timeline": "Chronologie",
+    "comparison": "Comparaison",
+    "explore": "Explorer",
+    "close": "Fermer",
+    "back": "Revenir",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "share": "Partager",
+    "export": "Télécharger PNG",
+    "clear": "Effacer",
+    "skip_to_content": "Aller au contenu principal"
+  },
+  "home": {
+    "title": "NPI : La Révolution Économique du XXe Siècle",
+    "subtitle": "Explorez l'essor des Nouveaux Pays Industrialisés à travers des données interactives et des analyses accessibles.",
+    "start_exploring": "Commencer l'exploration",
+    "switch_react": "Basculer vers la version React",
+    "stats_title": "En chiffres",
+    "countries_covered": "Pays couverts",
+    "waves_analyzed": "Vagues analysées",
+    "interactive_maps": "Cartes interactives",
+    "case_studies": "Études de cas",
+    "cta_title": "Prêt à découvrir ?",
+    "cta_description": "Découvrez comment les NPI ont transformé leur économie et leur société au fil des décennies.",
+    "cta_map": "Accéder à la carte interactive",
+    "cta_timeline": "Voir la chronologie",
+    "cta_comparison": "Comparer des pays"
+  },
+  "comparison": {
+    "title": "Comparaison des pays NPI",
+    "subtitle": "Comparez l'évolution du PIB de plusieurs pays.",
+    "selections": "Sélections",
+    "add_country": "+ Ajouter un pays (max 4)",
+    "chart_title": "Graphique (PIB agrégé)",
+    "description": "Choisissez jusqu'à 4 pays pour comparer.",
+    "shared_copied": "✓ Copié !",
+    "share_prompt": "Copiez cette URL:"
+  },
+  "map": {
+    "title": "Carte interactive des NPI",
+    "subtitle": "Explorez les Nouveaux Pays Industrialisés par vagues d'industrialisation.",
+    "filter_by_wave": "Filtrer par vague",
+    "all_waves": "Toutes les vagues",
+    "wave_1": "Vague 1 (Tigres)",
+    "wave_2": "Vague 2 (Émergents)",
+    "wave_3": "Vague 3 (Chine, Mexique)",
+    "wave_4": "Vague 4 (Nouveaux)",
+    "legend": "Légende",
+    "tip": "Cliquez sur un pays pour voir sa fiche détaillée."
+  },
+  "timeline": {
+    "title": "Chronologie des NPI",
+    "subtitle": "Parcourez l'histoire de l'industrialisation par décennie.",
+    "progress": "Progression",
+    "decades": "Décennies",
+    "play": "▶️ Lire",
+    "pause": "⏸ Pause",
+    "next_decade": "Décennie suivante"
+  },
+  "guide": {
+    "open": "Ouvrir le guide",
+    "close": "Fermer le guide",
+    "title": "Guide NPI",
+    "intro_title": "Bienvenue !",
+    "intro_msg": ["Je suis le mini‑guide des NPI.", "Souhaitez‑vous une définition rapide ou un aperçu des vagues ?"],
+    "definition": "Définition",
+    "waves": "Vagues",
+    "examples": "Exemples",
+    "characteristics": "Caractéristiques",
+    "quiz": "Quiz",
+    "back": "Revenir"
+  },
+  "accessibility": {
+    "sr_only_nav": "Navigation principale",
+    "sr_only_main": "Contenu principal",
+    "aria_chart": "Graphique de comparaison du PIB des pays NPI sélectionnés"
+  }
+}

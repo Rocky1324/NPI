@@ -302,6 +302,12 @@
   </style>
 </head>
 <body>
+  <!-- Language Switcher (Fixed Top Right) -->
+  <div class="lang-switcher">
+    <button class="btn secondary" data-lang-switch="fr">🇫🇷 FR</button>
+    <button class="btn secondary" data-lang-switch="en">🇬🇧 EN</button>
+  </div>
+  
   <div class="app" role="application" aria-label="Présentation NPI">
     <!-- Sidebar / TOC -->
     <aside class="sidebar" aria-hidden="false">
@@ -902,6 +908,8 @@
     announceSlide();
 
   </script>
+  <script src="/i18n.js"></script>
+  <script src="/analytics.js"></script>
   <script src="/pwa.js"></script>
   <script src="/guide.js"></script>
 </body>

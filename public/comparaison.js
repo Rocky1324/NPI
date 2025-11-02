@@ -70,6 +70,12 @@
     const datasets = buildDatasets(years);
 
     if(chart){ chart.destroy(); }
+    
+    // Track comparison creation
+    if(selected.length > 0 && window.analytics){
+      window.analytics.trackComparisonCreate(selected);
+    }
+    
     chart = new Chart(ctx, {
       type: 'line',
       data: { labels: years, datasets },
@@ -122,6 +128,7 @@
         link.download = `comparaison-npi-${Date.now()}.png`;
         link.href = url;
         link.click();
+        if(window.analytics) window.analytics.trackComparisonExport();
       });
 
       // Share URL handler
@@ -137,6 +144,7 @@
             const orig = btn.textContent;
             btn.textContent = '✓ Copié !';
             setTimeout(()=> btn.textContent = orig, 2000);
+            if(window.analytics) window.analytics.trackComparisonShare();
           } catch(e){
             prompt('Copiez cette URL:', shareUrl);
           }

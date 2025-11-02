@@ -210,6 +210,63 @@ Le Dashboard respecte les standards d'accessibilité WCAG 2.1 niveau AA.
 
 ---
 
+## 🌐 Internationalisation (i18n)
+
+Le Dashboard supporte le français et l'anglais avec basculement instantané.
+
+**Fonctionnalités**
+- **Switch langue** : boutons 🇫🇷 FR / 🇬🇧 EN dans le header de chaque page
+- **Détection automatique** : langue du navigateur détectée au premier chargement
+- **Persistance** : préférence sauvegardée en localStorage
+- **Traduction dynamique** : tous les textes UI traduits sans rechargement
+
+**Fichiers**
+- `public/i18n/fr.json` : dictionnaire français
+- `public/i18n/en.json` : dictionnaire anglais
+- `public/i18n.js` : moteur de traduction
+
+**Personnaliser**
+- Modifier les dictionnaires JSON pour adapter les traductions
+- Ajouter une langue : créer `public/i18n/{code}.json` et ajouter le code à `SUPPORTED_LANGS`
+
+---
+
+## 📊 Analytics Éducatifs (Local & Privé)
+
+Système de suivi anonyme des interactions pédagogiques, 100% local, sans serveur.
+
+**Données trackées**
+- **Pages vues** : navigation, temps passé
+- **Mini-guide** : ouvertures, étapes parcourues
+- **Quiz** : tentatives, réponses, scores
+- **Carte** : filtres utilisés, pays cliqués
+- **Comparaison** : créations, exports PNG, partages
+- **Timeline** : lecture, décennies consultées
+
+**Dashboard `/stats.html`**
+- **Accès restreint** : authentification par nom (liste blanche)
+- **Visualisations** : graphiques Chart.js, tableau d'événements
+- **Actions** : actualiser, exporter JSON, effacer données
+
+**Privacy-first (RGPD compliant)**
+- ✅ Aucune donnée personnelle (pas de nom, email, IP)
+- ✅ Stockage 100% local (localStorage)
+- ✅ Pas de cookies tiers
+- ✅ Anonymisation totale
+- ✅ Effacement facile
+
+**Fichiers**
+- `public/analytics.js` : système de tracking
+- `public/stats.html` : dashboard protégé
+- `public/stats.js` : authentification + visualisation
+
+**Accès au dashboard**
+1. Ouvrir `/stats.html`
+2. Entrer votre nom complet (doit correspondre à la liste autorisée)
+3. Visualiser les statistiques d'utilisation
+
+---
+
 ## 📚 Références
 
 - Banque mondiale

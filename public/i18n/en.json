@@ -1,0 +1,83 @@
+{
+  "common": {
+    "home": "Home",
+    "course": "NIC Course",
+    "map": "Map",
+    "timeline": "Timeline",
+    "comparison": "Comparison",
+    "explore": "Explore",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "share": "Share",
+    "export": "Download PNG",
+    "clear": "Clear",
+    "skip_to_content": "Skip to main content"
+  },
+  "home": {
+    "title": "NIC: The 20th Century Economic Revolution",
+    "subtitle": "Explore the rise of Newly Industrialized Countries through interactive data and accessible analysis.",
+    "start_exploring": "Start exploring",
+    "switch_react": "Switch to React version",
+    "stats_title": "By the numbers",
+    "countries_covered": "Countries covered",
+    "waves_analyzed": "Waves analyzed",
+    "interactive_maps": "Interactive maps",
+    "case_studies": "Case studies",
+    "cta_title": "Ready to discover?",
+    "cta_description": "Discover how NICs have transformed their economy and society over the decades.",
+    "cta_map": "Access interactive map",
+    "cta_timeline": "View timeline",
+    "cta_comparison": "Compare countries"
+  },
+  "comparison": {
+    "title": "NIC Countries Comparison",
+    "subtitle": "Compare GDP evolution across multiple countries.",
+    "selections": "Selections",
+    "add_country": "+ Add country (max 4)",
+    "chart_title": "Chart (Aggregate GDP)",
+    "description": "Choose up to 4 countries to compare.",
+    "shared_copied": "✓ Copied!",
+    "share_prompt": "Copy this URL:"
+  },
+  "map": {
+    "title": "Interactive NIC Map",
+    "subtitle": "Explore Newly Industrialized Countries by industrialization waves.",
+    "filter_by_wave": "Filter by wave",
+    "all_waves": "All waves",
+    "wave_1": "Wave 1 (Tigers)",
+    "wave_2": "Wave 2 (Emerging)",
+    "wave_3": "Wave 3 (China, Mexico)",
+    "wave_4": "Wave 4 (New entrants)",
+    "legend": "Legend",
+    "tip": "Click on a country to see its detailed profile."
+  },
+  "timeline": {
+    "title": "NIC Timeline",
+    "subtitle": "Browse industrialization history by decade.",
+    "progress": "Progress",
+    "decades": "Decades",
+    "play": "▶️ Play",
+    "pause": "⏸ Pause",
+    "next_decade": "Next decade"
+  },
+  "guide": {
+    "open": "Open guide",
+    "close": "Close guide",
+    "title": "NIC Guide",
+    "intro_title": "Welcome!",
+    "intro_msg": ["I am the NIC mini-guide.", "Would you like a quick definition or an overview of the waves?"],
+    "definition": "Definition",
+    "waves": "Waves",
+    "examples": "Examples",
+    "characteristics": "Characteristics",
+    "quiz": "Quiz",
+    "back": "Back"
+  },
+  "accessibility": {
+    "sr_only_nav": "Main navigation",
+    "sr_only_main": "Main content",
+    "aria_chart": "Comparison chart of GDP for selected NIC countries"
+  }
+}
