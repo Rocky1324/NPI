@@ -102,7 +102,7 @@ npi-dashboard/
 1) Cloner le projet
 
 ```bash
-git clone https://github.com/Rocky1324/NPI.git
+git clone https://github.com/Rocky1324/NPI
 cd NPI/npi-dashboard
 ```
 
