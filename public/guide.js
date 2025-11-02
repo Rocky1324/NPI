@@ -1,5 +1,16 @@
 (function(){
-  function el(t, a, c){ const e = document.createElement(t); if(a) Object.assign(e, a); if(c) e.append(...c); return e }
+  function el(t, a, c){
+    const e = document.createElement(t);
+    if(a){
+      const { dataset, ...rest } = a;
+      Object.assign(e, rest);
+      if(dataset && e.dataset){
+        for(const k in dataset){ try{ e.dataset[k] = dataset[k]; }catch(_){} }
+      }
+    }
+    if(c) e.append(...c);
+    return e;
+  }
   // Ensure minimal styles exist (fallback for pages not loading global CSS)
   function ensureStyles(){
     if(getComputedStyle(document.documentElement).getPropertyValue('--accent')=== ''){
@@ -10,6 +21,7 @@
     }
     if(!document.getElementById('guide-inline-css')){
       const css = `
+      .guide-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.25); backdrop-filter:saturate(120%) blur(2px); z-index:999 }
       .guide-fab{ position:fixed; right:18px; bottom:18px; z-index:1000; border:0; border-radius:9999px; width:48px; height:48px; font-size:22px; font-weight:800; cursor:pointer; box-shadow:0 10px 30px rgba(2,6,23,.6); background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#021223 }
       .guide-fab:hover{ filter:brightness(1.05) }
       .guide-panel{ position:fixed; right:18px; bottom:78px; width:min(360px, 92vw); max-height:70vh; background:rgba(6,16,28,0.96); border:1px solid var(--border); border-radius:14px; box-shadow:0 24px 60px rgba(2,6,23,.7); display:flex; flex-direction:column; overflow:hidden; z-index:1000; color:#e6eef6; font-family: inherit }
@@ -76,13 +88,19 @@
   function buildUI(){
     ensureStyles();
     const fab = el('button',{className:'guide-fab',type:'button',ariaLabel:'Ouvrir le guide',innerText:'❓'});
+    const overlay = el('div',{className:'guide-overlay',hidden:true});
     const panel = el('div',{className:'guide-panel',hidden:true});
-    const header = el('div',{className:'guide-head'},[el('div',{className:'guide-title',innerText:'Guide NPI'}),el('button',{className:'guide-close',type:'button',innerText:'×'})]);
+    const header = el('div',{className:'guide-head'},[
+      el('div',{className:'guide-title',innerText:'Guide NPI'}),
+      el('button',{className:'guide-close',type:'button',innerText:'×','aria-label':'Fermer',role:'button',tabIndex:0})
+    ]);
     const body = el('div',{className:'guide-body'});
     const footer = el('div',{className:'guide-actions'});
     panel.append(header,body,footer);
-    document.body.append(fab,panel);
+    document.body.append(fab,overlay,panel);
     let current = 'intro';
+    function open(){ panel.hidden=false; overlay.hidden=false; panel.style.display='flex'; overlay.style.display='block'; render(current); }
+    function close(){ panel.hidden=true; overlay.hidden=true; panel.style.display='none'; overlay.style.display='none'; }
     function render(k){
       const s = steps.find(x=>x.k===k)||steps[0];
       current = s.k;
@@ -103,11 +121,43 @@
       s.q.forEach(q=>{ const b = el('button',{className:'btn secondary small',type:'button',innerText:q.l}); b.addEventListener('click',()=>render(q.n)); wrap.append(b); });
       footer.append(wrap);
     }
-    fab.addEventListener('click',()=>{ panel.hidden=false; render(current); });
-    header.querySelector('.guide-close').addEventListener('click',()=>{ panel.hidden=true; });
+    fab.addEventListener('click', open);
+    // Robust close handlers
+    overlay.addEventListener('click', close);
+    // Direct listener on the close button (most reliable)
+    const closeBtn = header.querySelector('.guide-close');
+    if(closeBtn){
+      const act = (e)=>{ e.preventDefault(); e.stopPropagation(); close(); };
+      closeBtn.addEventListener('click', act);
+      closeBtn.addEventListener('pointerdown', act);
+      closeBtn.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ act(e); } });
+    }
+    // Delegation fallback inside panel
+    panel.addEventListener('click', (e)=>{
+      const t = e.target;
+      if(!t) return;
+      if((t.matches && t.matches('.guide-close')) || (t.closest && t.closest('[data-guide-close]'))){
+        e.preventDefault(); e.stopPropagation(); close();
+      }
+    });
+    window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && !panel.hidden){ close(); } });
+    // Global fallback (in case of event interference)
+    document.addEventListener('click', (e)=>{
+      const t = e.target;
+      if(!t) return;
+      const el = (t.closest ? t.closest('.guide-close') : null);
+      if(el && !panel.hidden){ e.preventDefault(); e.stopPropagation(); close(); }
+    }, true);
+    document.addEventListener('pointerdown', (e)=>{
+      const t = e.target;
+      if(!t) return;
+      const el = (t.closest ? t.closest('.guide-close') : null);
+      if(el && !panel.hidden){ e.preventDefault(); e.stopPropagation(); close(); }
+    }, true);
     adjustPosition(fab,panel);
     window.addEventListener('resize',()=>adjustPosition(fab,panel));
-    return {fab,panel,render}
+    return {fab,panel,overlay,render}
   }
-  if(document.readyState==='complete' || document.readyState==='interactive') buildUI(); else document.addEventListener('DOMContentLoaded',buildUI);
+  function safeInit(){ try{ buildUI(); } catch(e){ console && console.error && console.error('guide init error', e); } }
+  if(document.readyState==='complete' || document.readyState==='interactive') safeInit(); else document.addEventListener('DOMContentLoaded', safeInit);
 })();

@@ -91,12 +91,15 @@ canvas{ background: rgba(255,255,255,0.02); border:1px solid var(--border); bord
 .leaflet-tooltip { background: rgba(0,0,0,0.55); color:#e6eef6; border:1px solid var(--border); }
 
 /* Mini-guide widget */
-.guide-fab{ position:fixed; right:18px; bottom:18px; z-index:1000; border:0; border-radius:9999px; width:48px; height:48px; font-size:22px; font-weight:800; cursor:pointer; box-shadow:0 10px 30px rgba(2,6,23,.6); background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#021223 }
+.guide-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.25); backdrop-filter:saturate(120%) blur(2px); z-index:2147483645 }
+.guide-overlay[hidden]{ display:none !important }
+.guide-fab{ position:fixed; right:18px; bottom:18px; z-index:2147483646; border:0; border-radius:9999px; width:48px; height:48px; font-size:22px; font-weight:800; cursor:pointer; box-shadow:0 10px 30px rgba(2,6,23,.6); background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#021223 }
 .guide-fab:hover{ filter:brightness(1.05) }
-.guide-panel{ position:fixed; right:18px; bottom:78px; width:min(360px, 92vw); max-height:70vh; background:rgba(6,16,28,0.96); border:1px solid var(--border); border-radius:14px; box-shadow:0 24px 60px rgba(2,6,23,.7); display:flex; flex-direction:column; overflow:hidden; z-index:1000 }
+.guide-panel{ position:fixed; right:18px; bottom:78px; width:min(360px, 92vw); max-height:70vh; background:rgba(6,16,28,0.96); border:1px solid var(--border); border-radius:14px; box-shadow:0 24px 60px rgba(2,6,23,.7); display:flex; flex-direction:column; overflow:hidden; z-index:2147483647 }
+.guide-panel[hidden]{ display:none !important }
 .guide-head{ display:flex; align-items:center; justify-content:space-between; padding:10px 12px; background:rgba(255,255,255,0.04); border-bottom:1px solid var(--border) }
 .guide-title{ font-weight:800 }
-.guide-close{ border:0; background:transparent; color:#e6eef6; font-size:20px; cursor:pointer }
+.guide-close{ border:0; background:transparent; color:#e6eef6; font-size:20px; cursor:pointer; pointer-events:auto }
 .guide-body{ padding:12px; display:grid; gap:8px; overflow:auto }
 .guide-section{ font-weight:800; color:#e6eef6 }
 .guide-msg{ display:flex; gap:8px; color:#d7e2eb; font-size:14px }
