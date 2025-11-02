@@ -1,55 +1,29 @@
 // Stats Dashboard - Authentication and Visualization
 (function(){
-  const AUTH_KEY = 'npi_stats_auth';
-  
-  // Authorized users (normalized for comparison)
-  const AUTHORIZED_USERS = [
-    'amicy christian',
-    'saina dasque',
-    'dorotti opont',
-    'shekinah shery',
-    'rock khyshnert',
-    'delor karine',
-    'hilary pierre-louis'
-  ];
-
   let charts = {};
 
-  // Normalize name for comparison
-  function normalizeName(name){
-    return (name || '').toLowerCase().trim().replace(/\s+/g, ' ');
-  }
-
-  // Check if user is authorized
-  function isAuthorized(name){
-    const normalized = normalizeName(name);
-    return AUTHORIZED_USERS.includes(normalized);
-  }
-
-  // Check authentication
+  // Check authentication via userSession
   function checkAuth(){
-    const savedAuth = sessionStorage.getItem(AUTH_KEY);
-    if(savedAuth && isAuthorized(savedAuth)){
-      return savedAuth;
+    if(window.userSession && window.userSession.isLoggedIn()){
+      return window.userSession.getUser();
     }
     return null;
   }
 
-  // Show authentication screen
+  // Show authentication screen (redirect to home with message)
   function showAuthScreen(){
-    document.getElementById('authScreen').style.display = 'flex';
-    document.getElementById('dashboard').style.display = 'none';
+    alert('Vous devez vous connecter pour accéder aux statistiques. Cliquez sur "Se connecter" en haut à gauche.');
+    window.location.href = '/';
   }
 
   // Show dashboard
   function showDashboard(userName){
     document.getElementById('authScreen').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
-    sessionStorage.setItem(AUTH_KEY, userName);
     loadStats();
   }
 
-  // Handle authentication
+  // Handle authentication (deprecated - using userSession now)
   function handleAuth(){
     const input = document.getElementById('nameInput');
     const error = document.getElementById('authError');

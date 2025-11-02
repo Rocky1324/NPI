@@ -109,5 +109,20 @@
     "sr_only_nav": "Navigation principale",
     "sr_only_main": "Contenu principal",
     "aria_chart": "Graphique de comparaison du PIB des pays NPI sélectionnés"
+  },
+  "user": {
+    "login": "Se connecter",
+    "logout": "Déconnexion",
+    "stats": "Stats",
+    "login_title": "Connexion",
+    "login_subtitle": "Entrez votre nom pour accéder aux statistiques.",
+    "name_placeholder": "Votre nom complet",
+    "cancel": "Annuler",
+    "logout_confirm": "Êtes-vous sûr de vouloir vous déconnecter ?",
+    "error": {
+      "username_empty": "Veuillez entrer votre nom.",
+      "not_authorized": "Accès non autorisé. Votre nom n'est pas dans la liste des utilisateurs autorisés.",
+      "generic": "Une erreur s'est produite."
+    }
   }
 }

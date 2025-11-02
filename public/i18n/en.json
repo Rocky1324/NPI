@@ -109,5 +109,20 @@
     "sr_only_nav": "Main navigation",
     "sr_only_main": "Main content",
     "aria_chart": "Comparison chart of GDP for selected NIC countries"
+  },
+  "user": {
+    "login": "Login",
+    "logout": "Logout",
+    "stats": "Stats",
+    "login_title": "Login",
+    "login_subtitle": "Enter your name to access statistics.",
+    "name_placeholder": "Your full name",
+    "cancel": "Cancel",
+    "logout_confirm": "Are you sure you want to logout?",
+    "error": {
+      "username_empty": "Please enter your name.",
+      "not_authorized": "Access denied. Your name is not in the authorized users list.",
+      "generic": "An error occurred."
+    }
   }
 }

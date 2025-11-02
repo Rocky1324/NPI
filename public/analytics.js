@@ -53,6 +53,11 @@
       data: eventData
     };
     
+    // Add username if user is logged in
+    if(window.userSession && window.userSession.isLoggedIn()){
+      event.user = window.userSession.getUser();
+    }
+    
     data.events.push(event);
     
     // Limit to last 1000 events to avoid storage overflow
