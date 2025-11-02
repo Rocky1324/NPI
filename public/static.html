@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mode Statique – NPI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style-presentation.css">
+</head>
+<body>
+  <div class="container">
+    <header class="hero reveal-on-scroll">
+      <div class="emoji">🧩</div>
+      <h1>Version Statique (HTML/CSS/JS)</h1>
+      <p class="muted">Choisissez une page statique à ouvrir. Ces pages utilisent le design partagé et des données JSON publiques.</p>
+      <div class="btns" style="justify-content:center;margin-top:10px">
+        <a class="btn secondary" href="/react-home">Basculer vers la version React</a>
+      </div>
+    </header>
+
+    <section class="section reveal-on-scroll">
+      <h2>Pages</h2>
+      <div class="grid grid-2">
+        <a class="card" href="/timeline.html" style="text-decoration:none;color:inherit">
+          <h3>📅 Chronologie</h3>
+          <p class="muted">Lecture par décennies, mini-viz par vagues.</p>
+        </a>
+        <a class="card" href="/carte.html" style="text-decoration:none;color:inherit">
+          <h3>🗺️ Carte</h3>
+          <p class="muted">Carte interactive avec marqueurs par vague.</p>
+        </a>
+        <a class="card" href="/comparaison.html" style="text-decoration:none;color:inherit">
+          <h3>📊 Comparaison</h3>
+          <p class="muted">Comparaison de pays avec graphiques.</p>
+        </a>
+        <a class="card" href="/cours.html" style="text-decoration:none;color:inherit">
+          <h3>📚 Cours NPI</h3>
+          <p class="muted">Présentation structurée et responsive des NPI.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+  <script src="/ux.js"></script>
+  </body>
+</html>

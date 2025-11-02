@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NPI – Accueil (statique)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style-presentation.css">
+  <style>
+    .hero {
+      text-align:center;
+      padding: 60px 16px 30px;
+      background: linear-gradient(to bottom, #eff6ff, #ffffff);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .hero h1 { font-size: 42px; font-weight: 800; margin: 12px 0; }
+    .hero p { font-size: 18px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    .stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:16px; }
+    .stat { background:white; border:1px solid var(--border); border-radius:16px; padding:18px; text-align:center; transition: transform .2s ease, box-shadow .2s ease; opacity:0; transform: translateY(6px); }
+    .stat:hover { transform: translateY(-4px); box-shadow: 0 14px 24px rgba(2,6,23,.08); }
+    .stat .icon { font-size: 28px; }
+    .stat .value { font-size: 28px; font-weight: 800; color:#2563eb; margin-top:6px; }
+    .stat .label { color: var(--muted); margin-top:4px; font-weight:600; }
+    .cta { background:#2563eb; color:white; border-radius:20px; padding: 36px 16px; text-align:center; }
+
+    /* reveal states */
+    .reveal .hero { opacity:1; transform:none; }
+    .reveal #stats .stat { opacity:1; transform:none; }
+    .reveal-on-scroll { opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
+    .reveal-on-scroll.inview { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="emoji">🌏</div>
+      <h1>NPI : La Révolution Économique du XXe Siècle</h1>
+      <p>Explorez l'essor des Nouveaux Pays Industrialisés à travers des données interactives et des analyses accessibles.</p>
+      <div class="btns" style="justify-content:center;margin-top:16px">
+        <a class="btn" href="/carte.html">Commencer l'exploration</a>
+        <a class="btn secondary" href="/react-home">Basculer vers la version React</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="stats" id="stats">
+        <!-- filled by home.js -->
+      </div>
+    </section>
+
+    <section class="section cta">
+      <h2 style="margin:0 0 8px">Prêt à explorer les données ?</h2>
+      <p class="muted" style="color:#e5e7eb; max-width:720px; margin:0 auto 14px">Découvrez comment les NPI ont transformé leur économie et leur société au fil des décennies.</p>
+      <div class="btns" style="justify-content:center">
+        <a class="btn" style="background:white;color:#2563eb" href="/carte.html">Accéder à la carte interactive</a>
+        <a class="btn secondary" href="/timeline.html">Voir la chronologie</a>
+        <a class="btn secondary" href="/comparaison.html">Comparer des pays</a>
+        <a class="btn secondary" href="/cours.html">Cours NPI</a>
+      </div>
+    </section>
+  </div>
+
+  <script src="/ux.js"></script>
+  <script src="/home.js"></script>
+</body>
+</html>

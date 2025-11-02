@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carte – NPI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style-presentation.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <style>
+    #map{height:520px;border-radius:12px;border:1px solid var(--border);}
+    .legend{display:flex;flex-wrap:wrap;gap:8px}
+    .legend .item{display:flex;align-items:center;gap:6px}
+    .dot{width:10px;height:10px;border-radius:9999px;display:inline-block}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero reveal-on-scroll" style="padding-bottom:0">
+      <div class="emoji">🗺️</div>
+      <h1>Carte des NPI</h1>
+      <p class="muted">Visualisez la distribution géographique des NPI et filtrez par vague.</p>
+      <div class="btns" style="justify-content:center;margin-top:10px">
+        <a class="btn" href="/">🏠 Accueil</a>
+        <a class="btn secondary" href="/cours.html">📚 Cours NPI</a>
+      </div>
+    </header>
+
+    <section class="section reveal-on-scroll">
+      <h2>Filtres</h2>
+      <div class="btns">
+        <button class="btn secondary" data-wave="all">Toutes les vagues</button>
+        <button class="btn secondary" data-wave="1">🐉 Vague 1</button>
+        <button class="btn secondary" data-wave="2">🏭 Vague 2</button>
+        <button class="btn secondary" data-wave="3">🚀 Vague 3</button>
+        <button class="btn secondary" data-wave="4">🌐 Vague 4</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Carte</h2>
+      <div id="map"></div>
+      <div class="legend" style="margin-top:12px">
+        <div class="item"><span class="dot" style="background:#2563eb"></span> Vague 1</div>
+        <div class="item"><span class="dot" style="background:#f59e0b"></span> Vague 2</div>
+        <div class="item"><span class="dot" style="background:#eab308"></span> Vague 3</div>
+        <div class="item"><span class="dot" style="background:#10b981"></span> Vague 4</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Détails du pays</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <div id="countryHeader" class="lead">Sélectionnez un pays sur la carte.</div>
+          <div id="gdpLatest" class="muted" style="margin-top:8px"></div>
+          <div class="btns" style="margin-top:10px">
+            <a id="openTimeline" class="btn secondary" href="/timeline.html">📅 Ouvrir la chronologie</a>
+            <a id="openCompare" class="btn secondary" href="/comparaison.html">📊 Comparer</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Stratégie</h3>
+          <ul id="strategyList" class="list-none"></ul>
+          <h3 style="margin-top:10px">Secteurs clés</h3>
+          <ul id="sectorsList" class="list-none"></ul>
+        </div>
+        <div class="card" style="grid-column:1/-1">
+          <h3>Jalons</h3>
+          <ul id="milestonesList" class="list-none"></ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer reveal-on-scroll" style="margin-top:20px">
+      <div class="grid-3">
+        <div>
+          <div class="badge">Carte</div>
+          <p class="muted" style="margin-top:8px">Cliquez sur un pays pour en savoir plus.</p>
+        </div>
+        <div>
+          <h3 style="margin:0 0 8px">Explorer</h3>
+          <div class="btns">
+            <a class="btn secondary" href="/timeline.html">📅 Chronologie</a>
+            <a class="btn secondary" href="/comparaison.html">📊 Comparaison</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/ux.js"></script>
+  <script src="/carte.js"></script>
+</body>
+</html>

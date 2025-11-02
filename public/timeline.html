@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chronologie – NPI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style-presentation.css">
+  <style>
+    .timeline-bar{height:10px;background:linear-gradient(90deg,#e5e7eb,#d1d5db);border-radius:9999px;position:relative}
+    .timeline-progress{height:100%;background:linear-gradient(90deg,#2563eb,#7c3aed);border-radius:9999px;width:0%}
+    .decades{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .pill{padding:8px 12px;border-radius:9999px;border:1px solid #dbeafe;background:#eff6ff;color:#1d4ed8;font-weight:600;font-size:12px;cursor:pointer}
+    .pill.active{background:#fff;border-color:#93c5fd;box-shadow:0 4px 12px rgba(29,78,216,.15)}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero reveal-on-scroll" style="padding-bottom:0">
+      <div class="emoji">📅</div>
+      <h1>Chronologie des NPI</h1>
+      <p class="muted">Parcourez les décennies et visualisez l'évolution agrégée par vagues.</p>
+      <div class="btns" style="justify-content:center;margin-top:10px">
+        <a class="btn" href="/">🏠 Accueil</a>
+        <a class="btn secondary" href="/cours.html">📚 Cours NPI</a>
+      </div>
+    </header>
+
+    <section class="section reveal-on-scroll">
+      <h2>Contrôles</h2>
+      <div class="controls">
+        <button id="playBtn" class="btn">▶️ Lecture</button>
+        <button id="prevBtn" class="btn secondary">⟵ Décennie précédente</button>
+        <button id="nextBtn" class="btn secondary">Décennie suivante ⟶</button>
+      </div>
+      <div id="yearLabel" class="muted" style="margin-top:8px;font-weight:700">Année: 1960</div>
+      <div id="milestoneNow" style="margin-top:6px;padding:8px 12px;border:1px solid var(--border);border-radius:12px;background:#60605f0f;font-weight:600"></div>
+      <div class="timeline-bar" style="margin-top:14px">
+        <div id="progress" class="timeline-progress"></div>
+      </div>
+      <div id="decades" class="decades"></div>
+    </section>
+
+    <section class="section">
+      <h2>Évolution agrégée par vagues</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>🐉 1ère vague</h3>
+          <svg id="w1" class="spark" viewBox="0 0 200 60" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="card">
+          <h3>🏭 2ème vague</h3>
+          <svg id="w2" class="spark" viewBox="0 0 200 60" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="card">
+          <h3>🚀 3ème vague</h3>
+          <svg id="w3" class="spark" viewBox="0 0 200 60" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="card">
+          <h3>🌐 4ème vague</h3>
+          <svg id="w4" class="spark" viewBox="0 0 200 60" preserveAspectRatio="none"></svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Détails par pays</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="btns" style="margin-bottom:10px">
+            <select id="countrySelect" style="padding:10px 12px;border:1px solid var(--border);border-radius:9999px;font-weight:700"></select>
+            <a id="openMap" class="btn secondary" href="/carte.html">🗺️ Voir sur la carte</a>
+          </div>
+          <div id="countrySummary" class="muted">Sélectionnez un pays pour afficher ses informations.</div>
+          <div id="gdpNow" style="margin-top:8px;font-weight:700"></div>
+        </div>
+        <div class="card">
+          <h3>Stratégie</h3>
+          <ul id="strategyList" class="list-none"></ul>
+          <h3 style="margin-top:10px">Secteurs clés</h3>
+          <ul id="sectorsList" class="list-none"></ul>
+        </div>
+        <div class="card" style="grid-column:1/-1">
+          <h3>Jalons</h3>
+          <ul id="milestonesList" class="list-none"></ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer reveal-on-scroll" style="margin-top:20px">
+      <div class="grid-3">
+        <div>
+          <div class="badge">Chronologie</div>
+          <p class="muted" style="margin-top:8px">Utilisez les contrôles pour parcourir les décennies.</p>
+        </div>
+        <div>
+          <h3 style="margin:0 0 8px">Explorer</h3>
+          <div class="btns">
+            <a class="btn secondary" href="/carte.html">🗺️ Carte</a>
+            <a class="btn secondary" href="/comparaison.html">📊 Comparaison</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/ux.js"></script>
+  <script src="/timeline.js"></script>
+</body>
+</html>

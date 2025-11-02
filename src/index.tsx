@@ -1,12 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+// Import Tailwind CSS
+import './index.css';
+
+// Import Leaflet CSS
+import 'leaflet/dist/leaflet.css';
+
+const container = document.getElementById('root');
+const root = createRoot(container!);
+
 root.render(
   <React.StrictMode>
     <App />

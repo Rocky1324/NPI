@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comparaison – NPI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style-presentation.css">
+  <style>
+    .controls{display:grid;gap:12px}
+    .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    select{padding:10px 12px;border:1px solid var(--border);border-radius:9999px;font-weight:600}
+    .pill{padding:8px 12px;border:1px solid var(--border);border-radius:9999px;background:#fff;display:inline-flex;align-items:center;gap:6px}
+    .pill button{border:none;background:transparent;cursor:pointer}
+    canvas{background:#fff;border:1px solid var(--border);border-radius:12px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero reveal-on-scroll" style="padding-bottom:0">
+      <div class="emoji">📊</div>
+      <h1>Comparaison des pays NPI</h1>
+      <p class="muted">Comparez l'évolution du PIB de plusieurs pays.</p>
+      <div class="btns" style="justify-content:center;margin-top:10px">
+        <a class="btn" href="/">🏠 Accueil</a>
+        <a class="btn secondary" href="/cours.html">📚 Cours NPI</a>
+      </div>
+    </header>
+
+    <section class="section reveal-on-scroll">
+      <h2>Sélections</h2>
+      <div class="controls">
+        <div class="row">
+          <select id="countrySelect">
+            <option value="">+ Ajouter un pays (max 4)</option>
+          </select>
+          <button id="clearBtn" class="btn secondary">Effacer</button>
+        </div>
+        <div id="selected" class="row"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Graphique (PIB agrégé)</h2>
+      <canvas id="chart" height="280"></canvas>
+    </section>
+
+    <footer class="footer reveal-on-scroll" style="margin-top:20px">
+      <div class="grid-3">
+        <div>
+          <div class="badge">Comparaison</div>
+          <p class="muted" style="margin-top:8px">Choisissez jusqu'à 4 pays pour comparer.</p>
+        </div>
+        <div>
+          <h3 style="margin:0 0 8px">Explorer</h3>
+          <div class="btns">
+            <a class="btn secondary" href="/timeline.html">📅 Chronologie</a>
+            <a class="btn secondary" href="/carte.html">🗺️ Carte</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="/ux.js"></script>
+  <script src="/comparaison.js"></script>
+</body>
+</html>

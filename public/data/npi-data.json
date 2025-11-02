@@ -1,0 +1,1106 @@
+{
+  "countries": [
+    {
+      "id": "south-korea",
+      "name": "Corée du Sud",
+      "flag": "🇰🇷",
+      "wave": 1,
+      "coordinates": [37.5665, 126.9780],
+      "gdp": {"1960":3.9,"1970":9.1,"1980":63.8,"1990":283.4,"2000":561.6,"2010":1140.0,"2020":1646.7,"2024":1700.0},
+      "strategy": [
+        "Modèle de l'État développeur",
+        "Soutien aux chaebols (Samsung, Hyundai, LG)",
+        "Investissement massif en R&D (4.8% du PIB)",
+        "Politique de montée en gamme technologique",
+        "Éducation de masse et formation technique"
+      ],
+      "keySectors": [
+        {"name":"Électronique","companies":["Samsung Electronics","LG Electronics","SK Hynix"],"percentage":35},
+        {"name":"Automobile","companies":["Hyundai","Kia","Genesis"],"percentage":25},
+        {"name":"Construction navale","companies":["Hyundai Heavy Industries","Samsung Heavy"],"percentage":15},
+        {"name":"Chimie","companies":["LG Chem","SK Innovation"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1962,"event":"Premier plan quinquennal de développement"},
+        {"year":1970,"event":"Décollage de l'industrie lourde"},
+        {"year":1988,"event":"Jeux Olympiques de Séoul - reconnaissance mondiale"},
+        {"year":1997,"event":"Crise financière asiatique"},
+        {"year":2010,"event":"Entrée dans le club des pays développés"}
+      ]
+    },
+    {
+      "id": "singapore",
+      "name": "Singapour",
+      "flag": "🇸🇬",
+      "wave": 1,
+      "coordinates": [1.3521, 103.8198],
+      "gdp": {"1960":0.7,"1970":1.9,"1980":11.9,"1990":39.1,"2000":95.9,"2010":236.4,"2020":350.0,"2024":400.0},
+      "strategy": [
+        "Hub financier et commercial d'Asie",
+        "Attraction des multinationales (IDE)",
+        "Investissement en infrastructure de classe mondiale",
+        "Éducation d'excellence et bilinguisme",
+        "Gouvernance efficace et lutte contre la corruption"
+      ],
+      "keySectors": [
+        {"name":"Services financiers","companies":["DBS Bank","OCBC","UOB"],"percentage":30},
+        {"name":"Commerce et logistique","companies":["PSA International","Singpost"],"percentage":25},
+        {"name":"Électronique","companies":["GlobalFoundries","Micron"],"percentage":20},
+        {"name":"Pétrochimie","companies":["ExxonMobil","Shell"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1965,"event":"Indépendance de Singapour"},
+        {"year":1968,"event":"Création de zones industrielles"},
+        {"year":1980,"event":"Transformation en centre financier"},
+        {"year":2000,"event":"Hub technologique et biotech"},
+        {"year":2020,"event":"PIB par habitant parmi les plus élevés au monde"}
+      ]
+    },
+    {
+      "id": "taiwan",
+      "name": "Taïwan",
+      "flag": "🇹🇼",
+      "wave": 1,
+      "coordinates": [25.0330, 121.5654],
+      "gdp": {"1960":1.7,"1970":5.7,"1980":42.3,"1990":166.5,"2000":331.6,"2010":446.1,"2020":669.5,"2024":750.0},
+      "strategy": [
+        "Réforme agraire puis industrialisation",
+        "Zones économiques d'exportation",
+        "Spécialisation dans les semi-conducteurs",
+        "PME innovantes et flexibles",
+        "Investissement en R&D et éducation"
+      ],
+      "keySectors": [
+        {"name":"Semi-conducteurs","companies":["TSMC","MediaTek","UMC"],"percentage":40},
+        {"name":"Électronique","companies":["Foxconn","Asus","Acer"],"percentage":30},
+        {"name":"Machines-outils","companies":["Hiwin","PMC"],"percentage":15},
+        {"name":"Pétrochimie","companies":["Formosa Plastics"],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":5}
+      ],
+      "milestones": [
+        {"year":1949,"event":"Gouvernement nationaliste se replie à Taïwan"},
+        {"year":1960,"event":"Création des premières zones d'exportation"},
+        {"year":1987,"event":"Fin de la loi martiale, démocratisation"},
+        {"year":1987,"event":"Création de TSMC"},
+        {"year":2020,"event":"Leader mondial des semi-conducteurs"}
+      ]
+    },
+    {
+      "id": "hong-kong",
+      "name": "Hong Kong",
+      "flag": "🇭🇰",
+      "wave": 1,
+      "coordinates": [22.3193, 114.1694],
+      "gdp": {"1960":0.6,"1970":2.8,"1980":28.9,"1990":76.9,"2000":171.7,"2010":228.6,"2020":345.7,"2024":370.0},
+      "strategy": [
+        "Port franc et centre commercial",
+        "Place financière internationale",
+        "Pont entre Chine et Occident",
+        "Faible fiscalité et liberté économique",
+        "État de droit et système juridique britannique"
+      ],
+      "keySectors": [
+        {"name":"Finance","companies":["HSBC","Bank of China HK","Hang Seng"],"percentage":35},
+        {"name":"Commerce","companies":["Li & Fung","Hutchison Port"],"percentage":25},
+        {"name":"Immobilier","companies":["Sun Hung Kai","Henderson Land"],"percentage":20},
+        {"name":"Tourisme","companies":["Cathay Pacific","Hong Kong Airlines"],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1960,"event":"Boom manufacturier (textile)"},
+        {"year":1970,"event":"Transformation en centre financier"},
+        {"year":1984,"event":"Accord sino-britannique sur la rétrocession"},
+        {"year":1997,"event":"Rétrocession à la Chine"},
+        {"year":2019,"event":"Manifestations pro-démocratie"}
+      ]
+    },
+    {
+      "id": "malaysia",
+      "name": "Malaisie",
+      "flag": "🇲🇾",
+      "wave": 2,
+      "coordinates": [3.1390, 101.6869],
+      "gdp": {"1970":3.9,"1980":25.0,"1990":44.0,"2000":93.8,"2010":255.0,"2020":337.0,"2024":400.0},
+      "strategy": [
+        "Nouvelle politique économique (NEP)",
+        "Attraction des IDE (électronique)",
+        "Développement du corridor multimédia",
+        "Diversification économique",
+        "Vision 2020 pour devenir pays développé"
+      ],
+      "keySectors": [
+        {"name":"Électronique","companies":["Intel Malaysia","AMD","Infineon"],"percentage":30},
+        {"name":"Huile de palme","companies":["Sime Darby","IOI Corporation"],"percentage":20},
+        {"name":"Pétrole et gaz","companies":["Petronas"],"percentage":25},
+        {"name":"Services","companies":["Maybank","CIMB","AirAsia"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1971,"event":"Lancement de la Nouvelle Politique Économique"},
+        {"year":1981,"event":"Mahathir Premier ministre - Look East Policy"},
+        {"year":1996,"event":"Lancement du Corridor Multimédia"},
+        {"year":1998,"event":"Crise financière asiatique"},
+        {"year":2020,"event":"Piège du revenu intermédiaire"}
+      ]
+    },
+    {
+      "id": "thailand",
+      "name": "Thaïlande",
+      "flag": "🇹🇭",
+      "wave": 2,
+      "coordinates": [13.7563, 100.5018],
+      "gdp": {"1970":7.1,"1980":32.4,"1990":85.3,"2000":122.7,"2010":318.9,"2020":501.8,"2024":550.0},
+      "strategy": [
+        "Industrialisation tirée par les IDE",
+        "Hub automobile d'Asie du Sud-Est",
+        "Tourisme comme moteur économique",
+        "Agriculture d'exportation (riz)",
+        "Eastern Economic Corridor"
+      ],
+      "keySectors": [
+        {"name":"Automobile","companies":["Toyota Thailand","Honda Thailand"],"percentage":30},
+        {"name":"Tourisme","companies":["Thai Airways","Minor International"],"percentage":25},
+        {"name":"Électronique","companies":["Western Digital","Seagate"],"percentage":20},
+        {"name":"Agriculture","companies":["CP Group","Thai Union"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1960,"event":"Début de l'industrialisation"},
+        {"year":1985,"event":"Plaza Accord - délocalisations japonaises"},
+        {"year":1997,"event":"Crise financière asiatique - origine"},
+        {"year":2011,"event":"Inondations massives"},
+        {"year":2020,"event":"Eastern Economic Corridor en développement"}
+      ]
+    },
+    {
+      "id": "brazil",
+      "name": "Brésil",
+      "flag": "🇧🇷",
+      "wave": 2,
+      "coordinates": [-15.8267, -47.9218],
+      "gdp": {"1970":42.3,"1980":235.0,"1990":461.9,"2000":644.7,"2010":2208.7,"2020":1444.7,"2024":2100.0},
+      "strategy": [
+        "Substitution aux importations",
+        "Exploitation des ressources naturelles",
+        "Agrobusiness de pointe",
+        "Membre des BRICS",
+        "Ouverture progressive (années 1990)"
+      ],
+      "keySectors": [
+        {"name":"Agrobusiness","companies":["JBS","BRF","Marfrig"],"percentage":30},
+        {"name":"Mines et métaux","companies":["Vale","Gerdau"],"percentage":20},
+        {"name":"Pétrole","companies":["Petrobras"],"percentage":20},
+        {"name":"Services","companies":["Itaú","Bradesco","GOL"],"percentage":20},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1964,"event":"Coup d'État militaire - industrialisation forcée"},
+        {"year":1985,"event":"Retour à la démocratie"},
+        {"year":1994,"event":"Plan Real - stabilisation monétaire"},
+        {"year":2002,"event":"Élection de Lula - boom des commodités"},
+        {"year":2016,"event":"Récession et crise politique"}
+      ]
+    },
+    {
+      "id": "chile",
+      "name": "Chili",
+      "flag": "🇨🇱",
+      "wave": 2,
+      "coordinates": [-33.4489, -70.6693],
+      "gdp": {"1970":9.0,"1980":27.7,"1990":33.1,"2000":77.8,"2010":217.5,"2020":252.9,"2024":330.0},
+      "strategy": [
+        "Réformes néolibérales (Chicago Boys)",
+        "Exportation de cuivre et ressources",
+        "Accords de libre-échange multiples",
+        "Stabilité macroéconomique",
+        "Membre de l'OCDE"
+      ],
+      "keySectors": [
+        {"name":"Mines (cuivre)","companies":["Codelco","Escondida"],"percentage":35},
+        {"name":"Agriculture","companies":["SQM","Hortifrut"],"percentage":20},
+        {"name":"Services","companies":["Banco de Chile","LATAM Airlines"],"percentage":25},
+        {"name":"Énergie","companies":["Enel Chile","Engie"],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1973,"event":"Coup d'État de Pinochet"},
+        {"year":1975,"event":"Réformes néolibérales drastiques"},
+        {"year":1990,"event":"Retour à la démocratie"},
+        {"year":2010,"event":"Adhésion à l'OCDE"},
+        {"year":2019,"event":"Manifestations sociales massives"}
+      ]
+    },
+    {
+      "id": "mexico",
+      "name": "Mexique",
+      "flag": "🇲🇽",
+      "wave": 2,
+      "coordinates": [19.4326, -99.1332],
+      "gdp": {"1980":194.0,"1990":262.7,"2000":683.5,"2010":1057.8,"2020":1076.2,"2024":1500.0},
+      "strategy": [
+        "Programme Maquiladora (zones franches)",
+        "ALENA/USMCA - intégration nord-américaine",
+        "Industrie automobile majeure",
+        "Aéronautique en croissance",
+        "Nearshoring post-COVID"
+      ],
+      "keySectors": [
+        {"name":"Automobile","companies":["GM Mexico","Volkswagen Mexico","Nissan"],"percentage":30},
+        {"name":"Électronique","companies":["Foxconn","Jabil"],"percentage":20},
+        {"name":"Aéronautique","companies":["Bombardier","Safran"],"percentage":15},
+        {"name":"Services","companies":["América Móvil","Cemex"],"percentage":25},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1965,"event":"Lancement du programme Maquiladora"},
+        {"year":1994,"event":"Entrée en vigueur de l'ALENA"},
+        {"year":1994,"event":"Crise du peso"},
+        {"year":2000,"event":"Alternance politique - fin du PRI"},
+        {"year":2020,"event":"USMCA remplace l'ALENA"}
+      ]
+    },
+    {
+      "id": "china",
+      "name": "Chine",
+      "flag": "🇨🇳",
+      "wave": 3,
+      "coordinates": [39.9042, 116.4074],
+      "gdp": {"1980":305.4,"1990":360.9,"2000":1211.3,"2010":6087.2,"2020":14722.7,"2024":17900.0},
+      "strategy": [
+        "Réformes de Deng Xiaoping (1978)",
+        "Zones économiques spéciales",
+        "Entrée à l'OMC (2001)",
+        "Made in China 2025",
+        "Belt and Road Initiative"
+      ],
+      "keySectors": [
+        {"name":"Manufacture","companies":["Foxconn","BYD","Haier"],"percentage":30},
+        {"name":"Technologie","companies":["Huawei","Alibaba","Tencent"],"percentage":25},
+        {"name":"Construction","companies":["China State Construction"],"percentage":20},
+        {"name":"Finance","companies":["ICBC","China Construction Bank"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1978,"event":"Début des réformes de Deng Xiaoping"},
+        {"year":1980,"event":"Création des premières ZES (Shenzhen)"},
+        {"year":2001,"event":"Entrée à l'OMC"},
+        {"year":2010,"event":"Devient 2ème économie mondiale"},
+        {"year":2015,"event":"Lancement de Made in China 2025"}
+      ]
+    },
+    {
+      "id": "indonesia",
+      "name": "Indonésie",
+      "flag": "🇮🇩",
+      "wave": 3,
+      "coordinates": [-6.2088, 106.8456],
+      "gdp": {"1980":77.1,"1990":114.4,"2000":165.0,"2010":755.1,"2020":1059.6,"2024":1300.0},
+      "strategy": [
+        "Exploitation des ressources naturelles",
+        "Développement manufacturier",
+        "Attraction des IDE",
+        "Membre du G20",
+        "Transformation numérique"
+      ],
+      "keySectors": [
+        {"name":"Huile de palme","companies":["Wilmar","Golden Agri"],"percentage":25},
+        {"name":"Mines et énergie","companies":["Pertamina","Adaro Energy"],"percentage":30},
+        {"name":"Manufacture","companies":["Astra International"],"percentage":20},
+        {"name":"Services","companies":["Bank Mandiri","Gojek","Tokopedia"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1967,"event":"Ordre nouveau de Soeharto"},
+        {"year":1998,"event":"Crise asiatique et chute de Soeharto"},
+        {"year":2004,"event":"Premières élections présidentielles directes"},
+        {"year":2014,"event":"Élection de Jokowi - réformes"},
+        {"year":2022,"event":"Présidence du G20"}
+      ]
+    },
+    {
+      "id": "philippines",
+      "name": "Philippines",
+      "flag": "🇵🇭",
+      "wave": 3,
+      "coordinates": [14.5995, 120.9842],
+      "gdp": {"1980":32.4,"1990":44.3,"2000":81.4,"2010":199.6,"2020":361.5,"2024":430.0},
+      "strategy": [
+        "Externalisation des services (BPO)",
+        "Envois de fonds des travailleurs expatriés",
+        "Réformes économiques (années 1990)",
+        "Développement du secteur IT",
+        "Industrialisation tardive"
+      ],
+      "keySectors": [
+        {"name":"BPO et services","companies":["Accenture Philippines","Concentrix"],"percentage":35},
+        {"name":"Envois de fonds","companies":[],"percentage":25},
+        {"name":"Manufacture","companies":["San Miguel","Jollibee"],"percentage":20},
+        {"name":"Immobilier","companies":["Ayala Land","SM Prime"],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1965,"event":"Marcos au pouvoir"},
+        {"year":1986,"event":"Révolution EDSA - départ de Marcos"},
+        {"year":1992,"event":"Réformes de libéralisation"},
+        {"year":2000,"event":"Boom du secteur BPO"},
+        {"year":2016,"event":"Élection de Duterte"}
+      ]
+    },
+    {
+      "id": "turkey",
+      "name": "Turquie",
+      "flag": "🇹🇷",
+      "wave": 3,
+      "coordinates": [39.9334, 32.8597],
+      "gdp": {"1980":68.8,"1990":150.7,"2000":273.0,"2010":771.9,"2020":720.1,"2024":1100.0},
+      "strategy": [
+        "Pont entre Europe et Asie",
+        "Union douanière avec l'UE (1995)",
+        "Développement du textile et automobile",
+        "Grands projets d'infrastructure",
+        "Diversification industrielle"
+      ],
+      "keySectors": [
+        {"name":"Textile","companies":["LC Waikiki","Koton"],"percentage":25},
+        {"name":"Automobile","companies":["Ford Otosan","Tofaş","Oyak-Renault"],"percentage":20},
+        {"name":"Construction","companies":["Enka","TAV"],"percentage":20},
+        {"name":"Tourisme","companies":["Turkish Airlines"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":20}
+      ],
+      "milestones": [
+        {"year":1980,"event":"Coup d'État et réformes libérales"},
+        {"year":1995,"event":"Union douanière avec l'UE"},
+        {"year":2001,"event":"Crise financière majeure"},
+        {"year":2002,"event":"AKP au pouvoir - boom économique"},
+        {"year":2018,"event":"Crise de la livre turque"}
+      ]
+    },
+    {
+      "id": "vietnam",
+      "name": "Vietnam",
+      "flag": "🇻🇳",
+      "wave": 4,
+      "coordinates": [21.0278, 105.8342],
+      "gdp": {"1990":6.5,"2000":31.2,"2010":115.9,"2020":340.6,"2024":450.0},
+      "strategy": [
+        "Đổi Mới (rénovation) depuis 1986",
+        "Attraction massive des IDE",
+        "Intégration aux chaînes de valeur (Samsung, Apple)",
+        "Accords commerciaux (CPTPP, EVFTA)",
+        "Population jeune et bien formée"
+      ],
+      "keySectors": [
+        {"name":"Électronique","companies":["Samsung Vietnam","Intel Vietnam"],"percentage":35},
+        {"name":"Textile","companies":["Vinatex","May 10"],"percentage":25},
+        {"name":"Agriculture","companies":["Vinamilk","Masan"],"percentage":15},
+        {"name":"Services","companies":["Viettel","Vingroup"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1986,"event":"Lancement des réformes Đổi Mới"},
+        {"year":1995,"event":"Normalisation avec les USA"},
+        {"year":2007,"event":"Adhésion à l'OMC"},
+        {"year":2008,"event":"Samsung s'implante massivement"},
+        {"year":2019,"event":"Signature du CPTPP et EVFTA"}
+      ]
+    },
+    {
+      "id": "india",
+      "name": "Inde",
+      "flag": "🇮🇳",
+      "wave": 4,
+      "coordinates": [28.6139, 77.2090],
+      "gdp": {"1990":320.9,"2000":468.4,"2010":1675.6,"2020":2623.0,"2024":3500.0},
+      "strategy": [
+        "Libéralisation économique (1991)",
+        "Services IT et externalisation",
+        "Make in India",
+        "Digital India",
+        "Marché intérieur massif"
+      ],
+      "keySectors": [
+        {"name":"Services IT","companies":["TCS","Infosys","Wipro"],"percentage":30},
+        {"name":"Pharmaceutique","companies":["Sun Pharma","Dr. Reddy's"],"percentage":15},
+        {"name":"Automobile","companies":["Tata Motors","Mahindra"],"percentage":20},
+        {"name":"Agriculture","companies":["ITC","Reliance"],"percentage":20},
+        {"name":"Autres","companies":[],"percentage":15}
+      ],
+      "milestones": [
+        {"year":1991,"event":"Crise de balance des paiements et libéralisation"},
+        {"year":2000,"event":"Boom de l'externalisation IT"},
+        {"year":2014,"event":"Modi au pouvoir - Make in India"},
+        {"year":2016,"event":"Démonétisation"},
+        {"year":2023,"event":"Population la plus nombreuse au monde"}
+      ]
+    },
+    {
+      "id": "bangladesh",
+      "name": "Bangladesh",
+      "flag": "🇧🇩",
+      "wave": 4,
+      "coordinates": [23.8103, 90.4125],
+      "gdp": {"1990":30.6,"2000":53.4,"2010":115.3,"2020":324.2,"2024":450.0},
+      "strategy": [
+        "Spécialisation textile (2ème exportateur mondial)",
+        "Main-d'œuvre abondante et à bas coûts",
+        "Microfinance (Grameen Bank)",
+        "Envois de fonds des expatriés",
+        "Vision 2041 - pays développé"
+      ],
+      "keySectors": [
+        {"name":"Textile et confection","companies":["Beximco","Envoy Textiles"],"percentage":50},
+        {"name":"Agriculture","companies":["ACI","Square"],"percentage":20},
+        {"name":"Pharmaceutique","companies":["Square Pharma","Beximco Pharma"],"percentage":10},
+        {"name":"Services","companies":["Grameenphone","bKash"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":5}
+      ],
+      "milestones": [
+        {"year":1971,"event":"Indépendance du Pakistan"},
+        {"year":1983,"event":"Création de Grameen Bank (Muhammad Yunus)"},
+        {"year":1990,"event":"Boom de l'industrie textile"},
+        {"year":2013,"event":"Effondrement du Rana Plaza"},
+        {"year":2021,"event":"Graduation vers pays à revenu intermédiaire"}
+      ]
+    },
+    {
+      "id": "egypt",
+      "name": "Égypte",
+      "flag": "🇪🇬",
+      "wave": 4,
+      "coordinates": [30.0444, 31.2357],
+      "gdp": {"1990":43.0,"2000":99.8,"2010":218.9,"2020":363.1,"2024":480.0},
+      "strategy": [
+        "Réformes économiques des années 1990",
+        "Développement du canal de Suez",
+        "Zones économiques spéciales",
+        "Méga-projets d'infrastructure (nouvelle capitale)",
+        "Diversification économique"
+      ],
+      "keySectors": [
+        {"name":"Tourisme","companies":["Orascom Hotels","Travco Group"],"percentage":20},
+        {"name":"Pétrole et gaz","companies":["Egyptian General Petroleum","EGPC"],"percentage":25},
+        {"name":"Construction","companies":["Orascom Construction","Arab Contractors"],"percentage":20},
+        {"name":"Agriculture","companies":["Daltex","Cairo Poultry"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":20}
+      ],
+      "milestones": [
+        {"year":1991,"event":"Programme de réformes économiques avec le FMI"},
+        {"year":2002,"event":"Privatisations massives"},
+        {"year":2011,"event":"Printemps arabe"},
+        {"year":2015,"event":"Inauguration du nouveau canal de Suez"},
+        {"year":2020,"event":"Construction de la nouvelle capitale administrative"}
+      ]
+    },
+    {
+      "id": "morocco",
+      "name": "Maroc",
+      "flag": "🇲🇦",
+      "wave": 4,
+      "coordinates": [34.0209, -6.8416],
+      "gdp": {"1990":26.5,"2000":38.8,"2010":93.2,"2020":112.9,"2024":150.0},
+      "strategy": [
+        "Plan d'émergence industrielle",
+        "Développement de l'industrie automobile",
+        "Énergies renouvelables (solaire)",
+        "Accords de libre-échange (UE, USA)",
+        "Développement des infrastructures portuaires"
+      ],
+      "keySectors": [
+        {"name":"Automobile","companies":["Renault Maroc","PSA Maroc"],"percentage":25},
+        {"name":"Agriculture","companies":["Cosumar","Centrale Laitière"],"percentage":20},
+        {"name":"Tourisme","companies":["ONMT"],"percentage":15},
+        {"name":"Textile","companies":["Dewhirst Maroc"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":25}
+      ],
+      "milestones": [
+        {"year":1999,"event":"Accession du roi Mohammed VI"},
+        {"year":2006,"event":"Accord de libre-échange avec les USA"},
+        {"year":2011,"event":"Nouvelle constitution"},
+        {"year":2018,"event":"Lancement de la ligne TGV Al Boraq"},
+        {"year":2020,"event":"Lancement du port Tanger Med II"}
+      ]
+    },
+    {
+      "id": "nigeria",
+      "name": "Nigeria",
+      "flag": "🇳🇬",
+      "wave": 4,
+      "coordinates": [9.0765, 7.3986],
+      "gdp": {"1990":30.5,"2000":46.4,"2010":369.1,"2020":432.3,"2024":500.0},
+      "strategy": [
+        "Économie pétrolière dominante",
+        "Diversification économique (agriculture, services)",
+        "Développement de Nollywood (cinéma)",
+        "Hub technologique africain (Lagos)",
+        "Croissance démographique comme atout"
+      ],
+      "keySectors": [
+        {"name":"Pétrole et gaz","companies":["NNPC","Shell Nigeria"],"percentage":40},
+        {"name":"Agriculture","companies":["Dangote Group","Flour Mills"],"percentage":25},
+        {"name":"Services","companies":["MTN Nigeria","Guaranty Trust Bank"],"percentage":20},
+        {"name":"Télécommunications","companies":["Airtel Nigeria","9mobile"],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":5}
+      ],
+      "milestones": [
+        {"year":1999,"event":"Retour à la démocratie civile"},
+        {"year":2005,"event":"Annulation d'une grande partie de la dette"},
+        {"year":2014,"event":"Devient la première économie africaine"},
+        {"year":2016,"event":"Récession due à la chute des prix du pétrole"},
+        {"year":2021,"event":"Lancement de l'eNaira (monnaie numérique)"}
+      ]
+    },
+    {
+      "id": "kenya",
+      "name": "Kenya",
+      "flag": "🇰🇪",
+      "wave": 4,
+      "coordinates": [-1.2864, 36.8172],
+      "gdp": {"1990":8.6,"2000":12.7,"2010":40.0,"2020":101.0,"2024":130.0},
+      "strategy": [
+        "Hub technologique africain (Silicon Savannah)",
+        "Innovation en finance mobile (M-Pesa)",
+        "Vision 2030 pour l'industrialisation",
+        "Développement des infrastructures (chemin de fer SGR)",
+        "Centre d'affaires pour l'Afrique de l'Est"
+      ],
+      "keySectors": [
+        {"name":"Agriculture","companies":["Kakuzi","Sasini"],"percentage":30},
+        {"name":"Services financiers","companies":["Safaricom","Equity Bank"],"percentage":25},
+        {"name":"Tourisme","companies":[],"percentage":15},
+        {"name":"Technologie","companies":["M-Pesa","iHub"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":15}
+      ],
+      "milestones": [
+        {"year":2007,"event":"Lancement de M-Pesa"},
+        {"year":2008,"event":"Vision 2030 lancée"},
+        {"year":2010,"event":"Nouvelle constitution"},
+        {"year":2017,"event":"Inauguration du chemin de fer SGR"},
+        {"year":2021,"event":"Nairobi hub technologique africain"}
+      ]
+    },
+    {
+      "id": "colombia",
+      "name": "Colombie",
+      "flag": "🇨🇴",
+      "wave": 4,
+      "coordinates": [4.7110, -74.0721],
+      "gdp": {"1990":40.3,"2000":99.9,"2010":287.0,"2020":271.4,"2024":380.0},
+      "strategy": [
+        "Ouverture économique des années 1990",
+        "Accords de paix et stabilisation",
+        "Adhésion à l'OCDE (2020)",
+        "Développement du secteur des services",
+        "Innovation et entrepreneuriat (startups)"
+      ],
+      "keySectors": [
+        {"name":"Pétrole","companies":["Ecopetrol"],"percentage":25},
+        {"name":"Agriculture","companies":["Grupo Nutresa","Postobón"],"percentage":20},
+        {"name":"Services","companies":["Bancolombia","Avianca"],"percentage":30},
+        {"name":"Manufacture","companies":["Bavaria","Carvajal"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1991,"event":"Nouvelle constitution"},
+        {"year":2006,"event":"Accords de libre-échange avec les USA"},
+        {"year":2016,"event":"Accord de paix avec les FARC"},
+        {"year":2018,"event":"Adhésion à l'OCDE"},
+        {"year":2020,"event":"Devient membre de l'OCDE"}
+      ]
+    },
+    {
+      "id": "peru",
+      "name": "Pérou",
+      "flag": "🇵🇪",
+      "wave": 4,
+      "coordinates": [-12.0464, -77.0428],
+      "gdp": {"1990":26.4,"2000":53.3,"2010":153.9,"2020":203.2,"2024":280.0},
+      "strategy": [
+        "Réformes néolibérales des années 1990",
+        "Exploitation minière (cuivre, or, argent)",
+        "Diversification vers l'agriculture d'exportation",
+        "Accords de libre-échange",
+        "Stabilité macroéconomique"
+      ],
+      "keySectors": [
+        {"name":"Mines","companies":["Southern Copper","Antamina"],"percentage":30},
+        {"name":"Agriculture","companies":["Backus","Gloria"],"percentage":20},
+        {"name":"Pêche","companies":["Copeinca","Hayduk"],"percentage":15},
+        {"name":"Services","companies":["Interbank","BCP"],"percentage":25},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1990,"event":"Élection de Fujimori et réformes"},
+        {"year":2000,"event":"Retour à la démocratie"},
+        {"year":2009,"event":"Accord de libre-échange avec les USA"},
+        {"year":2015,"event":"Taux de croissance parmi les plus élevés d'Amérique Latine"},
+        {"year":2021,"event":"Membre du CPTPP"}
+      ]
+    },
+    {
+      "id": "romania",
+      "name": "Roumanie",
+      "flag": "🇷🇴",
+      "wave": 4,
+      "coordinates": [44.4268, 26.1025],
+      "gdp": {"1990":38.3,"2000":37.3,"2010":167.4,"2020":250.1,"2024":350.0},
+      "strategy": [
+        "Transition post-communiste",
+        "Adhésion à l'UE (2007)",
+        "Développement de l'industrie automobile",
+        "Hub IT en Europe de l'Est",
+        "Utilisation des fonds structurels européens"
+      ],
+      "keySectors": [
+        {"name":"Automobile","companies":["Dacia (Renault)","Ford Craiova"],"percentage":25},
+        {"name":"IT","companies":["UiPath","Bitdefender"],"percentage":20},
+        {"name":"Agriculture","companies":["Agricover","Holde Agri"],"percentage":15},
+        {"name":"Énergie","companies":["OMV Petrom","Romgaz"],"percentage":20},
+        {"name":"Autres","companies":[],"percentage":20}
+      ],
+      "milestones": [
+        {"year":1989,"event":"Chute du régime Ceaușescu"},
+        {"year":2004,"event":"Adhésion à l'OTAN"},
+        {"year":2007,"event":"Adhésion à l'Union européenne"},
+        {"year":2019,"event":"Sommet UE à Sibiu"},
+        {"year":2024,"event":"Croissance économique soutenue"}
+      ]
+    },
+    {
+      "id": "hungary",
+      "name": "Hongrie",
+      "flag": "🇭🇺",
+      "wave": 4,
+      "coordinates": [47.4979, 19.0402],
+      "gdp": {"1990":33.1,"2000":46.8,"2010":131.3,"2020":155.7,"2024":210.0},
+      "strategy": [
+        "Transition réussie vers l'économie de marché",
+        "Adhésion à l'UE (2004)",
+        "Attraction des IDE (fiscalité avantageuse)",
+        "Développement de l'industrie automobile",
+        "Hub logistique en Europe centrale"
+      ],
+      "keySectors": [
+        {"name":"Automobile","companies":["Audi Hungaria","Mercedes-Benz Hungary"],"percentage":30},
+        {"name":"Électronique","companies":["Samsung Hungary","Bosch Hungary"],"percentage":20},
+        {"name":"Pharmaceutique","companies":["Richter Gedeon","Teva Hungary"],"percentage":15},
+        {"name":"Services","companies":["OTP Bank","MOL Group"],"percentage":25},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1989,"event":"Chute du communisme"},
+        {"year":1999,"event":"Adhésion à l'OTAN"},
+        {"year":2004,"event":"Adhésion à l'Union européenne"},
+        {"year":2012,"event":"Développement de l'industrie automobile"},
+        {"year":2020,"event":"Hub technologique régional"}
+      ]
+    },
+    {
+      "id": "sri-lanka",
+      "name": "Sri Lanka",
+      "flag": "🇱🇰",
+      "wave": 4,
+      "coordinates": [6.9271, 79.8612],
+      "gdp": {"1990":8.0,"2000":16.3,"2010":59.4,"2020":84.0,"2024":95.0},
+      "strategy": [
+        "Ouverture économique dans les années 1990",
+        "Développement du textile et du tourisme",
+        "Hub logistique (port de Colombo)",
+        "Fin de la guerre civile (2009) et reconstruction",
+        "Diversification économique"
+      ],
+      "keySectors": [
+        {"name":"Textile","companies":["MAS Holdings","Brandix"],"percentage":30},
+        {"name":"Tourisme","companies":["Aitken Spence","John Keells Holdings"],"percentage":20},
+        {"name":"Thé","companies":["Dilmah","Ceylon Tea"],"percentage":15},
+        {"name":"Services","companies":["Commercial Bank","Dialog Axiata"],"percentage":25},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1977,"event":"Début des réformes de libéralisation"},
+        {"year":2009,"event":"Fin de la guerre civile"},
+        {"year":2010,"event":"Boom économique post-guerre"},
+        {"year":2019,"event":"Attentats de Pâques"},
+        {"year":2022,"event":"Crise économique majeure"}
+      ]
+    },
+    {
+      "id": "pakistan",
+      "name": "Pakistan",
+      "flag": "🇵🇰",
+      "wave": 4,
+      "coordinates": [33.6844, 73.0479],
+      "gdp": {"1990":40.0,"2000":73.6,"2010":177.4,"2020":263.0,"2024":375.0},
+      "strategy": [
+        "Libéralisation économique dans les années 1990",
+        "Corridor économique Chine-Pakistan (CPEC)",
+        "Développement du textile et de l'agriculture",
+        "Privatisations et réformes structurelles",
+        "Zones économiques spéciales"
+      ],
+      "keySectors": [
+        {"name":"Textile","companies":["Nishat Mills","Gul Ahmed"],"percentage":35},
+        {"name":"Agriculture","companies":["Engro Corporation","Fauji Fertilizer"],"percentage":25},
+        {"name":"Services","companies":["Jazz","HBL","MCB Bank"],"percentage":20},
+        {"name":"Ciment","companies":["Lucky Cement","DG Khan Cement"],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1991,"event":"Début des réformes de libéralisation"},
+        {"year":1998,"event":"Tests nucléaires"},
+        {"year":2001,"event":"Réformes économiques post-9/11"},
+        {"year":2013,"event":"Lancement du CPEC avec la Chine"},
+        {"year":2018,"event":"Programme d'aide du FMI"}
+      ]
+    },
+    {
+      "id": "cambodia",
+      "name": "Cambodge",
+      "flag": "🇰🇭",
+      "wave": 5,
+      "coordinates": [11.5564, 104.9282],
+      "gdp": {"2000":3.7,"2010":11.2,"2020":26.9,"2024":32.0},
+      "strategy": [
+        "Reconstruction post-Khmers rouges",
+        "Industrie textile (confection)",
+        "Tourisme (Angkor Wat)",
+        "Attraction des IDE chinois",
+        "Intégration ASEAN"
+      ],
+      "keySectors": [
+        {"name":"Textile","companies":["Cambo Unisoll","Goldfame Star"],"percentage":40},
+        {"name":"Tourisme","companies":[],"percentage":25},
+        {"name":"Agriculture","companies":[],"percentage":20},
+        {"name":"Construction","companies":[],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":5}
+      ],
+      "milestones": [
+        {"year":1991,"event":"Accords de paix de Paris"},
+        {"year":1999,"event":"Adhésion à l'ASEAN"},
+        {"year":2005,"event":"Accession à l'OMC"},
+        {"year":2016,"event":"Boom de la construction à Phnom Penh"},
+        {"year":2020,"event":"Perte des préférences commerciales UE"}
+      ]
+    },
+    {
+      "id": "laos",
+      "name": "Laos",
+      "flag": "🇱🇦",
+      "wave": 5,
+      "coordinates": [17.9757, 102.6331],
+      "gdp": {"2000":1.7,"2010":7.2,"2020":19.1,"2024":21.0},
+      "strategy": [
+        "Ouverture économique progressive",
+        "Développement hydroélectrique",
+        "Tourisme culturel",
+        "Connexion régionale (chemin de fer Chine-Laos)",
+        "Exploitation minière"
+      ],
+      "keySectors": [
+        {"name":"Hydroélectricité","companies":[],"percentage":30},
+        {"name":"Mines","companies":[],"percentage":25},
+        {"name":"Agriculture","companies":[],"percentage":25},
+        {"name":"Tourisme","companies":[],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":5}
+      ],
+      "milestones": [
+        {"year":1986,"event":"Début des réformes économiques"},
+        {"year":1997,"event":"Adhésion à l'ASEAN"},
+        {"year":2013,"event":"Accession à l'OMC"},
+        {"year":2021,"event":"Inauguration du chemin de fer Chine-Laos"},
+        {"year":2023,"event":"Crise de la dette"}
+      ]
+    },
+    {
+      "id": "myanmar",
+      "name": "Myanmar (Birmanie)",
+      "flag": "🇲🇲",
+      "wave": 5,
+      "coordinates": [19.7633, 96.1686],
+      "gdp": {"2000":8.9,"2010":49.5,"2020":76.1,"2024":65.0},
+      "strategy": [
+        "Ouverture économique (2011-2021)",
+        "Textile et confection",
+        "Agriculture (riz)",
+        "Gaz naturel",
+        "Coup d'État 2021 - régression économique"
+      ],
+      "keySectors": [
+        {"name":"Agriculture","companies":[],"percentage":35},
+        {"name":"Textile","companies":[],"percentage":25},
+        {"name":"Gaz naturel","companies":[],"percentage":20},
+        {"name":"Tourisme","companies":[],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":2011,"event":"Transition démocratique"},
+        {"year":2012,"event":"Levée progressive des sanctions"},
+        {"year":2015,"event":"Élections démocratiques - Aung San Suu Kyi"},
+        {"year":2021,"event":"Coup d'État militaire"},
+        {"year":2023,"event":"Crise économique et politique"}
+      ]
+    },
+    {
+      "id": "ethiopia",
+      "name": "Éthiopie",
+      "flag": "🇪🇹",
+      "wave": 5,
+      "coordinates": [9.0320, 38.7469],
+      "gdp": {"2000":8.2,"2010":29.9,"2020":107.6,"2024":130.0},
+      "strategy": [
+        "Industrialisation dirigée par l'État",
+        "Parcs industriels (textile)",
+        "Grand barrage Renaissance (énergie)",
+        "Hub aérien régional (Ethiopian Airlines)",
+        "Croissance agricole"
+      ],
+      "keySectors": [
+        {"name":"Agriculture","companies":[],"percentage":40},
+        {"name":"Textile","companies":["Hawassa Industrial Park"],"percentage":20},
+        {"name":"Aviation","companies":["Ethiopian Airlines"],"percentage":15},
+        {"name":"Construction","companies":[],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":2000,"event":"Guerre avec l'Érythrée"},
+        {"year":2010,"event":"Plan de croissance et transformation"},
+        {"year":2018,"event":"Réformes d'Abiy Ahmed"},
+        {"year":2020,"event":"Guerre du Tigré"},
+        {"year":2022,"event":"Accord de paix au Tigré"}
+      ]
+    },
+    {
+      "id": "ghana",
+      "name": "Ghana",
+      "flag": "🇬🇭",
+      "wave": 5,
+      "coordinates": [5.6037, -0.1870],
+      "gdp": {"2000":5.0,"2010":32.2,"2020":72.4,"2024":80.0},
+      "strategy": [
+        "Démocratie stable en Afrique de l'Ouest",
+        "Exportation de cacao, or, pétrole",
+        "Hub technologique (Accra)",
+        "Programmes sociaux",
+        "Ghana Beyond Aid"
+      ],
+      "keySectors": [
+        {"name":"Mines (or)","companies":["AngloGold Ashanti","Newmont"],"percentage":30},
+        {"name":"Pétrole","companies":["Tullow Oil"],"percentage":25},
+        {"name":"Cacao","companies":["Cocobod"],"percentage":20},
+        {"name":"Services","companies":["MTN Ghana","Vodafone Ghana"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":2000,"event":"Élections démocratiques pacifiques"},
+        {"year":2007,"event":"Découverte de pétrole offshore"},
+        {"year":2010,"event":"Début de la production pétrolière"},
+        {"year":2019,"event":"Année du retour (diaspora)"},
+        {"year":2023,"event":"Crise de la dette et FMI"}
+      ]
+    },
+    {
+      "id": "tanzania",
+      "name": "Tanzanie",
+      "flag": "🇹🇿",
+      "wave": 5,
+      "coordinates": [-6.1630, 35.7516],
+      "gdp": {"2000":9.1,"2010":31.3,"2020":64.4,"2024":80.0},
+      "strategy": [
+        "Industrialisation (Vision 2025)",
+        "Agriculture d'exportation",
+        "Tourisme (safari, Zanzibar)",
+        "Ressources minières (or, gaz)",
+        "Port de Dar es Salaam - hub régional"
+      ],
+      "keySectors": [
+        {"name":"Agriculture","companies":[],"percentage":35},
+        {"name":"Tourisme","companies":[],"percentage":20},
+        {"name":"Mines","companies":["Acacia Mining"],"percentage":20},
+        {"name":"Services","companies":["Vodacom Tanzania"],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1995,"event":"Premières élections multipartites"},
+        {"year":2005,"event":"Découverte de gisements de gaz"},
+        {"year":2015,"event":"Élection de Magufuli"},
+        {"year":2017,"event":"Expansion du port de Dar es Salaam"},
+        {"year":2021,"event":"Nouvelle présidente - Samia Suluhu"}
+      ]
+    },
+    {
+      "id": "uganda",
+      "name": "Ouganda",
+      "flag": "🇺🇬",
+      "wave": 5,
+      "coordinates": [0.3476, 32.5825],
+      "gdp": {"2000":6.2,"2010":20.2,"2020":37.4,"2024":50.0},
+      "strategy": [
+        "Agriculture (café principal export)",
+        "Découverte de pétrole (Lac Albert)",
+        "Hub régional Afrique de l'Est",
+        "Développement des infrastructures",
+        "Population jeune (dividende démographique)"
+      ],
+      "keySectors": [
+        {"name":"Agriculture","companies":[],"percentage":45},
+        {"name":"Services","companies":["MTN Uganda","Airtel Uganda"],"percentage":25},
+        {"name":"Construction","companies":[],"percentage":15},
+        {"name":"Pétrole (futur)","companies":[],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":5}
+      ],
+      "milestones": [
+        {"year":1986,"event":"Museveni au pouvoir"},
+        {"year":2006,"event":"Découverte de pétrole"},
+        {"year":2013,"event":"Loi anti-homosexualité - sanctions occidentales"},
+        {"year":2021,"event":"Élections contestées"},
+        {"year":2025,"event":"Début prévu de production pétrolière"}
+      ]
+    },
+    {
+      "id": "cote-ivoire",
+      "name": "Côte d'Ivoire",
+      "flag": "🇨🇮",
+      "wave": 5,
+      "coordinates": [6.8270, -5.2893],
+      "gdp": {"2000":10.4,"2010":24.9,"2020":61.3,"2024":80.0},
+      "strategy": [
+        "Premier producteur mondial de cacao",
+        "Stabilisation post-crise (2011)",
+        "Développement des infrastructures",
+        "Hub économique Afrique de l'Ouest",
+        "Diversification industrielle"
+      ],
+      "keySectors": [
+        {"name":"Cacao","companies":["Barry Callebaut","Cargill"],"percentage":35},
+        {"name":"Agriculture","companies":[],"percentage":25},
+        {"name":"Services","companies":["Orange CI","MTN CI"],"percentage":20},
+        {"name":"Pétrole","companies":[],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":2002,"event":"Début de la crise civile"},
+        {"year":2011,"event":"Fin de la crise - Ouattara président"},
+        {"year":2015,"event":"Boom économique post-crise"},
+        {"year":2020,"event":"Réélection controversée d'Ouattara"},
+        {"year":2023,"event":"Croissance économique soutenue"}
+      ]
+    },
+    {
+      "id": "jordan",
+      "name": "Jordanie",
+      "flag": "🇯🇴",
+      "wave": 5,
+      "coordinates": [31.9454, 35.9284],
+      "gdp": {"2000":8.5,"2010":26.4,"2020":43.7,"2024":52.0},
+      "strategy": [
+        "Services et tourisme",
+        "Zones économiques spéciales",
+        "Accords de libre-échange (USA, UE)",
+        "Hub logistique régional",
+        "Accueil de réfugiés (défi et opportunité)"
+      ],
+      "keySectors": [
+        {"name":"Services","companies":["Arab Bank","Jordan Phosphate"],"percentage":35},
+        {"name":"Tourisme","companies":["Royal Jordanian"],"percentage":25},
+        {"name":"Mines (phosphate)","companies":["Jordan Phosphate Mines"],"percentage":20},
+        {"name":"Textile","companies":[],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1999,"event":"Accession du roi Abdallah II"},
+        {"year":2000,"event":"Accord de libre-échange avec les USA"},
+        {"year":2011,"event":"Printemps arabe - réformes"},
+        {"year":2016,"event":"Crise des réfugiés syriens"},
+        {"year":2020,"event":"Pandémie - impact sur le tourisme"}
+      ]
+    },
+    {
+      "id": "tunisia",
+      "name": "Tunisie",
+      "flag": "🇹🇳",
+      "wave": 5,
+      "coordinates": [36.8065, 10.1815],
+      "gdp": {"2000":21.5,"2010":44.0,"2020":39.2,"2024":50.0},
+      "strategy": [
+        "Diversification industrielle",
+        "Textile et composants automobiles",
+        "Tourisme méditerranéen",
+        "Transition démocratique post-2011",
+        "Proximité avec l'Europe"
+      ],
+      "keySectors": [
+        {"name":"Textile","companies":[],"percentage":25},
+        {"name":"Automobile (composants)","companies":["Leoni","Valeo"],"percentage":20},
+        {"name":"Tourisme","companies":[],"percentage":20},
+        {"name":"Agriculture","companies":[],"percentage":20},
+        {"name":"Autres","companies":[],"percentage":15}
+      ],
+      "milestones": [
+        {"year":2011,"event":"Révolution - Printemps arabe"},
+        {"year":2014,"event":"Nouvelle constitution démocratique"},
+        {"year":2015,"event":"Attentats terroristes"},
+        {"year":2021,"event":"Suspension du parlement par Saïed"},
+        {"year":2023,"event":"Crise économique et FMI"}
+      ]
+    },
+    {
+      "id": "uzbekistan",
+      "name": "Ouzbékistan",
+      "flag": "🇺🇿",
+      "wave": 5,
+      "coordinates": [41.2995, 69.2401],
+      "gdp": {"2000":13.8,"2010":39.0,"2020":57.7,"2024":90.0},
+      "strategy": [
+        "Réformes économiques (depuis 2016)",
+        "Exportation de coton et or",
+        "Libéralisation du taux de change",
+        "Attraction des IDE",
+        "Route de la Soie (BRI)"
+      ],
+      "keySectors": [
+        {"name":"Agriculture (coton)","companies":[],"percentage":30},
+        {"name":"Mines (or, uranium)","companies":["Navoi Mining"],"percentage":25},
+        {"name":"Gaz naturel","companies":["Uzbekneftegaz"],"percentage":20},
+        {"name":"Textile","companies":[],"percentage":15},
+        {"name":"Autres","companies":[],"percentage":10}
+      ],
+      "milestones": [
+        {"year":1991,"event":"Indépendance de l'URSS"},
+        {"year":2005,"event":"Massacre d'Andijan"},
+        {"year":2016,"event":"Mort de Karimov - Mirziyoyev président"},
+        {"year":2017,"event":"Réformes économiques majeures"},
+        {"year":2020,"event":"Libéralisation du taux de change"}
+      ]
+    },
+    {
+      "id": "bolivia",
+      "name": "Bolivie",
+      "flag": "🇧🇴",
+      "wave": 5,
+      "coordinates": [-16.5000, -68.1500],
+      "gdp": {"2000":8.4,"2010":19.7,"2020":36.7,"2024":47.0},
+      "strategy": [
+        "Nationalisation des ressources (gaz, lithium)",
+        "Exportation de gaz naturel",
+        "Lithium (batteries - potentiel futur)",
+        "Agriculture (soja, quinoa)",
+        "Programmes sociaux (Morales)"
+      ],
+      "keySectors": [
+        {"name":"Gaz naturel","companies":["YPFB"],"percentage":35},
+        {"name":"Mines (lithium, zinc)","companies":[],"percentage":25},
+        {"name":"Agriculture","companies":[],"percentage":25},
+        {"name":"Services","companies":[],"percentage":10},
+        {"name":"Autres","companies":[],"percentage":5}
+      ],
+      "milestones": [
+        {"year":2006,"event":"Élection d'Evo Morales"},
+        {"year":2009,"event":"Nouvelle constitution"},
+        {"year":2014,"event":"Boom économique grâce au gaz"},
+        {"year":2019,"event":"Crise politique - départ de Morales"},
+        {"year":2020,"event":"Retour du MAS au pouvoir (Arce)"}
+      ]
+    }
+  ]
+}

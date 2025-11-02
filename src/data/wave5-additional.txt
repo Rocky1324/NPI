@@ -1,0 +1,89 @@
+,
+  {
+    id: 'laos',
+    name: 'Laos',
+    flag: '🇱🇦',
+    capital: 'Vientiane',
+    region: 'Asie du Sud-Est',
+    wave: 5,
+    waveLabel: '5ème vague (années 2000-2010)',
+    coordinates: [17.9757, 102.6331],
+    gdp: {
+      '2000': 1.7,
+      '2010': 7.2,
+      '2020': 19.1,
+      '2024': 21.0
+    },
+    gdpPerCapita: 2800,
+    population: 7500000,
+    growthRate: 6.2,
+    keySectors: [
+      { name: 'Hydroélectricité', companies: ['Électricité du Laos'], percentage: 30 },
+      { name: 'Mines', companies: ['Phu Bia Mining', 'Sepon Gold'], percentage: 25 },
+      { name: 'Agriculture', companies: ['Lao Brewery'], percentage: 20 },
+      { name: 'Tourisme', companies: [], percentage: 15 },
+      { name: 'Autres', companies: [], percentage: 10 }
+    ],
+    strategy: [
+      'Réformes économiques depuis 1986',
+      'Développement hydroélectrique ("batterie de l\'Asie")',
+      'Chemin de fer Chine-Laos (2021)',
+      'Adhésion à l\'ASEAN',
+      'Corridor économique Nord-Sud'
+    ],
+    images: {
+      before: 'https://source.unsplash.com/800x600/?laos-2000s',
+      after: 'https://source.unsplash.com/800x600/?vientiane-modern'
+    },
+    milestones: [
+      { year: 1986, event: 'Lancement des réformes économiques' },
+      { year: 1997, event: 'Adhésion à l\'ASEAN' },
+      { year: 2013, event: 'Adhésion à l\'OMC' },
+      { year: 2021, event: 'Inauguration du chemin de fer Chine-Laos' },
+      { year: 2024, event: 'Développement hydroélectrique massif' }
+    ]
+  },
+  {
+    id: 'myanmar',
+    name: 'Myanmar (Birmanie)',
+    flag: '🇲🇲',
+    capital: 'Naypyidaw',
+    region: 'Asie du Sud-Est',
+    wave: 5,
+    waveLabel: '5ème vague (années 2000-2010)',
+    coordinates: [19.7633, 96.1686],
+    gdp: {
+      '2000': 8.9,
+      '2010': 49.5,
+      '2020': 76.1,
+      '2024': 65.0
+    },
+    gdpPerCapita: 1200,
+    population: 54000000,
+    growthRate: 3.0,
+    keySectors: [
+      { name: 'Agriculture', companies: ['Myanmar Awba Group'], percentage: 30 },
+      { name: 'Gaz naturel', companies: ['Myanmar Oil and Gas Enterprise'], percentage: 25 },
+      { name: 'Textile', companies: ['CMP Myanmar'], percentage: 20 },
+      { name: 'Tourisme', companies: [], percentage: 10 },
+      { name: 'Autres', companies: [], percentage: 15 }
+    ],
+    strategy: [
+      'Ouverture économique (2011-2020)',
+      'Réformes démocratiques temporaires',
+      'Développement des ressources naturelles',
+      'Zone économique spéciale de Thilawa',
+      'Instabilité politique post-2021'
+    ],
+    images: {
+      before: 'https://source.unsplash.com/800x600/?myanmar-2000s',
+      after: 'https://source.unsplash.com/800x600/?yangon-modern'
+    },
+    milestones: [
+      { year: 2011, event: 'Début de la transition démocratique' },
+      { year: 2012, event: 'Levée partielle des sanctions' },
+      { year: 2015, event: 'Premières élections libres' },
+      { year: 2016, event: 'Gouvernement civil d\'Aung San Suu Kyi' },
+      { year: 2021, event: 'Coup d\'État militaire' }
+    ]
+  }

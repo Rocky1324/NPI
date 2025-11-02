@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Présentation — NPI (Nouveaux Pays Industrialisés)</title>
+  <meta name="description" content="Présentation interactive sur les Nouveaux Pays Industrialisés — définitions, vagues, études de cas, graphiques et quiz." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-dark: #0b1117;
+      --slide-bg: linear-gradient(180deg,#071226 0%, #071a2b 60%);
+      --accent: #06b6d4;
+      --accent-2: #7c3aed;
+      --muted: #9aa8b7;
+      --card: rgba(255,255,255,0.03);
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --max-width: 1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--slide-bg);
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow:hidden;
+    }
+
+    /* Container / Slides */
+    .app {
+      max-width:var(--max-width);
+      margin:28px auto;
+      height:calc(100vh - 56px);
+      position:relative;
+      padding:28px;
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+
+    /* Sidebar (outline + controls) */
+    .sidebar{
+      width:320px;
+      min-width:260px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      border-radius:14px;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      height:100%;
+      overflow:auto;
+    }
+    .brand{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .logo{
+      height:44px;
+      width:44px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:inline-grid;
+      place-items:center;
+      font-weight:800;
+      font-size:18px;
+      color:white;
+      box-shadow:0 6px 18px rgba(7,20,40,0.6);
+    }
+    .title{
+      font-weight:800;
+      font-size:16px;
+      line-height:1;
+    }
+    .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+
+    .toc{
+      margin-top:6px;
+      border-radius:10px;
+      padding:8px;
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .toc button{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      gap:8px;
+      border:0;
+      background:transparent;
+      color:inherit;
+      padding:8px 10px;
+      border-radius:8px;
+      text-align:left;
+      cursor:pointer;
+      font-weight:600;
+      font-size:13px;
+    }
+    .toc button.active{
+      background:linear-gradient(90deg, rgba(6,182,212,0.08), rgba(124,58,237,0.06));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+    .controls{
+      margin-top:auto;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .controls .left, .controls .right { display:flex; gap:8px; align-items:center; }
+    .btn {
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      border:0;
+      color:white;
+      padding:10px 12px;
+      border-radius:999px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 12px 30px rgba(7,20,40,0.6);
+      font-size:13px;
+    }
+    .btn.ghost{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color: #cfeaf2;
+      box-shadow:none;
+    }
+    .small{font-size:13px;padding:8px 10px}
+
+    .progress{
+      height:8px;
+      background:rgba(255,255,255,0.03);
+      border-radius:8px;
+      margin-top:8px;
+      overflow:hidden;
+    }
+    .progress > i{
+      display:block;
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    }
+
+    /* Slide viewport */
+    .viewport{
+      flex:1;
+      height:100%;
+      position:relative;
+      overflow:hidden;
+      border-radius:16px;
+      padding:26px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .slides{
+      width:100%;
+      height:100%;
+      position:relative;
+      perspective:1200px;
+    }
+    .slide{
+      position:absolute;
+      inset:0;
+      border-radius:12px;
+      padding:36px;
+      transition: transform 600ms cubic-bezier(.2,.9,.3,1), opacity 350ms ease;
+      transform-origin: left center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 30px 80px rgba(2,6,23,0.6);
+      overflow:auto;
+    }
+    .slide.hidden {
+      opacity:0;
+      pointer-events:none;
+      transform: translateX(40px) scale(0.98) rotateY(-6deg);
+    }
+    .slide.show {
+      opacity:1;
+      transform: none;
+      pointer-events:all;
+    }
+
+    /* Slide content styles */
+    .headline{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:baseline;
+    }
+    .headline h1{
+      margin:0;
+      font-size:30px;
+      font-weight:800;
+      letter-spacing:-0.5px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .meta { color:var(--muted); font-size:13px; font-weight:600; }
+
+    .content{ margin-top:18px; display:grid; gap:12px; grid-template-columns: 1fr 320px; }
+    @media (max-width:1100px){ .app{padding:12px} .sidebar{display:none} .content{grid-template-columns:1fr} .meta{display:none} .viewport{padding:12px} }
+
+    .column{ background:transparent; }
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:14px;
+      border-radius:12px;
+    }
+    h2{ margin:0 0 8px 0; font-size:18px; font-weight:800; color:#e6eef6; }
+    p{ margin:0; color:#cfeaf2; line-height:1.45 }
+    .muted{ color:var(--muted); font-size:13px; margin-top:6px }
+
+    /* Emphasis boxes */
+    .callout {
+      padding:12px;
+      border-radius:10px;
+      background: linear-gradient(90deg, rgba(124,58,237,0.06), rgba(6,182,212,0.04));
+      border:1px solid rgba(255,255,255,0.02);
+      font-weight:700;
+      color:#e6eef6;
+    }
+    .fact {
+      padding:10px;
+      border-radius:8px;
+      background:var(--glass-2);
+      border:1px solid rgba(255,255,255,0.02);
+      font-size:13px;
+      color:#cfeaf2;
+    }
+
+    /* Charts */
+    .chart {
+      width:100%;
+      height:140px;
+      border-radius:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px;
+    }
+    .kv {
+      display:flex;
+      gap:10px;
+      margin-top:8px;
+      flex-wrap:wrap;
+    }
+    .kv .item { background:var(--card); padding:8px 10px; border-radius:8px; font-weight:700; color:#e9edf1; font-size:13px; }
+
+    /* Tables & lists */
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:10px;
+      font-size:13px;
+      color:#cfeaf2;
+    }
+    th,td{ padding:8px; border-bottom:1px dashed rgba(255,255,255,0.03); text-align:left }
+    th{ font-weight:700; color:#e6eef6; font-size:13px; }
+
+    /* Quiz */
+    .quiz { display:flex; flex-direction:column; gap:8px; margin-top:8px }
+    .quiz .q { background:var(--glass); padding:10px; border-radius:8px; }
+    .quiz label{ display:block; margin:6px 0; cursor:pointer; font-weight:600; color:#dff6fb; }
+    .quiz input[type="radio"]{ margin-right:8px }
+
+    .result { margin-top:8px; font-weight:800; }
+
+    /* Footer small */
+    .small-credits{ color:var(--muted); font-size:12px; margin-top:12px; }
+
+    /* Slide navigation hint */
+    .hint { position: absolute; right:28px; bottom:28px; display:flex; gap:8px; align-items:center; opacity:0.85; }
+    .kbd {
+      background:rgba(255,255,255,0.03);
+      border-radius:6px;
+      padding:8px 10px;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,0.02);
+      color:#dff6fb;
+      font-size:13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app" role="application" aria-label="Présentation NPI">
+    <!-- Sidebar / TOC -->
+    <aside class="sidebar" aria-hidden="false">
+      <div class="brand">
+        <div class="logo">NPI</div>
+        <div>
+          <div class="title">Nouveaux Pays Industrialisés</div>
+        </div>
+      </div>
+
+      <div class="toc" id="toc" role="navigation" aria-label="Plan de la présentation">
+        <!-- TOC buttons injected by JS or present statically -->
+        <button data-slide="0" class="active">1 • Intro & définition</button>
+        <button data-slide="1">2 • Caractéristiques clés</button>
+        <button data-slide="2">3 • Vagues historiques</button>
+        <button data-slide="3">4 • Études de cas</button>
+        <button data-slide="4">5 • Facteurs de réussite</button>
+        <button data-slide="5">6 • Débats & limites</button>
+        <button data-slide="6">7 • Chronologie & graphiques</button>
+        <button data-slide="7">8 • Mini-quiz</button>
+        <button data-slide="8">9 • Conclusion & références</button>
+      </div>
+
+      <div class="progress" aria-hidden="true"><i id="progressBar" style="width:10%"></i></div>
+
+      <div class="controls" aria-hidden="true">
+        <div class="left">
+          <button class="btn small" id="prevBtn" title="Diapos précédente (←)">← Préc.</button>
+          <button class="btn small" id="nextBtn" title="Diapos suivante (→)">Suiv. →</button>
+        </div>
+        <div class="right">
+          <button id="startPresent" class="btn ghost small">Lancer mode plein écran</button>
+        </div>
+      </div>
+
+      <div class="small-credits">Contrôle: flèches ← → • Home/End pour début/fin • T pour TOC</div>
+    </aside>
+
+    <!-- Viewport -->
+    <main class="viewport" role="main">
+      <div class="slides" id="slides">
+
+        <!-- Slide 0: Intro -->
+        <section class="slide show" data-index="0" aria-label="Intro">
+          <div class="headline">
+            <h1>Qu'est-ce qu'un NPI ?</h1>
+            <div class="meta">Slide 1 / 9</div>
+          </div>
+          <div class="content">
+            <div class="column">
+              <div class="panel">
+                <p><strong>Nouveaux Pays Industrialisés (NPI)</strong> : pays ayant connu une industrialisation rapide et soutenue, une forte intégration au commerce mondial et une transformation structurelle (agriculture → industrie/services) sur quelques décennies.</p>
+                <p class="muted">Critères souvent observés : hausse du PIB réel et du PIB/habitant, urbanisation, croissance des exportations manufacturières, hausse des investissements et montée en compétences.</p>
+
+                <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+                  <div class="callout">Durée typique : <strong>20-40 ans</strong></div>
+                  <div class="callout">Orientation : <strong>exportatrice</strong></div>
+                </div>
+
+                <div style="margin-top:12px" class="fact">
+                </div>
+              </div>
+
+              <div style="margin-top:12px" class="panel">
+              </div>
+            </div>
+
+            <aside class="column" aria-hidden="true">
+              <div class="panel">
+                <h3>Chiffres clés (exemples)</h3>
+                <div class="kv">
+                  <div class="item">Croiss. annuelle: 6-10% (périodes clés)</div>
+                  <div class="item">Exportations: 30-60% du PIB</div>
+                  <div class="item">R&D (ex Corée): ~4-5% PIB</div>
+                </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Slide 1: Caractéristiques -->
+        <section class="slide hidden" data-index="1" aria-label="Caractéristiques">
+          <div class="headline">
+            <h1>Caractéristiques clés</h1>
+            <div class="meta">Slide 2 / 9</div>
+          </div>
+          <div class="content">
+            <div class="column">
+              <div class="panel">
+                <h2>1) Croissance soutenue</h2>
+                <p class="muted">Les NPI affichent des taux de croissance élevés et soutenus sur plusieurs décennies. Ce n'est pas du "pic" : c'est une trajectoire.</p>
+
+                <h2 style="margin-top:12px">2) Transformation industrielle</h2>
+                <p class="muted">Déplacement de main-d'œuvre vers l'industrie manufacturière puis les services modernes (logistique, finance, high-tech).</p>
+
+                <h2 style="margin-top:12px">3) Intégration mondiale</h2>
+                <p class="muted">Incorporation aux chaînes de valeur mondiales via IDE, ZES, accords commerciaux.</p>
+
+                <div style="margin-top:12px" class="callout">Un NPI est plus qu'un bon chiffre : c'est une <strong>transformation</strong> économique et sociale.</div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>Exemples rapides</h2>
+                <ul>
+                  <li><strong>Corée du Sud</strong> : du textile et de la reconstruction aux conglomérats technologiques (Samsung, Hyundai).</li>
+                  <li><strong>Chine</strong> : exportateur massif puis montée en gamme et innovation.</li>
+                  <li><strong>Vietnam / Bangladesh</strong> : spécialisations textiles et manufacture, montée dans l'électronique (Vietnam).</li>
+                </ul>
+              </div>
+            </div>
+
+            <aside class="column">
+              <div class="panel">
+                <h3>Mini-graphe, part de l'industrie (%)</h3>
+                <div class="chart" aria-hidden="true">
+                  <!-- Simple SVG bar -->
+                  <svg width="100%" height="100%" viewBox="0 0 300 120" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Graphique part industrie">
+                    <rect x="15" y="40" width="40" height="60" rx="6" fill="url(#g1)"></rect>
+                    <rect x="85" y="20" width="40" height="80" rx="6" fill="url(#g2)"></rect>
+                    <rect x="155" y="60" width="40" height="40" rx="6" fill="url(#g3)"></rect>
+                    <rect x="225" y="50" width="40" height="50" rx="6" fill="url(#g4)"></rect>
+                    <defs>
+                      <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+                      <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#06b6d4"/></linearGradient>
+                      <linearGradient id="g3" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#34d399"/></linearGradient>
+                      <linearGradient id="g4" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#f97316"/></linearGradient>
+                    </defs>
+                    <text x="35" y="115" text-anchor="middle" fill="#cfeaf2" font-size="11">Avant</text>
+                    <text x="105" y="115" text-anchor="middle" fill="#cfeaf2" font-size="11">Pointe</text>
+                    <text x="175" y="115" text-anchor="middle" fill="#cfeaf2" font-size="11">Transition</text>
+                    <text x="245" y="115" text-anchor="middle" fill="#cfeaf2" font-size="11">Services</text>
+                  </svg>
+                </div>
+
+                <div style="margin-top:10px" class="muted">Interprétez : hauteur = part de main-d'œuvre ou de valeur ajoutée selon contexte.</div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Slide 2: Vagues -->
+        <section class="slide hidden" data-index="2" aria-label="Vagues">
+          <div class="headline">
+            <h1>Les vagues d'industrialisation</h1>
+            <div class="meta">Slide 3 / 9</div>
+          </div>
+          <div class="content">
+            <div class="column">
+              <div class="panel">
+                <h2>Vague 1 — 1960s-1970s</h2>
+                <p class="muted"><strong>Asie de l'Est (Corée du Sud, Taïwan, Hong Kong, Singapour)</strong> : État-développeur, substitution exportatrice intelligente, industrial policy, éducation.</p>
+
+                <h2 style="margin-top:12px">Vague 2 — 1980s-1990s</h2>
+                <p class="muted">Malaisie, Thaïlande, Mexique, Chili : ouverture, IDE, intégration régionale, manufacturiers multinationaux.</p>
+
+                <h2 style="margin-top:12px">Vague 3 — 2000s+</h2>
+                <p class="muted">Chine et plus tard Vietnam, Inde, Indonésie : chaînes de valeur mondiales massives, politique industrielle ciblée, ZES, réforme structurelle.</p>
+
+                <h2 style="margin-top:12px">Vague 4 — 2010s+</h2>
+                <p class="muted">Bangladesh, certains pays africains, picks de "nearshoring": spécialisation textile, manufacture à bas coût, puis digital services.</p>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>Comparaison des politiques</h2>
+                <table>
+                  <thead><tr><th>Période</th><th>Instruments</th><th>Rôle de l'État</th></tr></thead>
+                  <tbody>
+                    <tr><td>60s-70s</td><td>Subventions, banques publiques, contrôle des importations</td><td>Actif et dirigiste</td></tr>
+                    <tr><td>80s-90s</td><td>IDE, ZES, privatisations partiel</td><td>Facilitateur</td></tr>
+                    <tr><td>2000s+</td><td>Intégration aux GVC, réforme, incitations fiscales</td><td>Stratégique</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <aside class="column">
+              <div class="panel">
+                <h3>À retenir</h3>
+                <p class="muted">Les stratégies diffèrent mais plusieurs patterns reviennent : <strong>Éducation, infrastructures, ouverture contrôlée</strong> et management des IDE.</p>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Slide 3: Etudes de cas -->
+        <section class="slide hidden" data-index="3" aria-label="Études de cas">
+          <div class="headline">
+            <h1>Études de cas approfondies</h1>
+            <div class="meta">Slide 4 / 9</div>
+          </div>
+          <div class="content">
+            <div class="column">
+              <div class="panel">
+                <h2>Corée du Sud</h2>
+                <p class="muted">Après la guerre, modèle d'exportation poussé par l'État, conglomérats (chaebols), forte R&D (~4-5% du PIB aujourd'hui), priorité à l'éducation technique.</p>
+                <ul>
+                  <li>PIB/hab a bondi sur 30-40 ans</li>
+                  <li>Transition vers haute technologie</li>
+                </ul>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>Chine</h2>
+                <p class="muted">Réformes 1978, ZES, entrée à l'OMC en 2001 = explosion des exportations et réduction spectaculaire de la pauvreté. Passage récent de “manufacturier” à “innovation & écosystème technologique”.</p>
+                <div class="muted" style="margin-top:8px">Remarque : taille et échelle changent la donne — la Chine n'est pas juste un "NPI" classique : c'est un cas hybride et unique.</div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>Vietnam & Bangladesh</h2>
+                <p class="muted">Vietnam : Đổi Mới + accords commerciaux (CPTPP, EVFTA) + IDE en électronique. Bangladesh : spécialisation textile, gains d'emploi massifs mais défis sociaux.</p>
+              </div>
+            </div>
+
+            <aside class="column">
+              <div class="panel">
+                <h3>Mini-tableau comparatif</h3>
+                <table>
+                  <thead><tr><th>Pays</th><th>Forces</th><th>Défis</th></tr></thead>
+                  <tbody>
+                    <tr><td>Corée</td><td>R&D, éducation, export</td><td>Concentration chaebol</td></tr>
+                    <tr><td>Chine</td><td>Échelle, IDE, GVC</td><td>Dette, déséquilibres</td></tr>
+                    <tr><td>Vietnam</td><td>Coût, accords</td><td>Infrastructure</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Slide 4: Facteurs -->
+        <section class="slide hidden" data-index="4" aria-label="Facteurs de réussite">
+          <div class="headline">
+            <h1>Facteurs de réussite</h1>
+            <div class="meta">Slide 5 / 9</div>
+          </div>
+          <div class="content">
+            <div class="column">
+              <div class="panel">
+                <h2>1) Gouvernance et politique industrielle</h2>
+                <p class="muted">Politiques cohérentes, capacités de mise en œuvre, promotion ciblée des secteurs compétitifs.</p>
+
+                <h2 style="margin-top:12px">2) Investissement en capital humain</h2>
+                <p class="muted">Éducation technique, formation continue, santé — conditions pour productivité.</p>
+
+                <h2 style="margin-top:12px">3) Accès aux marchés & IDE</h2>
+                <p class="muted">IDE apporte capital, réseaux et transfert technologique — mais exige gestion (conditions, contenu local).</p>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>Risques & pièges</h2>
+                <ul>
+                  <li>Dépendance excessive aux industries à faible valeur ajoutée</li>
+                  <li>Inégalités et tensions sociales</li>
+                  <li>Chocs externes (crise globale, hausse salaires, remplacement technologique)</li>
+                </ul>
+              </div>
+            </div>
+
+            <aside class="column">
+              <div class="panel">
+                <h3>Politique utile</h3>
+                <p class="muted">Une politique efficace combine <strong>incitations</strong>, <strong>sélection stratégique</strong> et <strong>services publics</strong> (R&D, éducation, infrastructures).</p>
+                <div style="margin-top:10px" class="fact">Ex : soutien ciblé aux fournisseurs locaux pour monter en gamme dans GVC.</div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Slide 5: Débats & limites -->
+        <section class="slide hidden" data-index="5" aria-label="Débats">
+          <div class="headline">
+            <h1>Débats & limites</h1>
+            <div class="meta">Slide 6 / 9</div>
+          </div>
+          <div class="content">
+            <div class="column">
+              <div class="panel">
+                <h2>Inégalités et durabilité</h2>
+                <p class="muted">Croissance n'implique pas distribution équitable. Les NPI doivent gérer inégalités urbain/rural et impacts environnementaux.</p>
+
+                <h2 style="margin-top:12px">Dépendance technologique</h2>
+                <p class="muted">Beaucoup d'industries reposent sur technologies importées, la montée en autonomie technologique est un challenge.</p>
+
+                <h2 style="margin-top:12px">Souveraineté économique</h2>
+                <p class="muted">Trop d'exposition aux marchés étrangers peut rendre vulnérable au protectionnisme.</p>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>Question critique pour présenter</h2>
+                <p class="muted"><strong>Est-ce que le modèle d'industrialisation rapide est durable ?</strong> Posez la question au public et proposez des éléments de réponse (transition verte, formation continue).</p>
+              </div>
+            </div>
+
+            <aside class="column">
+              <div class="panel">
+                <h3>Discussion guidée</h3>
+                <ul>
+                  <li>Quels coûts sociaux êtes-vous prêts à accepter pour la croissance ?</li>
+                  <li>Peut-on "sauter" des étapes grâce au numérique ?</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Slide 6: Chronologie & graphiques -->
+        <section class="slide hidden" data-index="6" aria-label="Chronologie">
+          <div class="headline">
+            <h1>Chronologie & visualisations</h1>
+            <div class="meta">Slide 7 / 9</div>
+          </div>
+          <div class="content">
+            <div class="column">
+              <div class="panel">
+                <h2>Chronologie succincte</h2>
+                <ol style="margin-top:10px">
+                  <li>Années 1960-1970 : premières industrialisations planifiées (Corée, Taïwan)</li>
+                  <li>Années 1980-1990 : ouverture + IDE, intégration régionale</li>
+                  <li>Années 2000 : explosion Chine, GVC</li>
+                  <li>2010+ : diversification, services, nearshoring</li>
+                </ol>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>Graphique — Croissance PIB (exemple simplifié)</h2>
+                <div class="chart">
+                  <!-- small line chart -->
+                  <svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMid meet" width="100%" height="100%" role="img" aria-label="Croissance PIB exemple">
+                    <polyline fill="none" stroke="url(#lineg)" stroke-width="3" points="10,100 50,86 90,60 130,48 170,34 210,28 250,22 290,18" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    <defs>
+                      <linearGradient id="lineg" x1="0" x2="1">
+                        <stop offset="0" stop-color="#06b6d4"/>
+                        <stop offset="1" stop-color="#7c3aed"/>
+                      </linearGradient>
+                    </defs>
+                    <text x="10" y="115" fill="#cfeaf2" font-size="11">1960</text>
+                    <text x="290" y="115" fill="#cfeaf2" font-size="11" text-anchor="end">2000+</text>
+                  </svg>
+                </div>             
+            </div>
+
+            <aside class="column">
+              <div class="panel">
+                <h3>Sources de données</h3>
+                <ul>
+                  <li><a href="https://data.worldbank.org/" target="_blank" rel="noreferrer" style="color:inherit">Banque mondiale</a></li>
+                  <li><a href="https://unctad.org/" target="_blank" rel="noreferrer" style="color:inherit">CNUCED</a></li>
+                  <li><a href="https://www.oecd.org/" target="_blank" rel="noreferrer" style="color:inherit">OCDE</a></li>
+                </ul>
+                <div class="muted" style="margin-top:10px">Astuce: préparez 1 ou 2 graphiques réels (CSV → chart) pour votre public si vous avez accès à internet le jour J.</div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Slide 7: Quiz -->
+        <section class="slide hidden" data-index="7" aria-label="Quiz">
+          <div class="headline">
+            <h1>Mini-quiz</h1>
+            <div class="meta">Slide 8 / 9</div>
+          </div>
+          <div class="content">
+            <div class="column">
+              <div class="panel">
+                <div class="quiz" id="quiz">
+                  <div class="q">
+                    <p><strong>1)</strong> Une caractéristique clé d’un NPI est…</p>
+                    <label><input type="radio" name="q1" value="a"> Croissance tirée uniquement par les matières premières</label>
+                    <label><input type="radio" name="q1" value="b"> Forte orientation export et montée en gamme</label>
+                    <label><input type="radio" name="q1" value="c"> Autarcie commerciale</label>
+                  </div>
+
+                  <div class="q">
+                    <p><strong>2)</strong> Combien de vagues présentées ici ?</p>
+                    <label><input type="radio" name="q2" value="a"> 2</label>
+                    <label><input type="radio" name="q2" value="b"> 3</label>
+                    <label><input type="radio" name="q2" value="c"> 4</label>
+                  </div>
+
+                  <div class="q">
+                    <p><strong>3)</strong> La Corée du Sud s’est appuyée sur…</p>
+                    <label><input type="radio" name="q3" value="a"> Un État développeur et des champions industriels</label>
+                    <label><input type="radio" name="q3" value="b"> Un modèle agricole traditionnel</label>
+                    <label><input type="radio" name="q3" value="c"> L’isolement vis-à-vis des marchés mondiaux</label>
+                  </div>
+
+                  <div class="q">
+                    <p><strong>4)</strong> IDE signifie…</p>
+                    <label><input type="radio" name="q4" value="a"> Investissements de Dette Extérieure</label>
+                    <label><input type="radio" name="q4" value="b"> Importations de Développement Économique</label>
+                    <label><input type="radio" name="q4" value="c"> Impôts Directs sur les Entreprises</label>
+                    <label><input type="radio" name="q4" value="d"> Investissements Directs Étrangers</label>
+                  </div>
+
+                  <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
+                    <button id="quizSubmit" class="btn small">Valider</button>
+                    <button id="quizReset" class="btn ghost small">Réinitialiser</button>
+                  </div>
+
+                  <div id="quizResult" class="result" aria-live="polite"></div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="column">
+              <div class="panel">
+                <div class="muted" style="margin-top:8px">Repondez aux questions suivantes</div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Slide 8: Conclusion & Références -->
+        <section class="slide hidden" data-index="8" aria-label="Conclusion">
+          <div class="headline">
+            <h1>Conclusion & références</h1>
+            <div class="meta">Slide 9 / 9</div>
+          </div>
+          <div class="content">
+            <div class="column">
+              <div class="panel">
+                <h2>Points finaux</h2>
+                <ul>
+                  <li>Les NPI montrent que la transformation est possible — mais elle demande stratégie, temps, et arbitrages.</li>
+                  <li>Les politiques publiques, le capital humain et l'intégration aux chaînes mondiales sont centraux.</li>
+                  <li>Attention aux effets secondaires : inégalités, environnement et dépendance externe.</li>
+                </ul>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>Références utiles</h2>
+                <ul>
+                  <li><a href="https://data.worldbank.org/" target="_blank" rel="noreferrer" style="color:inherit">Banque mondiale — Data</a></li>
+                  <li><a href="https://unctad.org/" target="_blank" rel="noreferrer" style="color:inherit">CNUCED</a></li>
+                  <li><a href="https://www.oecd.org/" target="_blank" rel="noreferrer" style="color:inherit">OCDE</a></li>
+                  <li><a href="https://www.unido.org/" target="_blank" rel="noreferrer" style="color:inherit">ONUDI</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <aside class="column">
+              <div class="panel">
+                <h3>Fiche de présentation (à imprimer)</h3>
+                <p class="muted">Imprimez un PDF contenant : définition, 3 études de cas courtes, 3 questions pour la discussion, 1 graphique. C'est tout ce dont votre groupe a besoin pour animer.</p>
+                <div style="margin-top:12px" class="fact">Besoin d'un PDF prêt ? Dites-le et je génère HTML prêt à exporter.</div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="hint" aria-hidden="true">
+        <div class="kbd">← →</div>
+        <div class="muted">Naviguer</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // --- Slide logic ---
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const tocBtns = Array.from(document.querySelectorAll('.toc button'));
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const startPresent = document.getElementById('startPresent');
+
+    let index = 0;
+    const total = slides.length;
+
+    function showSlide(i){
+      if(i < 0) i = 0;
+      if(i >= total) i = total - 1;
+      index = i;
+      slides.forEach(s => {
+        s.classList.remove('show');
+        s.classList.add('hidden');
+      });
+      const active = slides[index];
+      active.classList.remove('hidden');
+      active.classList.add('show');
+
+      // update TOC
+      tocBtns.forEach(b => b.classList.remove('active'));
+      const matching = tocBtns.find(b => Number(b.dataset.slide) === index);
+      if(matching) matching.classList.add('active');
+
+      const pct = Math.round(((index + 1) / total) * 100);
+      progressBar.style.width = pct + '%';
+    }
+
+    // TOC click
+    tocBtns.forEach(b => {
+      b.addEventListener('click', () => {
+        const idx = Number(b.dataset.slide);
+        showSlide(idx);
+      });
+    });
+
+    prevBtn.addEventListener('click', () => showSlide(index - 1));
+    nextBtn.addEventListener('click', () => showSlide(index + 1));
+
+    // Keyboard nav
+    window.addEventListener('keydown', (e) => {
+      if(e.key === 'ArrowRight') showSlide(index + 1);
+      if(e.key === 'ArrowLeft') showSlide(index - 1);
+      if(e.key === 'Home') showSlide(0);
+      if(e.key === 'End') showSlide(total - 1);
+      if(e.key.toLowerCase() === 't') {
+        // toggle sidebar (mobile)
+        const sb = document.querySelector('.sidebar');
+        if(sb) sb.style.display = sb.style.display === 'none' ? 'flex' : 'none';
+      }
+    });
+
+    // Fullscreen
+    startPresent.addEventListener('click', () => {
+      const el = document.documentElement;
+      if(!document.fullscreenElement){
+        el.requestFullscreen?.();
+        startPresent.textContent = "Quitter plein écran";
+      } else {
+        document.exitFullscreen?.();
+        startPresent.textContent = "Lancer mode plein écran";
+      }
+    });
+
+    // touch swipe for mobile
+    let touchStartX = null;
+    document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive:true});
+    document.addEventListener('touchend', e => {
+      if(touchStartX === null) return;
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      if(dx < -50) showSlide(index + 1);
+      if(dx > 50) showSlide(index - 1);
+      touchStartX = null;
+    }, {passive:true});
+
+    // Initialize
+    showSlide(0);
+
+    // --- Quiz logic ---
+    const quizSubmit = document.getElementById('quizSubmit');
+    const quizReset = document.getElementById('quizReset');
+    const quizResult = document.getElementById('quizResult');
+
+    const answers = { q1: 'b', q2: 'c', q3: 'a', q4: 'd' };
+
+    quizSubmit.addEventListener('click', () => {
+      let score = 0;
+      const feedback = [];
+      Object.keys(answers).forEach(key => {
+        const node = document.querySelector('input[name="'+key+'"]:checked');
+        const val = node ? node.value : null;
+        if(val === answers[key]) {
+          score++;
+          feedback.push(`<div style="color: #86efac">✓ ${key.toUpperCase()} — Correct</div>`);
+        } else {
+          feedback.push(`<div style="color: #fca5a5">✕ ${key.toUpperCase()} — Réponse correcte: <strong>${answers[key].toUpperCase()}</strong></div>`);
+        }
+      });
+      const pct = Math.round((score / Object.keys(answers).length) * 100);
+      let mood = "Bien joué.";
+      if(pct === 100) mood = "Parfait — vous maîtrisez le sujet.";
+      else if(pct >= 75) mood = "Bon — quelques rappels nécessaires.";
+      else if(pct >= 50) mood = "Moyen — revoyez les concepts clés.";
+      else mood = "Faible — reprendre les sections importantes.";
+
+      quizResult.innerHTML = `<div style="font-size:15px">Score: <strong>${score}/${Object.keys(answers).length}</strong> — ${pct}%</div><div style="margin-top:8px">${mood}</div><div style="margin-top:8px">${feedback.join("")}</div>`;
+    });
+
+    quizReset.addEventListener('click', () => {
+      document.querySelectorAll('#quiz input[type="radio"]').forEach(i => i.checked = false);
+      quizResult.innerHTML = '';
+    });
+
+    // Accessibility: focus trap basic when slides change
+    slides.forEach(s => {
+      s.addEventListener('transitionend', () => {
+        if(s.classList.contains('show')){
+          const focusable = s.querySelector('button, a, input, [tabindex]');
+          if(focusable) focusable.focus({preventScroll:true});
+        }
+      });
+    });
+
+    // Small UX enhancement: announce slide changes
+    const liveRegion = document.createElement('div');
+    liveRegion.setAttribute('aria-live', 'polite');
+    liveRegion.style.position = 'absolute';
+    liveRegion.style.left = '-9999px';
+    document.body.appendChild(liveRegion);
+    function announceSlide(){
+      const title = slides[index].querySelector('.headline h1')?.textContent || `Slide ${index + 1}`;
+      liveRegion.textContent = `Diapositive ${index + 1} sur ${total} — ${title}`;
+    }
+    setInterval(announceSlide, 700);
+    announceSlide();
+
+  </script>
+</body>
+</html>
