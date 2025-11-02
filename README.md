@@ -144,7 +144,6 @@ Désactiver sur une page
 
 ---
 
-=======
 
 ## 📚 Références
 
