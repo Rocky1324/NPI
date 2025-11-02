@@ -126,6 +126,7 @@ Astuce: pour servir le dossier `public/` rapidement, vous pouvez utiliser un ser
 
 ---
 
+<<<<<<< HEAD
 ## 🧭 Mini‑guide interactif (sans API)
 
 - Widget pédagogique léger, accessible via une bulle « ❓ » en bas à droite sur toutes les pages statiques.
@@ -144,6 +145,8 @@ Désactiver sur une page
 
 ---
 
+=======
+>>>>>>> de11adee6f6e9cc09e72352ee7b26a04562fb704
 ## 📚 Références
 
 - Banque mondiale
