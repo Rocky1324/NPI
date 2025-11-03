@@ -1689,11 +1689,18 @@
       Object.keys(answers).forEach(key => {
         const node = document.querySelector('input[name="'+key+'"]:checked');
         const val = node ? node.value : null;
-        if(val === answers[key]) {
+        const isCorrect = (val === answers[key]);
+        
+        if(isCorrect) {
           score++;
           feedback.push(`<div style="color: #86efac">✓ Question ${key.substring(1)} — Correct</div>`);
         } else {
           feedback.push(`<div style="color: #fca5a5">✕ Question ${key.substring(1)} — Réponse correcte: ${answers[key].toUpperCase()}</div>`);
+        }
+        
+        // Track each question attempt
+        if (window.analytics && typeof window.analytics.trackQuizAttempt === 'function') {
+          window.analytics.trackQuizAttempt(key, val, isCorrect);
         }
       });
       const pct = Math.round((score / Object.keys(answers).length) * 100);
@@ -1706,12 +1713,8 @@
       quizResult.innerHTML = `<div style="font-size:15px;margin-top:12px">Score: <strong>${score}/${Object.keys(answers).length}</strong> (${pct}%)</div><div style="margin-top:8px">${mood}</div><div style="margin-top:8px">${feedback.join("")}</div>`;
       
       // Track quiz completion in analytics
-      if (typeof window.trackEvent === 'function') {
-        window.trackEvent('quiz_complete', {
-          score: score,
-          total: Object.keys(answers).length,
-          percentage: pct
-        });
+      if (window.analytics && typeof window.analytics.trackQuizComplete === 'function') {
+        window.analytics.trackQuizComplete(score, Object.keys(answers).length);
       }
     });
 
