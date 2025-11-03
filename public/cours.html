@@ -226,7 +226,8 @@
       border-radius:12px;
     }
     h2{ margin:0 0 8px 0; font-size:18px; font-weight:800; color:#e6eef6; }
-    p{ margin:0; color:#cfeaf2; line-height:1.45 }
+    h3{ margin:12px 0 6px 0; font-size:15px; font-weight:700; color:#e6eef6; }
+    p{ margin:0; color:#cfeaf2; line-height:1.5; font-size:14px; }
     .muted{ color:var(--muted); font-size:13px; margin-top:6px }
 
     /* Emphasis boxes */
@@ -237,6 +238,7 @@
       border:1px solid rgba(255,255,255,0.02);
       font-weight:700;
       color:#e6eef6;
+      margin-top:10px;
     }
     .fact {
       padding:10px;
@@ -245,6 +247,7 @@
       border:1px solid rgba(255,255,255,0.02);
       font-size:13px;
       color:#cfeaf2;
+      margin-top:8px;
     }
 
     /* Charts */
@@ -277,6 +280,9 @@
     th,td{ padding:8px; border-bottom:1px dashed rgba(255,255,255,0.03); text-align:left }
     th{ font-weight:700; color:#e6eef6; font-size:13px; }
 
+    ul { margin:8px 0; padding-left:20px; }
+    li { margin:4px 0; line-height:1.5; font-size:14px; color:#cfeaf2; }
+
     /* Quiz */
     .quiz { display:flex; flex-direction:column; gap:8px; margin-top:8px }
     .quiz .q { background:var(--glass); padding:10px; border-radius:8px; }
@@ -295,9 +301,133 @@
       border-radius:6px;
       padding:8px 10px;
       font-weight:700;
-      border:1px solid rgba(255,255,255,0.02);
       color:#dff6fb;
       font-size:13px;
+    }
+
+    /* Tooltips pour sigles */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted #06b6d4;
+  cursor: help;
+  color: #06b6d4;
+  font-weight: 600;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  max-width: 280px;
+  background: linear-gradient(135deg, rgba(6,182,212,0.98), rgba(124,58,237,0.98));
+  color: #fff;
+  text-align: left;
+  border-radius: 8px;
+  padding: 12px;
+  position: absolute;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  pointer-events: none;
+  white-space: normal;
+  word-wrap: break-word;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(6,182,212,0.98) transparent transparent transparent;
+}
+
+/* Tooltip en dessous si pas de place au-dessus */
+.tooltip .tooltiptext.below {
+  bottom: auto;
+  top: calc(100% + 10px);
+}
+
+.tooltip .tooltiptext.below::after {
+  top: auto;
+  bottom: 100%;
+  border-color: transparent transparent rgba(6,182,212,0.98) transparent;
+}
+
+/* Tooltip aligné à gauche si trop près du bord gauche */
+.tooltip .tooltiptext.align-left {
+  left: 0;
+  transform: translateX(0);
+}
+
+.tooltip .tooltiptext.align-left::after {
+  left: 20px;
+}
+
+/* Tooltip aligné à droite si trop près du bord droit */
+.tooltip .tooltiptext.align-right {
+  left: auto;
+  right: 0;
+  transform: translateX(0);
+}
+
+.tooltip .tooltiptext.align-right::after {
+  left: auto;
+  right: 20px;
+}
+
+.tooltip:hover .tooltiptext,
+.tooltip:focus .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Version mobile */
+@media (max-width: 768px) {
+  .tooltip .tooltiptext {
+    max-width: 220px;
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+    .phase-box {
+      background:var(--glass);
+      padding:10px;
+      border-radius:8px;
+      margin-top:8px;
+    }
+    .phase-box strong { color:#06b6d4; }
+
+    .stat-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+      gap:8px;
+      margin-top:10px;
+    }
+    .stat-card {
+      background:var(--card);
+      padding:10px;
+      border-radius:8px;
+      text-align:center;
+    }
+    .stat-card .num {
+      font-size:20px;
+      font-weight:800;
+      color:#06b6d4;
+    }
+    .stat-card .label {
+      font-size:12px;
+      color:var(--muted);
+      margin-top:4px;
     }
   </style>
 </head>
@@ -319,16 +449,15 @@
       </div>
 
       <div class="toc" id="toc" role="navigation" aria-label="Plan de la présentation">
-        <!-- TOC buttons injected by JS or present statically -->
-        <button data-slide="0" class="active">1 • Intro & définition</button>
+        <button data-slide="0" class="active">1 • Qu'est-ce qu'un NPI ?</button>
         <button data-slide="1">2 • Caractéristiques clés</button>
         <button data-slide="2">3 • Vagues historiques</button>
         <button data-slide="3">4 • Études de cas</button>
         <button data-slide="4">5 • Facteurs de réussite</button>
-        <button data-slide="5">6 • Débats & limites</button>
-        <button data-slide="6">7 • Chronologie & graphiques</button>
+        <button data-slide="5">6 • Limites & débats</button>
+        <button data-slide="6">7 • Données & chronologie</button>
         <button data-slide="7">8 • Mini-quiz</button>
-        <button data-slide="8">9 • Conclusion & références</button>
+        <button data-slide="8">9 • Conclusion</button>
       </div>
 
       <div class="progress" aria-hidden="true"><i id="progressBar" style="width:10%"></i></div>
@@ -339,11 +468,11 @@
           <button class="btn small" id="nextBtn" title="Diapos suivante (→)">Suiv. →</button>
         </div>
         <div class="right">
-          <button id="startPresent" class="btn ghost small">Lancer mode plein écran</button>
+          <button id="startPresent" class="btn ghost small">Mode plein écran</button>
         </div>
       </div>
 
-      <div class="small-credits">Contrôle: flèches ← → • Home/End pour début/fin • T pour TOC</div>
+      <div class="small-credits">Navigation : ← → • Home/End • T pour menu</div>
     </aside>
 
     <!-- Viewport -->
@@ -359,30 +488,86 @@
           <div class="content">
             <div class="column">
               <div class="panel">
-                <p><strong>Nouveaux Pays Industrialisés (NPI)</strong> : pays ayant connu une industrialisation rapide et soutenue, une forte intégration au commerce mondial et une transformation structurelle (agriculture → industrie/services) sur quelques décennies.</p>
-                <p class="muted">Critères souvent observés : hausse du PIB réel et du PIB/habitant, urbanisation, croissance des exportations manufacturières, hausse des investissements et montée en compétences.</p>
+                <h2>Définition simple</h2>
+                <p><strong>NPI = Nouveau Pays Industrialisé</strong></p>
+                <p style="margin-top:10px">Un pays qui était pauvre et agricole.</p>
+                <p style="margin-top:6px">Il s'est transformé en puissance industrielle.</p>
+                <p style="margin-top:6px">Cette transformation a pris 20 à 40 ans.</p>
 
-                <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
-                  <div class="callout">Durée typique : <strong>20-40 ans</strong></div>
-                  <div class="callout">Orientation : <strong>exportatrice</strong></div>
-                </div>
-
-                <div style="margin-top:12px" class="fact">
+                <div class="callout">
+                  💡 Un NPI change de catégorie économique en une génération
                 </div>
               </div>
 
-              <div style="margin-top:12px" class="panel">
+              <div class="panel" style="margin-top:12px">
+                <h2>Les trois piliers de la transformation</h2>
+                
+                <div class="phase-box">
+                  <strong>1. Industrialisation rapide</strong>
+                  <p style="margin-top:4px;font-size:13px">L'industrie passe de 10% à 40% de l'économie</p>
+                </div>
+
+                <div class="phase-box">
+                  <strong>2. Intégration mondiale</strong>
+                  <p style="margin-top:4px;font-size:13px">Les exportations atteignent 30 à 60% du PIB</p>
+                </div>
+
+                <div class="phase-box">
+                  <strong>3. Transition structurelle</strong>
+                  <p style="margin-top:4px;font-size:13px">Agriculture → Industrie → Services modernes</p>
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>Comment reconnaître un NPI ?</h2>
+                <p>Six indicateurs clés :</p>
+                
+                <ul style="margin-top:8px">
+                  <li><strong>Croissance :</strong> 6 à 10% par an pendant 20+ ans</li>
+                  <li><strong>Revenus :</strong> Passage de $2000 à $10000 par habitant</li>
+                  <li><strong>Industrie :</strong> 30 à 40% du PIB</li>
+                  <li><strong>Exports :</strong> Produits manufacturés dominants</li>
+                  <li><strong>Villes :</strong> 70 à 85% de population urbaine</li>
+                  <li><strong>Éducation :</strong> Plus de 90% d'alphabétisation</li>
+                </ul>
               </div>
             </div>
 
             <aside class="column" aria-hidden="true">
               <div class="panel">
-                <h3>Chiffres clés (exemples)</h3>
-                <div class="kv">
-                  <div class="item">Croiss. annuelle: 6-10% (périodes clés)</div>
-                  <div class="item">Exportations: 30-60% du PIB</div>
-                  <div class="item">R&D (ex Corée): ~4-5% PIB</div>
+                <h3>Exemples de transformations</h3>
+                
+                <div class="stat-grid">
+                  <div class="stat-card">
+                    <div class="num">$158</div>
+                    <div class="label">Corée 1960</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">$6147</div>
+                    <div class="label">Corée 1990</div>
+                  </div>
                 </div>
+
+                <div class="stat-grid" style="margin-top:12px">
+                  <div class="stat-card">
+                    <div class="num">$195</div>
+                    <div class="label">Chine 1980</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">$4550</div>
+                    <div class="label">Chine 2010</div>
+                  </div>
+                </div>
+
+                <div class="fact" style="margin-top:12px">
+                  <strong>Origine du concept :</strong> Le terme apparaît dans les années 1970 pour décrire le "miracle asiatique" (Corée, Taïwan, Singapour, Hong Kong).
+                </div>
+
+                <div class="callout" style="margin-top:10px">
+                  Durée typique : 20-40 ans<br>
+                  Orientation : Exportation dès le début
+                </div>
+              </div>
             </aside>
           </div>
         </section>
@@ -390,40 +575,113 @@
         <!-- Slide 1: Caractéristiques -->
         <section class="slide hidden" data-index="1" aria-label="Caractéristiques">
           <div class="headline">
-            <h1>Caractéristiques clés</h1>
+            <h1>Les 5 caractéristiques clés</h1>
             <div class="meta">Slide 2 / 9</div>
           </div>
           <div class="content">
             <div class="column">
               <div class="panel">
-                <h2>1) Croissance soutenue</h2>
-                <p class="muted">Les NPI affichent des taux de croissance élevés et soutenus sur plusieurs décennies. Ce n'est pas du "pic" : c'est une trajectoire.</p>
+                <h2>1️⃣ Une croissance exceptionnelle</h2>
+                <p><strong>Taux de croissance :</strong> 6 à 10% par an</p>
+                <p style="margin-top:6px"><strong>Durée :</strong> 20 à 40 ans sans interruption</p>
+                <p style="margin-top:6px"><strong>Résultat :</strong> Le PIB est multiplié par 10 à 30</p>
 
-                <h2 style="margin-top:12px">2) Transformation industrielle</h2>
-                <p class="muted">Déplacement de main-d'œuvre vers l'industrie manufacturière puis les services modernes (logistique, finance, high-tech).</p>
+                <div class="fact">
+                  <strong>Exemple Corée :</strong> Croissance moyenne de 8,6% entre 1960 et 1990. Le PIB a été multiplié par 39. Aujourd'hui, la Corée est la 11ᵉ économie mondiale.
+                </div>
 
-                <h2 style="margin-top:12px">3) Intégration mondiale</h2>
-                <p class="muted">Incorporation aux chaînes de valeur mondiales via IDE, ZES, accords commerciaux.</p>
-
-                <div style="margin-top:12px" class="callout">Un NPI est plus qu'un bon chiffre : c'est une <strong>transformation</strong> économique et sociale.</div>
+                <div class="callout">
+                  💡 Ce n'est pas un "pic" mais une trajectoire soutenue sur des décennies
+                </div>
               </div>
 
               <div class="panel" style="margin-top:12px">
-                <h2>Exemples rapides</h2>
-                <ul>
-                  <li><strong>Corée du Sud</strong> : du textile et de la reconstruction aux conglomérats technologiques (Samsung, Hyundai).</li>
-                  <li><strong>Chine</strong> : exportateur massif puis montée en gamme et innovation.</li>
-                  <li><strong>Vietnam / Bangladesh</strong> : spécialisations textiles et manufacture, montée dans l'électronique (Vietnam).</li>
+                <h2>2️⃣ Une transformation profonde de l'économie</h2>
+                <p><strong>Point de départ :</strong> 60-70% de la population en agriculture</p>
+                <p style="margin-top:6px"><strong>Point d'arrivée :</strong> 50-60% dans les services modernes</p>
+
+                <h3 style="color:#06b6d4">Les trois phases</h3>
+
+                <div class="phase-box">
+                  <strong>Phase 1 (années 1960-70)</strong>
+                  <p style="font-size:13px;margin-top:4px">Textile, assemblage simple, industries légères</p>
+                </div>
+
+                <div class="phase-box">
+                  <strong>Phase 2 (années 1980-90)</strong>
+                  <p style="font-size:13px;margin-top:4px">Automobile, électronique, chimie, aérospatiale</p>
+                </div>
+
+                <div class="phase-box">
+                  <strong>Phase 3 (années 2000+)</strong>
+                  <p style="font-size:13px;margin-top:4px">Haute technologie, R&D, services à forte valeur</p>
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>3️⃣ L'intégration aux chaînes mondiales</h2>
+                <p><strong>Chaînes de valeur mondiales (CVM) :</strong> Réseaux de production internationaux</p>
+
+                <p style="margin-top:10px"><strong>Comment ça marche ?</strong></p>
+                <ul style="margin-top:6px">
+                  <li>Attirer les investissements étrangers (IDE)</li>
+                  <li>Créer des zones économiques spéciales (ZES)</li>
+                  <li>Signer des accords de libre-échange</li>
+                  <li>Obtenir des transferts de technologie</li>
                 </ul>
+
+                <div class="callout">
+                  🔗 Stratégie : Commencer par l'assemblage simple, puis remonter vers la conception et l'innovation
+                </div>
               </div>
             </div>
 
             <aside class="column">
               <div class="panel">
-                <h3>Mini-graphe, part de l'industrie (%)</h3>
+                <h2>4️⃣ L'éducation massive</h2>
+                <p><strong>Tous les NPI ont massivement investi dans l'éducation</strong></p>
+
+                <div class="stat-grid" style="margin-top:10px">
+                  <div class="stat-card">
+                    <div class="num">35%</div>
+                    <div class="label">Corée 1960<br>Scolarisation</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">95%</div>
+                    <div class="label">Corée 1990<br>Scolarisation</div>
+                  </div>
+                </div>
+
+                <ul style="margin-top:12px;font-size:13px">
+                  <li>Primaire universel</li>
+                  <li>Secondaire généralisé</li>
+                  <li>Formation technique</li>
+                  <li>Universités scientifiques</li>
+                </ul>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>5️⃣ Le rôle de l'État</h2>
+                <p><strong>L'État orchestre l'industrialisation</strong></p>
+
+                <p style="margin-top:10px">Comment ?</p>
+                <ul style="margin-top:6px;font-size:13px">
+                  <li>Plans stratégiques (plans quinquennaux)</li>
+                  <li>Crédit dirigé vers secteurs clés</li>
+                  <li>Soutien aux champions nationaux</li>
+                  <li>Infrastructures massives</li>
+                  <li>Protection temporaire des industries</li>
+                </ul>
+
+                <div class="fact" style="margin-top:10px">
+                  <strong>Terme clé :</strong> "État-développeur" = un État qui planifie et dirige activement l'industrialisation
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h3>📊 Graphique : Parts de l'économie</h3>
                 <div class="chart" aria-hidden="true">
-                  <!-- Simple SVG bar -->
-                  <svg width="100%" height="100%" viewBox="0 0 300 120" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Graphique part industrie">
+                  <svg width="100%" height="100%" viewBox="0 0 300 120" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Graphique parts économie">
                     <rect x="15" y="40" width="40" height="60" rx="6" fill="url(#g1)"></rect>
                     <rect x="85" y="20" width="40" height="80" rx="6" fill="url(#g2)"></rect>
                     <rect x="155" y="60" width="40" height="40" rx="6" fill="url(#g3)"></rect>
@@ -434,14 +692,12 @@
                       <linearGradient id="g3" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#34d399"/></linearGradient>
                       <linearGradient id="g4" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#f97316"/></linearGradient>
                     </defs>
-                    <text x="35" y="115" text-anchor="middle" fill="#cfeaf2" font-size="11">Avant</text>
-                    <text x="105" y="115" text-anchor="middle" fill="#cfeaf2" font-size="11">Pointe</text>
+                    <text x="35" y="115" text-anchor="middle" fill="#cfeaf2" font-size="11">Agri</text>
+                    <text x="105" y="115" text-anchor="middle" fill="#cfeaf2" font-size="11">Indust</text>
                     <text x="175" y="115" text-anchor="middle" fill="#cfeaf2" font-size="11">Transition</text>
                     <text x="245" y="115" text-anchor="middle" fill="#cfeaf2" font-size="11">Services</text>
                   </svg>
                 </div>
-
-                <div style="margin-top:10px" class="muted">Interprétez : hauteur = part de main-d'œuvre ou de valeur ajoutée selon contexte.</div>
               </div>
             </aside>
           </div>
@@ -450,85 +706,343 @@
         <!-- Slide 2: Vagues -->
         <section class="slide hidden" data-index="2" aria-label="Vagues">
           <div class="headline">
-            <h1>Les vagues d'industrialisation</h1>
+            <h1>Les 4 vagues d'industrialisation</h1>
             <div class="meta">Slide 3 / 9</div>
           </div>
           <div class="content">
             <div class="column">
               <div class="panel">
-                <h2>Vague 1 — 1960s-1970s</h2>
-                <p class="muted"><strong>Asie de l'Est (Corée du Sud, Taïwan, Hong Kong, Singapour)</strong> : État-développeur, substitution exportatrice intelligente, industrial policy, éducation.</p>
+                <h2>🐉 Vague 1 : Les dragons asiatiques (1960-1980)</h2>
+                <p><strong>Pays :</strong> Corée du Sud, Taïwan, Hong Kong, Singapour</p>
 
-                <h2 style="margin-top:12px">Vague 2 — 1980s-1990s</h2>
-                <p class="muted">Malaisie, Thaïlande, Mexique, Chili : ouverture, IDE, intégration régionale, manufacturiers multinationaux.</p>
+                <h3 style="color:#06b6d4">Le contexte</h3>
+                <ul style="margin-top:6px">
+                  <li>Guerre froide : soutien occidental massif</li>
+                  <li>Reconstruction après les guerres</li>
+                  <li>Volonté de rattrapage rapide</li>
+                </ul>
 
-                <h2 style="margin-top:12px">Vague 3 — 2000s+</h2>
-                <p class="muted">Chine et plus tard Vietnam, Inde, Indonésie : chaînes de valeur mondiales massives, politique industrielle ciblée, ZES, réforme structurelle.</p>
+                <h3 style="color:#06b6d4">La stratégie</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>État-développeur :</strong> Planification active de l'économie</li>
+                  <li><strong>Crédit dirigé :</strong> Prêts bancaires aux secteurs prioritaires</li>
+                  <li><strong>Champions nationaux :</strong> Soutien aux grandes entreprises (chaebols en Corée)</li>
+                  <li><strong>Éducation massive :</strong> Alphabétisation et formation technique</li>
+                </ul>
 
-                <h2 style="margin-top:12px">Vague 4 — 2010s+</h2>
-                <p class="muted">Bangladesh, certains pays africains, picks de "nearshoring": spécialisation textile, manufacture à bas coût, puis digital services.</p>
+                <div class="fact">
+                  <strong>Résultat :</strong> PIB par habitant multiplié par 6 à 8 en 20 ans. Corée : $158 (1960) → $6147 (1990). Alphabétisation : 70% → 98%.
+                </div>
+
+                <div class="callout">
+                  💡 Terme clé : <strong>Chaebol</strong> = grand conglomérat familial coréen (Samsung, Hyundai, LG)
+                </div>
               </div>
 
               <div class="panel" style="margin-top:12px">
-                <h2>Comparaison des politiques</h2>
-                <table>
-                  <thead><tr><th>Période</th><th>Instruments</th><th>Rôle de l'État</th></tr></thead>
-                  <tbody>
-                    <tr><td>60s-70s</td><td>Subventions, banques publiques, contrôle des importations</td><td>Actif et dirigiste</td></tr>
-                    <tr><td>80s-90s</td><td>IDE, ZES, privatisations partiel</td><td>Facilitateur</td></tr>
-                    <tr><td>2000s+</td><td>Intégration aux GVC, réforme, incitations fiscales</td><td>Stratégique</td></tr>
-                  </tbody>
-                </table>
+                <h2>🏭 Vague 2 : Les émergents régionaux (1980-2000)</h2>
+                <p><strong>Pays :</strong> Malaisie, Thaïlande, Indonésie, Mexique, Chili, Turquie</p>
+
+                <h3 style="color:#06b6d4">Le contexte</h3>
+                <ul style="margin-top:6px">
+                  <li>Mondialisation accélérée</li>
+                  <li>Délocalisation depuis les pays riches</li>
+                  <li>Accords régionaux (ASEAN, ALENA)</li>
+                </ul>
+
+                <h3 style="color:#06b6d4">La stratégie</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>IDE massifs :</strong> Attirer les multinationales</li>
+                  <li><strong>ZES :</strong> Zones franches avec avantages fiscaux</li>
+                  <li><strong>Intégration régionale :</strong> Commerce entre voisins</li>
+                  <li><strong>Privatisations :</strong> Ouverture partielle de l'économie</li>
+                </ul>
+
+                <div class="fact">
+                  <strong>Résultat :</strong> Malaisie : $1812 (1980) → $4369 (2000). Thaïlande : forte croissance jusqu'à la crise de 1997.
+                </div>
+
+                <div class="callout">
+                  💡 Terme clé : <strong>ZES (Zone Économique Spéciale)</strong> = territoire avec règles fiscales et douanières avantageuses
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>🚀 Vague 3 : Le géant chinois et ses voisins (2000-2020)</h2>
+                <p><strong>Pays :</strong> Chine, Vietnam, Inde, Indonésie, Philippines</p>
+
+                <h3 style="color:#06b6d4">Le contexte</h3>
+                <ul style="margin-top:6px">
+                  <li>Chine entre à l'OMC (2001)</li>
+                  <li>Explosion des chaînes de valeur mondiales</li>
+                  <li>Révolution numérique</li>
+                </ul>
+
+                <h3 style="color:#06b6d4">La stratégie</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>Échelle massive :</strong> ZES géantes (Shenzhen)</li>
+                  <li><strong>"Made in China 2025" :</strong> Montée en gamme technologique</li>
+                  <li><strong>Écosystèmes digitaux :</strong> Alibaba, Tencent, Huawei</li>
+                  <li><strong>Infrastructure :</strong> Routes de la soie, ports, trains</li>
+                </ul>
+
+                <div class="fact">
+                  <strong>Résultat :</strong> Chine : $959 (2000) → $10500 (2020). 800 millions de personnes sorties de la pauvreté. Vietnam : $402 (2000) → $2786 (2020).
+                </div>
               </div>
             </div>
 
             <aside class="column">
               <div class="panel">
+                <h2>🌐 Vague 4 : Les nouveaux entrants (2010-aujourd'hui)</h2>
+                <p><strong>Pays :</strong> Bangladesh, Éthiopie, Kenya, Maroc, Philippines</p>
+
+                <h3 style="color:#06b6d4">Le contexte</h3>
+                <ul style="margin-top:6px;font-size:13px">
+                  <li>Hausse des salaires chinois</li>
+                  <li>Relocalisation de proximité</li>
+                  <li>Transition numérique</li>
+                  <li>COVID-19 : diversification des chaînes</li>
+                </ul>
+
+                <h3 style="color:#06b6d4">La stratégie</h3>
+                <ul style="margin-top:6px;font-size:13px">
+                  <li>Textile et assemblage d'abord</li>
+                  <li>Électronique simple ensuite</li>
+                  <li>Services numériques (centres d'appels)</li>
+                  <li>Accords commerciaux préférentiels</li>
+                </ul>
+
+                <div class="fact">
+                  <strong>En cours :</strong> Bangladesh : textile = 85% des exportations. Éthiopie : pôle manufacturier africain. Maroc : automobile et aéronautique.
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h3>📊 Comparaison des modèles</h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Période</th>
+                      <th>Stratégie clé</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1960-80</td>
+                      <td>État dirigiste fort</td>
+                    </tr>
+                    <tr>
+                      <td>1980-00</td>
+                      <td>Ouverture aux IDE</td>
+                    </tr>
+                    <tr>
+                      <td>2000-20</td>
+                      <td>Chaînes mondiales</td>
+                    </tr>
+                    <tr>
+                      <td>2010+</td>
+                      <td>Numérique + proximité</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
                 <h3>À retenir</h3>
-                <p class="muted">Les stratégies diffèrent mais plusieurs patterns reviennent : <strong>Éducation, infrastructures, ouverture contrôlée</strong> et management des IDE.</p>
+                <p class="muted">Chaque vague adapte sa stratégie au contexte mondial. Mais trois constantes reviennent toujours :</p>
+                <ul style="margin-top:8px;font-size:13px">
+                  <li>Éducation massive</li>
+                  <li>Infrastructures solides</li>
+                  <li>Ouverture contrôlée</li>
+                </ul>
               </div>
             </aside>
           </div>
         </section>
 
-        <!-- Slide 3: Etudes de cas -->
+        <!-- Slide 3: Études de cas -->
         <section class="slide hidden" data-index="3" aria-label="Études de cas">
           <div class="headline">
-            <h1>Études de cas approfondies</h1>
+            <h1>Trois études de cas</h1>
             <div class="meta">Slide 4 / 9</div>
           </div>
           <div class="content">
             <div class="column">
               <div class="panel">
-                <h2>Corée du Sud</h2>
-                <p class="muted">Après la guerre, modèle d'exportation poussé par l'État, conglomérats (chaebols), forte R&D (~4-5% du PIB aujourd'hui), priorité à l'éducation technique.</p>
-                <ul>
-                  <li>PIB/hab a bondi sur 30-40 ans</li>
-                  <li>Transition vers haute technologie</li>
+                <h2>🇰🇷 Corée du Sud : Du désastre au miracle</h2>
+                
+                <h3 style="color:#ef4444">1960 : Le point de départ</h3>
+                <ul style="margin-top:6px">
+                  <li>Pays dévasté par la guerre (1950-1953)</li>
+                  <li>PIB par habitant : $158</li>
+                  <li>70% de la population en agriculture</li>
+                  <li>Infrastructures détruites</li>
                 </ul>
+
+                <h3 style="color:#06b6d4;margin-top:12px">La transformation en 4 phases</h3>
+
+                <div class="phase-box">
+                  <strong>Années 1960 :</strong> Textile et assemblage simple
+                </div>
+
+                <div class="phase-box">
+                  <strong>Années 1970 :</strong> Industrie lourde (acier, chimie, chantiers navals)
+                </div>
+
+                <div class="phase-box">
+                  <strong>Années 1980 :</strong> Électronique grand public et automobile
+                </div>
+
+                <div class="phase-box">
+                  <strong>Années 1990-2000 :</strong> Haute technologie, semiconducteurs, 5G
+                </div>
+
+                <h3 style="color:#10b981;margin-top:12px">2024 : Le résultat</h3>
+                <div class="stat-grid">
+                  <div class="stat-card">
+                    <div class="num">$34,000</div>
+                    <div class="label">PIB/habitant</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">4.8%</div>
+                    <div class="label">R&D (du PIB)</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">11ᵉ</div>
+                    <div class="label">Économie mondiale</div>
+                  </div>
+                </div>
+
+                <div class="callout" style="margin-top:10px">
+                  🔑 Clés du succès : Chaebols soutenus par l'État, éducation massive (95% au secondaire), orientation export, culture du travail
+                </div>
               </div>
 
               <div class="panel" style="margin-top:12px">
-                <h2>Chine</h2>
-                <p class="muted">Réformes 1978, ZES, entrée à l'OMC en 2001 = explosion des exportations et réduction spectaculaire de la pauvreté. Passage récent de “manufacturier” à “innovation & écosystème technologique”.</p>
-                <div class="muted" style="margin-top:8px">Remarque : taille et échelle changent la donne — la Chine n'est pas juste un "NPI" classique : c'est un cas hybride et unique.</div>
-              </div>
+                <h2>🇨🇳 Chine : Le géant aux multiples visages</h2>
+                
+                <h3 style="color:#ef4444">1978 : Sortie du maoïsme</h3>
+                <ul style="margin-top:6px">
+                  <li>Économie planifiée inefficace</li>
+                  <li>PIB par habitant : $156</li>
+                  <li>70% en agriculture</li>
+                  <li>Famines récentes</li>
+                </ul>
 
-              <div class="panel" style="margin-top:12px">
-                <h2>Vietnam & Bangladesh</h2>
-                <p class="muted">Vietnam : Đổi Mới + accords commerciaux (CPTPP, EVFTA) + IDE en électronique. Bangladesh : spécialisation textile, gains d'emploi massifs mais défis sociaux.</p>
+                <h3 style="color:#06b6d4;margin-top:12px">Les réformes de Deng Xiaoping</h3>
+
+                <div class="phase-box">
+                  <strong>1978-1990 :</strong> Zones économiques spéciales (Shenzhen), décollectivisation agricole
+                </div>
+
+                <div class="phase-box">
+                  <strong>1990-2001 :</strong> Urbanisation massive, manufactures d'export, infrastructures géantes
+                </div>
+
+                <div class="phase-box">
+                  <strong>2001-2015 :</strong> Entrée à l'OMC, explosion des exportations, "usine du monde"
+                </div>
+
+                <div class="phase-box">
+                  <strong>2015-aujourd'hui :</strong> "Made in China 2025", montée en gamme (IA, 5G, véhicules électriques)
+                </div>
+
+                <h3 style="color:#10b981;margin-top:12px">2024 : Le résultat</h3>
+                <div class="stat-grid">
+                  <div class="stat-card">
+                    <div class="num">$12,700</div>
+                    <div class="label">PIB/habitant</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">2ᵉ</div>
+                    <div class="label">Économie mondiale</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">30%</div>
+                    <div class="label">Manufactures mondiales</div>
+                  </div>
+                </div>
+
+                <div class="fact" style="margin-top:10px">
+                  <strong>800 millions</strong> de personnes sorties de la pauvreté. Leader mondial : véhicules électriques, solaire, batteries, 5G.
+                </div>
+
+                <div class="callout" style="margin-top:8px">
+                  ⚠️ Particularité : Ce n'est pas un NPI "classique" mais un géant hybride. Régions côtières ultra-riches, intérieur encore en développement.
+                </div>
               </div>
             </div>
 
             <aside class="column">
               <div class="panel">
-                <h3>Mini-tableau comparatif</h3>
+                <h2>🇻🇳 Vietnam : Le nouveau dragon</h2>
+                
+                <h3 style="color:#ef4444">1986 : Après la guerre</h3>
+                <ul style="margin-top:6px;font-size:13px">
+                  <li>Économie centralisée inefficace</li>
+                  <li>Embargo américain</li>
+                  <li>PIB par habitant : $231</li>
+                  <li>Isolement international</li>
+                </ul>
+
+                <h3 style="color:#06b6d4;margin-top:12px">Đổi Mới (Renouveau)</h3>
+
+                <div class="phase-box">
+                  <strong>1990s :</strong> Normalisation avec les USA (1995), IDE textile/chaussures
+                </div>
+
+                <div class="phase-box">
+                  <strong>2000s :</strong> Entrée à l'OMC (2007), IDE massifs (Samsung, Intel)
+                </div>
+
+                <div class="phase-box">
+                  <strong>2010s+ :</strong> Accords CPTPP/EVFTA, diversification post-COVID
+                </div>
+
+                <h3 style="color:#10b981;margin-top:12px">2024 : Le résultat</h3>
+                <div class="stat-grid">
+                  <div class="stat-card">
+                    <div class="num">$4,200</div>
+                    <div class="label">PIB/habitant</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">6-7%</div>
+                    <div class="label">Croissance annuelle</div>
+                  </div>
+                </div>
+
+                <div class="fact" style="margin-top:10px">
+                  Samsung produit 50% de ses smartphones au Vietnam. Exportations : $370 milliards.
+                </div>
+
+                <div class="callout" style="margin-top:8px">
+                  🔑 Atouts : Coûts compétitifs, stabilité politique, nombreux accords commerciaux, proximité de la Chine
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h3>Comparaison rapide</h3>
                 <table>
-                  <thead><tr><th>Pays</th><th>Forces</th><th>Défis</th></tr></thead>
+                  <thead>
+                    <tr>
+                      <th>Pays</th>
+                      <th>Force principale</th>
+                    </tr>
+                  </thead>
                   <tbody>
-                    <tr><td>Corée</td><td>R&D, éducation, export</td><td>Concentration chaebol</td></tr>
-                    <tr><td>Chine</td><td>Échelle, IDE, GVC</td><td>Dette, déséquilibres</td></tr>
-                    <tr><td>Vietnam</td><td>Coût, accords</td><td>Infrastructure</td></tr>
+                    <tr>
+                      <td>Corée</td>
+                      <td>R&D et innovation</td>
+                    </tr>
+                    <tr>
+                      <td>Chine</td>
+                      <td>Échelle et intégration</td>
+                    </tr>
+                    <tr>
+                      <td>Vietnam</td>
+                      <td>Coûts et accords</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -536,104 +1050,282 @@
           </div>
         </section>
 
-        <!-- Slide 4: Facteurs -->
-        <section class="slide hidden" data-index="4" aria-label="Facteurs de réussite">
+        <!-- Slide 4: Facteurs de réussite -->
+        <section class="slide hidden" data-index="4" aria-label="Facteurs">
           <div class="headline">
-            <h1>Facteurs de réussite</h1>
+            <h1>Les 5 facteurs de réussite</h1>
             <div class="meta">Slide 5 / 9</div>
           </div>
           <div class="content">
             <div class="column">
               <div class="panel">
-                <h2>1) Gouvernance et politique industrielle</h2>
-                <p class="muted">Politiques cohérentes, capacités de mise en œuvre, promotion ciblée des secteurs compétitifs.</p>
+                <h2>1️⃣ Un État stratégique et actif</h2>
+                <p><strong>L'État ne se contente pas de réguler.</strong></p>
+                <p style="margin-top:6px">Il orchestre activement l'industrialisation.</p>
 
-                <h2 style="margin-top:12px">2) Investissement en capital humain</h2>
-                <p class="muted">Éducation technique, formation continue, santé — conditions pour productivité.</p>
+                <h3 style="color:#06b6d4;margin-top:10px">Comment ?</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>Plans stratégiques :</strong> Plans quinquennaux, Vision 2030</li>
+                  <li><strong>Crédit dirigé :</strong> Banques publiques financent les secteurs prioritaires</li>
+                  <li><strong>Champions nationaux :</strong> Soutien ciblé aux grandes entreprises</li>
+                  <li><strong>Protection temporaire :</strong> Droits de douane sur importations</li>
+                  <li><strong>Infrastructures :</strong> Routes, ports, électricité, télécoms</li>
+                </ul>
 
-                <h2 style="margin-top:12px">3) Accès aux marchés & IDE</h2>
-                <p class="muted">IDE apporte capital, réseaux et transfert technologique — mais exige gestion (conditions, contenu local).</p>
+                <div class="fact">
+                  <strong>Exemple Corée :</strong> La Banque de développement (KDB) finance 70% de l'industrie lourde dans les années 1970. L'État impose des objectifs d'export aux chaebols en échange de crédits préférentiels.
+                </div>
+
+                <div class="callout">
+                  💡 Terme clé : <strong>État-développeur</strong> = État qui planifie et dirige l'économie vers l'industrialisation
+                </div>
               </div>
 
               <div class="panel" style="margin-top:12px">
-                <h2>Risques & pièges</h2>
-                <ul>
-                  <li>Dépendance excessive aux industries à faible valeur ajoutée</li>
-                  <li>Inégalités et tensions sociales</li>
-                  <li>Chocs externes (crise globale, hausse salaires, remplacement technologique)</li>
+                <h2>2️⃣ L'éducation comme fondation</h2>
+                <p><strong>Sans main-d'œuvre qualifiée, pas d'industrie compétitive.</strong></p>
+
+                <h3 style="color:#06b6d4;margin-top:10px">Les investissements clés</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>Primaire universel :</strong> Alphabétisation de masse</li>
+                  <li><strong>Secondaire généralisé :</strong> Collèges et lycées techniques</li>
+                  <li><strong>Universités scientifiques :</strong> KAIST (Corée), Tsinghua (Chine)</li>
+                  <li><strong>Formation continue :</strong> Adaptation aux nouvelles technologies</li>
+                  <li><strong>Santé publique :</strong> Travailleurs en bonne santé</li>
                 </ul>
+
+                <div class="stat-grid" style="margin-top:10px">
+                  <div class="stat-card">
+                    <div class="num">35%</div>
+                    <div class="label">Corée 1960<br>Secondaire</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">95%</div>
+                    <div class="label">Corée 1990<br>Secondaire</div>
+                  </div>
+                </div>
+
+                <div class="fact" style="margin-top:10px">
+                  Singapour consacre 40% de son budget public à l'éducation et à la santé. Résultat : la main-d'œuvre la plus qualifiée au monde.
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>3️⃣ L'intégration aux marchés mondiaux</h2>
+                <p><strong>Ouverture contrôlée et progressive.</strong></p>
+
+                <h3 style="color:#06b6d4;margin-top:10px">Les stratégies</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>IDE ciblés :</strong> Attirer multinationales dans secteurs stratégiques</li>
+                  <li><strong>Transferts technologiques :</strong> Exiger coentreprises et formation</li>
+                  <li><strong>ZES :</strong> Infrastructures + incitations fiscales</li>
+                  <li><strong>Accords commerciaux :</strong> Accès préférentiel aux marchés riches</li>
+                  <li><strong>Chaînes de valeur :</strong> Intégration progressive (assemblage → conception)</li>
+                </ul>
+
+                <div class="fact">
+                  <strong>Exemple Vietnam :</strong> Les accords CPTPP et EVFTA donnent accès à plus d'un milliard de consommateurs. Résultat : les IDE en électronique explosent. Samsung investit $17 milliards.
+                </div>
               </div>
             </div>
 
             <aside class="column">
               <div class="panel">
-                <h3>Politique utile</h3>
-                <p class="muted">Une politique efficace combine <strong>incitations</strong>, <strong>sélection stratégique</strong> et <strong>services publics</strong> (R&D, éducation, infrastructures).</p>
-                <div style="margin-top:10px" class="fact">Ex : soutien ciblé aux fournisseurs locaux pour monter en gamme dans GVC.</div>
+                <h2>4️⃣ La stabilité économique</h2>
+                <p><strong>Un climat favorable à l'investissement.</strong></p>
+
+                <ul style="margin-top:10px;font-size:13px">
+                  <li><strong>Inflation contrôlée :</strong> Éviter l'hyperinflation</li>
+                  <li><strong>Déficit raisonnable :</strong> Dette soutenable</li>
+                  <li><strong>Taux de change compétitif :</strong> Favoriser les exports</li>
+                  <li><strong>Droit de propriété :</strong> Sécuriser les investissements</li>
+                  <li><strong>Réforme agraire :</strong> Libérer la main-d'œuvre</li>
+                </ul>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>5️⃣ La combinaison gagnante</h2>
+                <p><strong>Aucun pays n'a réussi avec un seul facteur.</strong></p>
+                <p style="margin-top:10px">Le succès vient toujours de la combinaison :</p>
+
+                <div style="display:grid;gap:8px;margin-top:10px">
+                  <div class="callout" style="margin:0">
+                    État + Éducation
+                  </div>
+                  <div class="callout" style="margin:0">
+                    Ouverture + Stabilité
+                  </div>
+                  <div class="callout" style="margin:0">
+                    Infrastructures + Technologies
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>⚠️ Les pièges à éviter</h2>
+                
+                <h3 style="color:#ef4444;font-size:14px">Piège du revenu intermédiaire</h3>
+                <p style="font-size:13px;margin-top:4px">Stagner à $5000-10000/habitant sans monter en gamme.</p>
+
+                <h3 style="color:#ef4444;font-size:14px;margin-top:10px">Autres risques</h3>
+                <ul style="margin-top:6px;font-size:13px">
+                  <li>Rester coincé dans le bas de gamme</li>
+                  <li>Inégalités qui créent des tensions</li>
+                  <li>Dégradation environnementale</li>
+                  <li>Dépendance technologique</li>
+                  <li>Chocs externes (crises financières)</li>
+                  <li>Automation qui réduit les emplois</li>
+                </ul>
               </div>
             </aside>
           </div>
         </section>
 
-        <!-- Slide 5: Débats & limites -->
-        <section class="slide hidden" data-index="5" aria-label="Débats">
+        <!-- Slide 5: Limites & débats -->
+        <section class="slide hidden" data-index="5" aria-label="Limites">
           <div class="headline">
-            <h1>Débats & limites</h1>
+            <h1>Limites et débats critiques</h1>
             <div class="meta">Slide 6 / 9</div>
           </div>
           <div class="content">
             <div class="column">
               <div class="panel">
-                <h2>Inégalités et durabilité</h2>
-                <p class="muted">Croissance n'implique pas distribution équitable. Les NPI doivent gérer inégalités urbain/rural et impacts environnementaux.</p>
+                <h2>1️⃣ Des inégalités explosives</h2>
+                <p><strong>La croissance ne bénéficie pas à tous.</strong></p>
 
-                <h2 style="margin-top:12px">Dépendance technologique</h2>
-                <p class="muted">Beaucoup d'industries reposent sur technologies importées, la montée en autonomie technologique est un challenge.</p>
+                <h3 style="color:#ef4444;margin-top:10px">Les fractures</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>Urbain vs rural :</strong> Métropoles riches, campagnes pauvres</li>
+                  <li><strong>Côtes vs intérieur :</strong> Régions délaissées</li>
+                  <li><strong>Revenus :</strong> Écarts qui se creusent</li>
+                  <li><strong>Conditions de travail :</strong> Usines type Foxconn</li>
+                  <li><strong>Logement :</strong> Bulles immobilières, jeunes exclus</li>
+                </ul>
 
-                <h2 style="margin-top:12px">Souveraineté économique</h2>
-                <p class="muted">Trop d'exposition aux marchés étrangers peut rendre vulnérable au protectionnisme.</p>
+                <div class="fact">
+                  <strong>Exemple Chine :</strong> PIB/habitant Shanghai : $25,000 vs Guizhou : $7,000. 400 millions de migrants internes sans accès égal aux services publics (système hukou).
+                </div>
+
+                <div class="callout">
+                  Coefficient Gini : Chine 0,47 | Corée 0,35 (plus c'est élevé, plus les inégalités sont fortes)
+                </div>
               </div>
 
               <div class="panel" style="margin-top:12px">
-                <h2>Question critique pour présenter</h2>
-                <p class="muted"><strong>Est-ce que le modèle d'industrialisation rapide est durable ?</strong> Posez la question au public et proposez des éléments de réponse (transition verte, formation continue).</p>
+                <h2>2️⃣ Un coût environnemental massif</h2>
+                <p><strong>Industrialisation rapide = catastrophe écologique.</strong></p>
+
+                <h3 style="color:#ef4444;margin-top:10px">Les problèmes</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>Pollution de l'air :</strong> PM2.5 extrême (Delhi, Pékin)</li>
+                  <li><strong>Pollution de l'eau :</strong> Rivières toxiques</li>
+                  <li><strong>Émissions CO₂ :</strong> Chine = 30% des émissions mondiales</li>
+                  <li><strong>Déforestation :</strong> Indonésie, Brésil</li>
+                  <li><strong>Déchets électroniques :</strong> Recyclage insuffisant</li>
+                </ul>
+
+                <div class="callout">
+                  ⚠️ Dilemme : Faut-il polluer d'abord et nettoyer après (comme l'ont fait UK et USA) ? Ou peut-on industrialiser "proprement" ?
+                </div>
+
+                <div class="fact">
+                  L'urgence climatique impose une transition verte <strong>pendant</strong> l'industrialisation, pas après. Mais c'est plus difficile et plus cher.
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>3️⃣ La dépendance technologique</h2>
+                <p><strong>Beaucoup de NPI assemblent mais ne conçoivent pas.</strong></p>
+
+                <h3 style="color:#ef4444;margin-top:10px">Les vulnérabilités</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>Brevets étrangers :</strong> Technologies clés contrôlées par USA/Japon/Europe</li>
+                  <li><strong>Dépendance aux composants :</strong> Chine dépend des puces US/Taiwan</li>
+                  <li><strong>Guerre technologique :</strong> Sanctions paralysantes</li>
+                  <li><strong>Difficulté R&D :</strong> Passer de la copie à l'innovation</li>
+                </ul>
+
+                <div class="fact">
+                  <strong>Cas Huawei :</strong> Sanctions US en 2019 = perte d'accès aux puces 5nm et à Android. Parts de marché qui s'effondrent. Cela démontre la fragilité de la dépendance technologique.
+                </div>
               </div>
             </div>
 
             <aside class="column">
               <div class="panel">
-                <h3>Discussion guidée</h3>
-                <ul>
-                  <li>Quels coûts sociaux êtes-vous prêts à accepter pour la croissance ?</li>
+                <h2>4️⃣ Vulnérabilité aux chocs</h2>
+                <p><strong>L'orientation export expose aux crises.</strong></p>
+
+                <ul style="margin-top:10px;font-size:13px">
+                  <li><strong>Crises financières :</strong> 1997 Asie, 2008 mondiale</li>
+                  <li><strong>Protectionnisme :</strong> Tarifs Trump, tensions US-Chine</li>
+                  <li><strong>Pandémies :</strong> COVID-19 paralyse les chaînes</li>
+                  <li><strong>Délocalisation :</strong> Si salaires montent, les entreprises partent</li>
+                </ul>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>❓ Questions pour débattre</h2>
+                
+                <div style="background:rgba(124,58,237,0.08);padding:12px;border-radius:8px;margin-top:8px">
+                  <p style="margin:0;font-weight:700;font-size:14px">Le modèle NPI est-il durable ?</p>
+                  <p style="margin:6px 0 0;font-size:13px;color:#cfeaf2">Peut-on industrialiser sans répéter les erreurs polluantes du passé ?</p>
+                </div>
+
+                <div style="background:rgba(6,182,212,0.08);padding:12px;border-radius:8px;margin-top:8px">
+                  <p style="margin:0;font-weight:700;font-size:14px">Les robots ferment-ils la porte ?</p>
+                  <p style="margin:6px 0 0;font-size:13px;color:#cfeaf2">Si l'automation remplace les ouvriers, comment les pays pauvres peuvent-ils s'industrialiser ?</p>
+                </div>
+
+                <div style="background:rgba(16,185,129,0.08);padding:12px;border-radius:8px;margin-top:8px">
+                  <p style="margin:0;font-weight:700;font-size:14px">Quel prix social acceptable ?</p>
+                  <p style="margin:6px 0 0;font-size:13px;color:#cfeaf2">Inégalités, conditions de travail, pollution... Existe-t-il un modèle plus inclusif ?</p>
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h3>Points de réflexion</h3>
+                <ul style="font-size:13px">
                   <li>Peut-on "sauter" des étapes grâce au numérique ?</li>
+                  <li>Le modèle chinois est-il reproductible ailleurs ?</li>
+                  <li>Faut-il sacrifier l'environnement pour le développement ?</li>
                 </ul>
               </div>
             </aside>
           </div>
         </section>
 
-        <!-- Slide 6: Chronologie & graphiques -->
-        <section class="slide hidden" data-index="6" aria-label="Chronologie">
+        <!-- Slide 6: Données & chronologie -->
+        <section class="slide hidden" data-index="6" aria-label="Données">
           <div class="headline">
-            <h1>Chronologie & visualisations</h1>
+            <h1>Données et chronologie</h1>
             <div class="meta">Slide 7 / 9</div>
           </div>
           <div class="content">
             <div class="column">
               <div class="panel">
-                <h2>Chronologie succincte</h2>
-                <ol style="margin-top:10px">
-                  <li>Années 1960-1970 : premières industrialisations planifiées (Corée, Taïwan)</li>
-                  <li>Années 1980-1990 : ouverture + IDE, intégration régionale</li>
-                  <li>Années 2000 : explosion Chine, GVC</li>
-                  <li>2010+ : diversification, services, nearshoring</li>
-                </ol>
+                <h2>📅 Chronologie simplifiée</h2>
+                
+                <div class="phase-box">
+                  <strong>1960-1970 :</strong> Premières industrialisations planifiées (Corée, Taïwan, Hong Kong, Singapour)
+                </div>
+
+                <div class="phase-box">
+                  <strong>1980-1990 :</strong> Ouverture massive aux IDE, intégration régionale (Malaisie, Thaïlande, Mexique)
+                </div>
+
+                <div class="phase-box">
+                  <strong>2000-2010 :</strong> Explosion de la Chine, chaînes de valeur mondiales, entrée à l'OMC
+                </div>
+
+                <div class="phase-box">
+                  <strong>2010-aujourd'hui :</strong> Diversification, services numériques, relocalisation de proximité
+                </div>
               </div>
 
               <div class="panel" style="margin-top:12px">
-                <h2>Graphique — Croissance PIB (exemple simplifié)</h2>
+                <h2>📊 Croissance du PIB (exemple)</h2>
                 <div class="chart">
-                  <!-- small line chart -->
                   <svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMid meet" width="100%" height="100%" role="img" aria-label="Croissance PIB exemple">
                     <polyline fill="none" stroke="url(#lineg)" stroke-width="3" points="10,100 50,86 90,60 130,48 170,34 210,28 250,22 290,18" stroke-linecap="round" stroke-linejoin="round"></polyline>
                     <defs>
@@ -643,20 +1335,104 @@
                       </linearGradient>
                     </defs>
                     <text x="10" y="115" fill="#cfeaf2" font-size="11">1960</text>
-                    <text x="290" y="115" fill="#cfeaf2" font-size="11" text-anchor="end">2000+</text>
+                    <text x="290" y="115" fill="#cfeaf2" font-size="11" text-anchor="end">2020</text>
                   </svg>
-                </div>             
+                </div>
+                <p class="muted" style="margin-top:8px">Trajectoire typique d'un NPI : croissance soutenue sur plusieurs décennies</p>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>🔢 Quelques chiffres clés</h2>
+                
+                <div class="stat-grid">
+                  <div class="stat-card">
+                    <div class="num">800M</div>
+                    <div class="label">Personnes sorties de pauvreté (Chine)</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">×39</div>
+                    <div class="label">PIB Corée multiplié (1960-1990)</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">4.8%</div>
+                    <div class="label">R&D Corée (% du PIB)</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="num">30%</div>
+                    <div class="label">Manufactures mondiales (Chine)</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>📈 Évolution PIB/habitant</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Pays</th>
+                      <th>1960</th>
+                      <th>1990</th>
+                      <th>2020</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Corée</td>
+                      <td>$158</td>
+                      <td>$6,147</td>
+                      <td>$34,000</td>
+                    </tr>
+                    <tr>
+                      <td>Chine</td>
+                      <td>—</td>
+                      <td>$350</td>
+                      <td>$10,500</td>
+                    </tr>
+                    <tr>
+                      <td>Vietnam</td>
+                      <td>—</td>
+                      <td>$98</td>
+                      <td>$2,786</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <aside class="column">
               <div class="panel">
-                <h3>Sources de données</h3>
-                <ul>
-                  <li><a href="https://data.worldbank.org/" target="_blank" rel="noreferrer" style="color:inherit">Banque mondiale</a></li>
-                  <li><a href="https://unctad.org/" target="_blank" rel="noreferrer" style="color:inherit">CNUCED</a></li>
-                  <li><a href="https://www.oecd.org/" target="_blank" rel="noreferrer" style="color:inherit">OCDE</a></li>
+                <h3>📚 Sources de données</h3>
+                <ul style="font-size:13px">
+                  <li><a href="https://data.worldbank.org/" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:underline">Banque mondiale</a> : PIB, éducation, inégalités</li>
+                  <li><a href="https://unctad.org/" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:underline">CNUCED</a> : Commerce, IDE, chaînes de valeur</li>
+                  <li><a href="https://www.oecd.org/" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:underline">OCDE</a> : Politiques industrielles, R&D</li>
+                  <li><a href="https://www.unido.org/" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:underline">ONUDI</a> : Industrialisation, manufactures</li>
                 </ul>
-                <div class="muted" style="margin-top:10px">Astuce: préparez 1 ou 2 graphiques réels (CSV → chart) pour votre public si vous avez accès à internet le jour J.</div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h3>🌍 Répartition géographique</h3>
+                <p class="muted" style="margin-top:8px">La majorité des NPI sont concentrés en Asie de l'Est et du Sud-Est.</p>
+                
+                <div style="margin-top:10px">
+                  <div style="background:var(--glass);padding:8px;border-radius:8px;margin-top:6px">
+                    <strong>Asie de l'Est :</strong> Corée, Taïwan, Hong Kong
+                  </div>
+                  <div style="background:var(--glass);padding:8px;border-radius:8px;margin-top:6px">
+                    <strong>Asie du Sud-Est :</strong> Singapour, Malaisie, Thaïlande, Vietnam
+                  </div>
+                  <div style="background:var(--glass);padding:8px;border-radius:8px;margin-top:6px">
+                    <strong>Amérique latine :</strong> Mexique, Chili, Brésil (partiel)
+                  </div>
+                  <div style="background:var(--glass);padding:8px;border-radius:8px;margin-top:6px">
+                    <strong>Émergents actuels :</strong> Bangladesh, Éthiopie, Maroc
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h3>💡 À noter</h3>
+                <p class="muted" style="font-size:13px">Ces données sont simplifiées pour la présentation. Pour une analyse complète, consultez les sources officielles.</p>
               </div>
             </aside>
           </div>
@@ -671,81 +1447,141 @@
           <div class="content">
             <div class="column">
               <div class="panel">
+                <h2>Testez vos connaissances</h2>
+                <p class="muted">Répondez aux questions suivantes pour vérifier votre compréhension.</p>
+
                 <div class="quiz" id="quiz">
                   <div class="q">
-                    <p><strong>1)</strong> Une caractéristique clé d’un NPI est…</p>
-                    <label><input type="radio" name="q1" value="a"> Croissance tirée uniquement par les matières premières</label>
-                    <label><input type="radio" name="q1" value="b"> Forte orientation export et montée en gamme</label>
-                    <label><input type="radio" name="q1" value="c"> Autarcie commerciale</label>
+                    <p><strong>1)</strong> Quelle est une caractéristique clé d'un NPI ?</p>
+                    <label><input type="radio" name="q1" value="a"> a) Croissance tirée uniquement par les matières premières</label>
+                    <label><input type="radio" name="q1" value="b"> b) Forte orientation export et montée en gamme</label>
+                    <label><input type="radio" name="q1" value="c"> c) Économie fermée et autarcie commerciale</label>
                   </div>
 
                   <div class="q">
-                    <p><strong>2)</strong> Combien de vagues présentées ici ?</p>
-                    <label><input type="radio" name="q2" value="a"> 2</label>
-                    <label><input type="radio" name="q2" value="b"> 3</label>
-                    <label><input type="radio" name="q2" value="c"> 4</label>
+                    <p><strong>2)</strong> Combien de vagues d'industrialisation avons-nous présentées ?</p>
+                    <label><input type="radio" name="q2" value="a"> a) 2 vagues</label>
+                    <label><input type="radio" name="q2" value="b"> b) 3 vagues</label>
+                    <label><input type="radio" name="q2" value="c"> c) 4 vagues</label>
                   </div>
 
                   <div class="q">
-                    <p><strong>3)</strong> La Corée du Sud s’est appuyée sur…</p>
-                    <label><input type="radio" name="q3" value="a"> Un État développeur et des champions industriels</label>
-                    <label><input type="radio" name="q3" value="b"> Un modèle agricole traditionnel</label>
-                    <label><input type="radio" name="q3" value="c"> L’isolement vis-à-vis des marchés mondiaux</label>
+                    <p><strong>3)</strong> Sur quoi la Corée du Sud s'est-elle appuyée ?</p>
+                    <label><input type="radio" name="q3" value="a"> a) Un État développeur et des champions industriels</label>
+                    <label><input type="radio" name="q3" value="b"> b) Un modèle agricole traditionnel</label>
+                    <label><input type="radio" name="q3" value="c"> c) L'isolement vis-à-vis des marchés mondiaux</label>
                   </div>
 
                   <div class="q">
-                    <p><strong>4)</strong> IDE signifie…</p>
-                    <label><input type="radio" name="q4" value="a"> Investissements de Dette Extérieure</label>
-                    <label><input type="radio" name="q4" value="b"> Importations de Développement Économique</label>
-                    <label><input type="radio" name="q4" value="c"> Impôts Directs sur les Entreprises</label>
-                    <label><input type="radio" name="q4" value="d"> Investissements Directs Étrangers</label>
+                    <p><strong>4)</strong> Que signifie IDE ?</p>
+                    <label><input type="radio" name="q4" value="a"> a) Investissements de Dette Extérieure</label>
+                    <label><input type="radio" name="q4" value="b"> b) Importations de Développement Économique</label>
+                    <label><input type="radio" name="q4" value="c"> c) Impôts Directs sur les Entreprises</label>
+                    <label><input type="radio" name="q4" value="d"> d) Investissements Directs Étrangers</label>
                   </div>
 
-                  <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
-                    <button id="quizSubmit" class="btn small">Valider</button>
-                    <button id="quizReset" class="btn ghost small">Réinitialiser</button>
+                  <div style="margin-top:12px; display:flex; gap:8px; align-items:center">
+                    <button id="quizSubmit" class="btn small">Valider mes réponses</button>
+                    <button id="quizReset" class="btn ghost small">Recommencer</button>
                   </div>
 
                   <div id="quizResult" class="result" aria-live="polite"></div>
                 </div>
               </div>
             </div>
-
-            <aside class="column">
-              <div class="panel">
-                <div class="muted" style="margin-top:8px">Repondez aux questions suivantes</div>
-              </div>
-            </aside>
           </div>
         </section>
 
-        <!-- Slide 8: Conclusion & Références -->
+        <!-- Slide 8: Conclusion -->
         <section class="slide hidden" data-index="8" aria-label="Conclusion">
           <div class="headline">
-            <h1>Conclusion & références</h1>
+            <h1>Conclusion</h1>
             <div class="meta">Slide 9 / 9</div>
           </div>
           <div class="content">
             <div class="column">
               <div class="panel">
-                <h2>Points finaux</h2>
-                <ul>
-                  <li>Les NPI montrent que la transformation est possible — mais elle demande stratégie, temps, et arbitrages.</li>
-                  <li>Les politiques publiques, le capital humain et l'intégration aux chaînes mondiales sont centraux.</li>
-                  <li>Attention aux effets secondaires : inégalités, environnement et dépendance externe.</li>
+                <h2>🎯 Les 4 messages clés</h2>
+
+                <div style="background:rgba(6,182,212,0.1);padding:14px;border-radius:10px;margin-top:12px">
+                  <p style="margin:0;font-weight:700;font-size:15px">1. L'industrialisation rapide est possible</p>
+                  <p style="margin:6px 0 0;font-size:14px;color:#cfeaf2">Les NPI prouvent qu'un pays pauvre peut devenir une puissance industrielle en 20 à 40 ans. La Corée est passée de $158 à $34,000 par habitant. La Chine a sorti 800 millions de personnes de la pauvreté.</p>
+                </div>
+
+                <div style="background:rgba(124,58,237,0.1);padding:14px;border-radius:10px;margin-top:12px">
+                  <p style="margin:0;font-weight:700;font-size:15px">2. Le succès vient d'une combinaison de facteurs</p>
+                  <p style="margin:6px 0 0;font-size:14px;color:#cfeaf2">État stratégique + Éducation massive + Ouverture contrôlée + Infrastructures + Stabilité économique. <strong>Aucun pays n'a réussi avec un seul de ces facteurs.</strong></p>
+                </div>
+
+                <div style="background:rgba(245,158,11,0.1);padding:14px;border-radius:10px;margin-top:12px">
+                  <p style="margin:0;font-weight:700;font-size:15px">3. Les coûts sont réels et élevés</p>
+                  <p style="margin:6px 0 0;font-size:14px;color:#cfeaf2">Inégalités qui explosent, pollution massive, dépendance technologique, vulnérabilité aux chocs externes. <strong>Croissance ne signifie pas développement inclusif.</strong></p>
+                </div>
+
+                <div style="background:rgba(16,185,129,0.1);padding:14px;border-radius:10px;margin-top:12px">
+                  <p style="margin:0;font-weight:700;font-size:15px">4. Le contexte mondial a changé</p>
+                  <p style="margin:6px 0 0;font-size:14px;color:#cfeaf2">Automation, urgence climatique, protectionnisme, guerres technologiques. Le modèle classique des NPI est-il encore reproductible ? De nouveaux chemins sont nécessaires.</p>
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top:12px">
+                <h2>🔮 Perspectives futures</h2>
+
+                <h3 style="color:#06b6d4;font-size:15px">Les nouveaux défis</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>Automation :</strong> Moins d'emplois manufacturiers disponibles</li>
+                  <li><strong>Climat :</strong> Obligation d'industrialiser "proprement"</li>
+                  <li><strong>Technologie :</strong> Dépendance aux brevets étrangers</li>
+                  <li><strong>Protectionnisme :</strong> Fragmentation de la mondialisation</li>
+                </ul>
+
+                <h3 style="color:#06b6d4;font-size:15px;margin-top:12px">Les nouvelles opportunités</h3>
+                <ul style="margin-top:6px">
+                  <li><strong>Numérique :</strong> Services dématérialisés (Inde, Kenya)</li>
+                  <li><strong>Proximité :</strong> Relocalisation régionale (Mexique, Maroc)</li>
+                  <li><strong>Vert :</strong> Technologies propres dès le départ</li>
+                  <li><strong>Niches :</strong> Spécialisation dans des secteurs pointus</li>
+                </ul>
+              </div>
+            </div>
+
+            <aside class="column">
+              <div class="panel">
+                <h2>📚 Pour aller plus loin</h2>
+                
+                <h3 style="font-size:14px;color:#06b6d4">Ouvrages de référence</h3>
+                <ul style="font-size:13px;margin-top:6px">
+                  <li>World Bank (1993). <em>The East Asian Miracle</em></li>
+                  <li>Chang, Ha-Joon (2002). <em>Kicking Away the Ladder</em></li>
+                  <li>Amsden, Alice (1989). <em>Asia's Next Giant: South Korea</em></li>
+                  <li>Rodrik, Dani (2016). <em>Premature Deindustrialization</em></li>
+                </ul>
+
+                <h3 style="font-size:14px;color:#06b6d4;margin-top:12px">Bases de données</h3>
+                <ul style="font-size:13px;margin-top:6px">
+                  <li>Banque mondiale : PIB, exports, éducation</li>
+                  <li>CNUCED : Commerce et IDE</li>
+                  <li>OCDE : Politiques industrielles</li>
+                  <li>ONUDI : Industrialisation</li>
                 </ul>
               </div>
 
               <div class="panel" style="margin-top:12px">
-                <h2>Références utiles</h2>
-                <ul>
-                  <li><a href="https://data.worldbank.org/" target="_blank" rel="noreferrer" style="color:inherit">Banque mondiale — Data</a></li>
-                  <li><a href="https://unctad.org/" target="_blank" rel="noreferrer" style="color:inherit">CNUCED</a></li>
-                  <li><a href="https://www.oecd.org/" target="_blank" rel="noreferrer" style="color:inherit">OCDE</a></li>
-                  <li><a href="https://www.unido.org/" target="_blank" rel="noreferrer" style="color:inherit">ONUDI</a></li>
+                <h2>💭 Questions ouvertes</h2>
+                <ul style="font-size:13px">
+                  <li>Les pays africains peuvent-ils suivre le modèle asiatique ?</li>
+                  <li>Faut-il accepter la pollution pour se développer ?</li>
+                  <li>L'automation rend-elle l'industrialisation impossible pour les pays pauvres ?</li>
+                  <li>Peut-on avoir une croissance inclusive dès le départ ?</li>
                 </ul>
               </div>
-            </div>
+
+              <div style="margin-top:16px;padding:16px;background:linear-gradient(90deg, rgba(6,182,212,0.15), rgba(124,58,237,0.15));border-radius:12px;text-align:center">
+                <p style="margin:0;font-weight:800;font-size:18px;color:#e6eef6">🎓 Fin de la présentation</p>
+                <p style="margin:8px 0 0;font-size:14px;color:#cfeaf2">Merci de votre attention !</p>
+                <p style="margin:4px 0 0;font-size:13px;color:#9aa8b7">Vos questions ?</p>
+              </div>
+            </aside>
           </div>
         </section>
 
@@ -809,7 +1645,6 @@
       if(e.key === 'Home') showSlide(0);
       if(e.key === 'End') showSlide(total - 1);
       if(e.key.toLowerCase() === 't') {
-        // toggle sidebar (mobile)
         const sb = document.querySelector('.sidebar');
         if(sb) sb.style.display = sb.style.display === 'none' ? 'flex' : 'none';
       }
@@ -823,11 +1658,11 @@
         startPresent.textContent = "Quitter plein écran";
       } else {
         document.exitFullscreen?.();
-        startPresent.textContent = "Lancer mode plein écran";
+        startPresent.textContent = "Mode plein écran";
       }
     });
 
-    // touch swipe for mobile
+    // Touch swipe for mobile
     let touchStartX = null;
     document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive:true});
     document.addEventListener('touchend', e => {
@@ -856,19 +1691,19 @@
         const val = node ? node.value : null;
         if(val === answers[key]) {
           score++;
-          feedback.push(`<div style="color: #86efac">✓ ${key.toUpperCase()} — Correct</div>`);
+          feedback.push(`<div style="color: #86efac">✓ Question ${key.substring(1)} — Correct</div>`);
         } else {
-          feedback.push(`<div style="color: #fca5a5">✕ ${key.toUpperCase()} — Réponse correcte: <strong>${answers[key].toUpperCase()}</strong></div>`);
+          feedback.push(`<div style="color: #fca5a5">✕ Question ${key.substring(1)} — Réponse correcte: ${answers[key].toUpperCase()}</div>`);
         }
       });
       const pct = Math.round((score / Object.keys(answers).length) * 100);
-      let mood = "Bien joué.";
-      if(pct === 100) mood = "Parfait — vous maîtrisez le sujet.";
-      else if(pct >= 75) mood = "Bon — quelques rappels nécessaires.";
-      else if(pct >= 50) mood = "Moyen — revoyez les concepts clés.";
-      else mood = "Faible — reprendre les sections importantes.";
+      let mood = "Bien joué !";
+      if(pct === 100) mood = "Parfait ! Vous maîtrisez le sujet.";
+      else if(pct >= 75) mood = "Bon travail. Quelques rappels nécessaires.";
+      else if(pct >= 50) mood = "Pas mal. Revoyez certains concepts clés.";
+      else mood = "Revoyez les sections importantes.";
 
-      quizResult.innerHTML = `<div style="font-size:15px">Score: <strong>${score}/${Object.keys(answers).length}</strong> — ${pct}%</div><div style="margin-top:8px">${mood}</div><div style="margin-top:8px">${feedback.join("")}</div>`;
+      quizResult.innerHTML = `<div style="font-size:15px;margin-top:12px">Score: <strong>${score}/${Object.keys(answers).length}</strong> (${pct}%)</div><div style="margin-top:8px">${mood}</div><div style="margin-top:8px">${feedback.join("")}</div>`;
     });
 
     quizReset.addEventListener('click', () => {
@@ -876,7 +1711,7 @@
       quizResult.innerHTML = '';
     });
 
-    // Accessibility: focus trap basic when slides change
+    // Accessibility
     slides.forEach(s => {
       s.addEventListener('transitionend', () => {
         if(s.classList.contains('show')){
@@ -886,19 +1721,141 @@
       });
     });
 
-    // Small UX enhancement: announce slide changes
+    // Live region for screen readers
     const liveRegion = document.createElement('div');
     liveRegion.setAttribute('aria-live', 'polite');
     liveRegion.style.position = 'absolute';
     liveRegion.style.left = '-9999px';
     document.body.appendChild(liveRegion);
+    
     function announceSlide(){
       const title = slides[index].querySelector('.headline h1')?.textContent || `Slide ${index + 1}`;
       liveRegion.textContent = `Diapositive ${index + 1} sur ${total} — ${title}`;
     }
+    
     setInterval(announceSlide, 700);
     announceSlide();
 
+    // Helper function to wrap acronyms with tooltips
+function wrapAcronyms() {
+  const acronyms = {
+    'R&D': 'Recherche et Développement : investissements dans l\'innovation, laboratoires et brevets',
+    'IDE': 'Investissements Directs Étrangers : quand une entreprise étrangère investit dans un pays',
+    'ZES': 'Zones Économiques Spéciales : territoires avec avantages fiscaux',
+    'PIB': 'Produit Intérieur Brut : valeur totale de la production d\'un pays',
+    'OMC': 'Organisation Mondiale du Commerce : régule le commerce international',
+    'CVM': 'Chaînes de Valeur Mondiales : réseaux de production internationaux',
+    'GVC': 'Global Value Chains : même chose que CVM en anglais',
+    'ASEAN': 'Association des Nations de l\'Asie du Sud-Est : union économique régionale',
+    'ALENA': 'Accord de Libre-Échange Nord-Américain : accord USA-Canada-Mexique',
+    'CPTPP': 'Accord de Partenariat Transpacifique : grand accord commercial Asie-Pacifique',
+    'EVFTA': 'Accord de Libre-Échange Vietnam-UE : accord commercial Vietnam-Europe',
+    'PM2.5': 'Particules fines : polluants atmosphériques de 2,5 micromètres, dangereux pour la santé',
+    'KDB': 'Korea Development Bank : Banque de développement de Corée',
+    'KAIST': 'Korea Advanced Institute of Science and Technology : université scientifique coréenne de pointe'
+  };
+
+  // Process all slides
+  slides.forEach(slide => {
+    const textNodes = getTextNodes(slide);
+    textNodes.forEach(node => {
+      let html = node.textContent;
+      let modified = false;
+      
+      Object.keys(acronyms).forEach(acronym => {
+        // Match whole word only, case sensitive
+        const regex = new RegExp('\\b' + acronym.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'g');
+        if (regex.test(html)) {
+          html = html.replace(regex, `<span class="tooltip">${acronym}<span class="tooltiptext">${acronyms[acronym]}</span></span>`);
+          modified = true;
+        }
+      });
+      
+      if (modified) {
+        const span = document.createElement('span');
+        span.innerHTML = html;
+        node.parentNode.replaceChild(span, node);
+      }
+    });
+  });
+
+  // Add dynamic positioning on hover
+  setTimeout(() => {
+    document.querySelectorAll('.tooltip').forEach(tooltip => {
+      const tooltipText = tooltip.querySelector('.tooltiptext');
+      if (!tooltipText) return;
+
+      tooltip.addEventListener('mouseenter', function() {
+        positionTooltip(this, tooltipText);
+      });
+    });
+  }, 200);
+}
+
+// Position tooltip dynamically based on viewport
+function positionTooltip(tooltip, tooltipText) {
+  // Remove all position classes
+  tooltipText.classList.remove('below', 'align-left', 'align-right');
+  
+  const rect = tooltip.getBoundingClientRect();
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  
+  const spaceAbove = rect.top;
+  const spaceBelow = viewportHeight - rect.bottom;
+  
+  const tooltipHeight = 120; // estimated height
+  const tooltipWidth = 280;
+  
+  // Decide vertical position (above or below)
+  if (spaceAbove < tooltipHeight && spaceBelow > spaceAbove) {
+    tooltipText.classList.add('below');
+  }
+  
+  // Decide horizontal alignment
+  const centerX = rect.left + (rect.width / 2);
+  const halfTooltip = tooltipWidth / 2;
+  
+  if (centerX - halfTooltip < 20) {
+    // Too close to left edge
+    tooltipText.classList.add('align-left');
+  } else if (centerX + halfTooltip > viewportWidth - 20) {
+    // Too close to right edge
+    tooltipText.classList.add('align-right');
+  }
+}
+
+// Helper to get text nodes
+function getTextNodes(element) {
+  const textNodes = [];
+  const walker = document.createTreeWalker(
+    element,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode: function(node) {
+        // Skip script, style, and already processed nodes
+        if (node.parentElement.tagName === 'SCRIPT' || 
+            node.parentElement.tagName === 'STYLE' ||
+            node.parentElement.classList.contains('tooltip')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        // Only nodes with actual text
+        if (node.textContent.trim().length > 0) {
+          return NodeFilter.FILTER_ACCEPT;
+        }
+        return NodeFilter.FILTER_REJECT;
+      }
+    }
+  );
+  
+  while (walker.nextNode()) {
+    textNodes.push(walker.currentNode);
+  }
+  return textNodes;
+}
+
+// Apply tooltips after slides are loaded
+setTimeout(wrapAcronyms, 100);
   </script>
   <script src="/i18n.js"></script>
   <script src="/user-session.js"></script>
