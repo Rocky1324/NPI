@@ -1704,6 +1704,15 @@
       else mood = "Revoyez les sections importantes.";
 
       quizResult.innerHTML = `<div style="font-size:15px;margin-top:12px">Score: <strong>${score}/${Object.keys(answers).length}</strong> (${pct}%)</div><div style="margin-top:8px">${mood}</div><div style="margin-top:8px">${feedback.join("")}</div>`;
+      
+      // Track quiz completion in analytics
+      if (typeof window.trackEvent === 'function') {
+        window.trackEvent('quiz_complete', {
+          score: score,
+          total: Object.keys(answers).length,
+          percentage: pct
+        });
+      }
     });
 
     quizReset.addEventListener('click', () => {
